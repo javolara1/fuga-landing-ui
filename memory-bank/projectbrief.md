@@ -4,32 +4,34 @@ _This document is the foundation for all other Memory Bank files. It defines the
 
 ## Project Goals
 
-- Build a comprehensive UI component library for SvelteKit applications.
-- Provide developers with reusable, accessible, and customizable components.
-- Ensure high performance and ease of use for the component library.
+- Build a comprehensive scheduling/booking application for managing weekly time slots.
+- Enable administrators to configure available resources (classes, rooms, professionals) for specific time periods.
+- Provide a user-friendly interface for viewing and managing weekly schedules.
+- Ensure proper access control and time-based restrictions.
 
 ## Core Requirements
 
-- Develop a set of core UI components (e.g., buttons, forms, navigation).
-- Implement proper TypeScript support for all components.
-- Ensure accessibility compliance (WCAG guidelines).
-- Provide comprehensive documentation and examples.
-- Set up automated testing (unit and E2E).
-- Maintain a consistent design system using Tailwind CSS.
+- Implement week-based navigation with past, current, and future week states.
+- Create administrator functionality to enable and configure future weeks.
+- Develop time slot management for assigning resources and capacity limits.
+- Build resource management for classes, rooms, and professionals.
+- Implement proper access control (read-only past weeks, configurable future weeks).
+- Ensure data integrity and business rule enforcement.
 
 ## Scope
 
 **In Scope:**
 
-- Core UI components for common use cases.
-- TypeScript definitions and type safety.
-- Accessibility features and testing.
-- Documentation site.
-- Unit and E2E testing setup.
+- Weekly schedule management interface.
+- Time slot configuration and resource assignment.
+- Administrator controls for enabling future weeks.
+- Resource management (classes, rooms, professionals).
+- Capacity management for time slots.
+- Access control based on week status.
 
 **Out of Scope:**
 
-- Advanced data visualization components.
-- Third-party integrations (e.g., payment gateways).
+- User booking/reservation functionality (focus on admin configuration).
+- Payment processing.
 - Mobile app development.
-- Backend API development.
+- Third-party calendar integrations.

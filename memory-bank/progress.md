@@ -7,30 +7,37 @@ _This document tracks what works, what's left to build, the current status, know
 - Basic SvelteKit project setup with TypeScript and Tailwind CSS.
 - Development environment configured (Vite, ESLint, Prettier).
 - Testing framework set up (Vitest for unit tests, Playwright for E2E).
-- Memory bank initialized and populated with project analysis.
+- Memory bank updated to reflect scheduling application scope.
+- Project brief and context documentation completed.
 
 ## What's Left to Build
 
-- Core UI components (buttons, inputs, navigation, etc.).
-- Component library structure and organization.
-- Comprehensive documentation and usage examples.
-- Automated testing suite for components.
-- Design system guidelines and theme configuration.
-- Accessibility testing and compliance verification.
+- Data model documentation and entity-relationship diagrams.
+- Database schema design and implementation.
+- Weekly navigation interface with status-based access controls.
+- Administrator controls for enabling and configuring future weeks.
+- Time slot management system with resource assignment.
+- Resource management module (classes, rooms, professionals).
+- Authentication and authorization system.
+- API endpoints for data operations.
+- Frontend components for schedule visualization and management.
 
 ## Current Status
 
-The project is in the early development stage. The foundation is set up with modern tooling, and the memory bank has been initialized to track project progress and decisions.
+The project has pivoted from a UI component library to a scheduling/booking application. Memory bank files have been updated to reflect the new scope. Currently working on documenting the data models and system architecture.
 
 ## Known Issues
 
-- No known issues at this stage.
-- Project is still in scaffolding phase.
+- Backend technology stack needs to be finalized.
+- Database choice and schema design pending.
+- Authentication system architecture not yet defined.
+- Time zone handling strategy needs clarification.
 
 ## Evolution of Project Decisions
 
-- **Initial Setup:** Chose SvelteKit for its modern approach to building web applications with file-based routing.
-- **Styling:** Selected Tailwind CSS for utility-first styling approach, providing flexibility and consistency.
-- **TypeScript:** Adopted for type safety and better developer experience.
-- **Testing:** Implemented both unit (Vitest) and E2E (Playwright) testing to ensure quality.
-- **Memory Bank:** Established structured documentation system for maintaining project context across sessions.
+- **Project Pivot:** Changed from UI component library to scheduling application based on user requirements.
+- **Core Entities Identified:** Week, TimeSlot, Class, Room, Professional, Administrator.
+- **Access Control Strategy:** Time-based permissions (past = read-only, future = admin-configurable).
+- **Technology Stack:** Continuing with SvelteKit frontend, backend technology to be determined.
+- **Data Architecture:** Week-centric organization with resource-agnostic design.
+- **Memory Bank:** Updated all documentation to reflect new project scope and requirements.
