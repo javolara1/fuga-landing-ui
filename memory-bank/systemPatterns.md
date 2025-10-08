@@ -163,7 +163,7 @@ Administrator (1) ──── (Many) Week [enabled_by]
 
 ### Frontend Architecture
 
-- **SvelteKit** with file-based routing
+- **SvelteKit** with file-based routing and server-side rendering
 - **Component Structure:**
   - `WeekNavigator`: Navigation between weeks
   - `WeekView`: Display week schedule with time slots
@@ -171,12 +171,21 @@ Administrator (1) ──── (Many) Week [enabled_by]
   - `ResourceSelector`: Choose classes, rooms, or professionals
   - `AdminControls`: Enable weeks and manage permissions
 
-### Backend Architecture (Proposed)
+### Backend Architecture (Implemented)
 
-- **API Layer**: RESTful endpoints or GraphQL
-- **Business Logic Layer**: Week status management, capacity validation
-- **Data Access Layer**: ORM/Query builder for database operations
-- **Authentication Layer**: JWT-based admin authentication
+- **API Layer**: RESTful endpoints (`+server.ts` files)
+- **Authentication Layer**: Server-side authentication with Supabase
+- **Session Management**: Secure cookie-based session handling
+- **Data Access Layer**: Supabase client for database operations
+- **Business Logic Layer**: Server-side validation and business rules
+
+### Server-Side Rendering Strategy
+
+- **Default Approach**: Server-side rendering for all pages using `+page.server.ts`
+- **API Endpoints**: Server-side API routes using `+server.ts` files
+- **Authentication**: Server-side session management with secure cookies
+- **Data Loading**: Server-side data fetching for initial page loads
+- **Progressive Enhancement**: Client-side interactivity where needed
 
 ### Key Design Patterns
 

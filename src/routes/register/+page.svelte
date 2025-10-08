@@ -1,13 +1,44 @@
 <script lang="ts">
-  let email = '';
-  let password = '';
-  let confirmPassword = '';
+  import { goto } from '$app/navigation';
+  
+  let email = $state('');
+  let password = $state('');
+  let confirmPassword = $state('');
+  let loading = $state(false);
+  let error = $state('');
+  let success = $state('');
 
-  function handleRegister(event: Event) {
+  async function handleRegister(event: Event) {
     event.preventDefault();
-    // For now, just log the credentials (backend will be handled later)
-    console.log('Register attempt:', { email, password, confirmPassword });
-    // In a real app, you would call your authentication service here
+    loading = true;
+    error = '';
+    success = '';
+
+    try {
+      const response = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password, confirmPassword }),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        success = result.message || 'Registration successful! Please check your email for verification.';
+        // Optionally redirect to login page after a delay
+        setTimeout(() => {
+          goto('/login');
+        }, 3000);
+      } else {
+        error = result.error || 'An error occurred during registration';
+      }
+    } catch (err) {
+      error = err instanceof Error ? err.message : 'An error occurred during registration';
+    } finally {
+      loading = false;
+    }
   }
 </script>
 
@@ -18,7 +49,44 @@
       <p class="mt-2 text-gray-300 text-center">Sign up for a new account</p>
     </div>
 
-    <form class="mt-8 space-y-6" on:submit={handleRegister}>
+    <!-- Error and Success Messages -->
+    {#if error}
+      <div class="rounded-md bg-red-900/50 border border-red-700 p-4">
+        <div class="flex">
+          <div class="flex-shrink-0">
+            <svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div class="ml-3">
+            <h3 class="text-sm font-medium text-red-200">Error</h3>
+            <div class="mt-1 text-sm text-red-300">
+              <p>{error}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    {/if}
+
+    {#if success}
+      <div class="rounded-md bg-green-900/50 border border-green-700 p-4">
+        <div class="flex">
+          <div class="flex-shrink-0">
+            <svg class="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.236 4.53L6.53 10.47a.75.75 0 00-1.06 1.06l2.5 2.5a.75.75 0 001.154-.114l4-5.5z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div class="ml-3">
+            <h3 class="text-sm font-medium text-green-200">Success</h3>
+            <div class="mt-1 text-sm text-green-300">
+              <p>{success}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    {/if}
+
+    <form class="mt-8 space-y-6" onsubmit={handleRegister}>
       <div class="space-y-4">
         <div>
           <label for="email" class="sr-only">Email address</label>
@@ -29,7 +97,8 @@
             autocomplete="email"
             required
             bind:value={email}
-            class="relative block w-full px-3 py-3 border border-gray-700 placeholder-gray-500 text-white bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            disabled={loading}
+            class="relative block w-full px-3 py-3 border border-gray-700 placeholder-gray-500 text-white bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
             placeholder="Email address"
           />
         </div>
@@ -42,7 +111,8 @@
             autocomplete="new-password"
             required
             bind:value={password}
-            class="relative block w-full px-3 py-3 border border-gray-700 placeholder-gray-500 text-white bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            disabled={loading}
+            class="relative block w-full px-3 py-3 border border-gray-700 placeholder-gray-500 text-white bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
             placeholder="Password"
           />
         </div>
@@ -55,7 +125,8 @@
             autocomplete="new-password"
             required
             bind:value={confirmPassword}
-            class="relative block w-full px-3 py-3 border border-gray-700 placeholder-gray-500 text-white bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            disabled={loading}
+            class="relative block w-full px-3 py-3 border border-gray-700 placeholder-gray-500 text-white bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
             placeholder="Confirm Password"
           />
         </div>
@@ -64,9 +135,18 @@
       <div>
         <button
           type="submit"
-          class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200"
+          disabled={loading}
+          class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          Create Account
+          {#if loading}
+            <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            Creating Account...
+          {:else}
+            Create Account
+          {/if}
         </button>
       </div>
 

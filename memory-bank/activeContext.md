@@ -4,29 +4,32 @@ _This document tracks the current work focus, recent changes, next steps, active
 
 ## Current Work Focus
 
-- Setting up Supabase integration for backend and authentication.
-- Configuring environment variables and Supabase client.
-- Creating initial database schema migrations.
-- Building authentication UI components (login/register pages).
+- Successfully migrated authentication logic from client-side to server-side rendering.
+- Implemented server-side API routes for login, registration, and logout.
+- Updated root page to use server-side data loading for authentication state.
+- Testing the complete server-side authentication flow.
 
 ## Recent Changes
 
-- Added Supabase JavaScript client dependency (@supabase/supabase-js).
-- Created environment configuration (.env) for Supabase connection.
-- Set up Supabase client initialization (src/lib/supabaseClient.ts).
-- Created placeholder database types (src/lib/database.types.ts).
-- Added connection test utility (src/lib/supabase.test.ts).
-- Built login and registration pages with dark theme UI.
-- Created initial database migration for week table.
-- Updated tech context to reflect Supabase backend.
+- **Migrated authentication to server-side**: Moved all authentication logic from client to server:
+  - Created `/api/auth/login/+server.ts` for server-side login
+  - Created `/api/auth/register/+server.ts` for server-side registration
+  - Created `/api/auth/logout/+server.ts` for server-side logout
+  - Created `/+page.server.ts` for server-side session management
+- **Updated client components**: Modified all authentication pages to use server-side APIs:
+  - `/login/+page.svelte` now uses server-side login API
+  - `/register/+page.svelte` now uses server-side registration API
+  - `/+page.svelte` now uses server-side session data
+- **Enhanced security**: Implemented server-side validation, secure cookie handling, and proper session management.
+- **Maintained Svelte 5 runes syntax**: All components continue to use modern Svelte 5 features.
 
 ## Next Steps
 
-- Generate proper database types from Supabase schema.
-- Complete database schema with all entities (TimeSlot, Class, Professional, Administrator).
-- Implement Supabase authentication in login/register pages.
-- Add Row Level Security (RLS) policies for data protection.
 - Create admin dashboard for week management.
+- Implement protected routes and role-based access control.
+- Build weekly schedule management interface.
+- Add time slot configuration functionality.
+- Implement resource management (classes, rooms, professionals).
 
 ## Active Decisions and Considerations
 
