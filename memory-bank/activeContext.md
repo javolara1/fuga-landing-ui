@@ -4,23 +4,29 @@ _This document tracks the current work focus, recent changes, next steps, active
 
 ## Current Work Focus
 
-- Documenting data models for the scheduling/booking application.
-- Defining entity-relationship diagrams in systemPatterns.md.
-- Updating memory bank to reflect the new project scope.
+- Setting up Supabase integration for backend and authentication.
+- Configuring environment variables and Supabase client.
+- Creating initial database schema migrations.
+- Building authentication UI components (login/register pages).
 
 ## Recent Changes
 
-- Updated memory bank files to reflect project pivot from UI component library to scheduling application.
-- Revised `projectbrief.md` and `productContext.md` to focus on scheduling functionality.
-- Identified core entities: Week, TimeSlot, Class, Room, Professional, Administrator.
+- Added Supabase JavaScript client dependency (@supabase/supabase-js).
+- Created environment configuration (.env) for Supabase connection.
+- Set up Supabase client initialization (src/lib/supabaseClient.ts).
+- Created placeholder database types (src/lib/database.types.ts).
+- Added connection test utility (src/lib/supabase.test.ts).
+- Built login and registration pages with dark theme UI.
+- Created initial database migration for week table.
+- Updated tech context to reflect Supabase backend.
 
 ## Next Steps
 
-- Complete data model documentation in systemPatterns.md.
-- Define entity relationships and business rules.
-- Plan database schema and API endpoints.
-- Design the weekly navigation interface.
-- Implement administrator controls for week management.
+- Generate proper database types from Supabase schema.
+- Complete database schema with all entities (TimeSlot, Class, Professional, Administrator).
+- Implement Supabase authentication in login/register pages.
+- Add Row Level Security (RLS) policies for data protection.
+- Create admin dashboard for week management.
 
 ## Active Decisions and Considerations
 

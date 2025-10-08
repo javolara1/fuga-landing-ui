@@ -138,14 +138,21 @@ Administrator (1) ──── (Many) Week [enabled_by]
 
 ### Database Schema Considerations
 
-#### Indexes
+#### Current Implementation Status
+
+- **Initial Schema Created:** Basic `week` table migration created with minimal fields
+- **Schema Incomplete:** Missing TimeSlot, Class, Professional, and Administrator tables
+- **Fields to Add:** Need to add `enabled_by`, `enabled_at`, `updated_at` fields to week table
+- **Status Enum:** Need to implement week status enum constraint
+
+#### Indexes (Planned)
 
 - `week_start_date_idx`: Index on Week.start_date for efficient date queries
 - `timeslot_week_day_idx`: Composite index on TimeSlot(week_id, day_of_week)
 - `timeslot_resource_idx`: Composite index on TimeSlot(resource_type, resource_id)
 - `administrator_email_idx`: Unique index on Administrator.email
 
-#### Constraints
+#### Constraints (Planned)
 
 - `week_date_range_check`: Ensure end_date > start_date
 - `timeslot_time_check`: Ensure end_time > start_time

@@ -15,12 +15,14 @@ _This document describes the technologies used, development setup, technical con
   - End-to-End (E2E) Testing: Playwright
 - **Linting & Formatting:** ESLint and Prettier
 
-### Backend (To Be Determined)
+### Backend (Supabase)
 
-- **API:** Need to decide on backend framework (Node.js/Express, SvelteKit API routes, or separate service)
-- **Database:** Need to choose database solution (PostgreSQL, MySQL, or SQLite for development)
-- **Authentication:** Need authentication system for administrator access
-- **Validation:** Need server-side validation for business rules
+- **Database:** PostgreSQL via Supabase
+- **API:** Supabase RESTful API and real-time subscriptions
+- **Authentication:** Supabase Auth with email/password
+- **Location:** Local development at http://127.0.0.1:54321
+- **Client:** @supabase/supabase-js for frontend integration
+- **Migrations:** Supabase CLI for database schema management
 
 ## Development Setup
 
@@ -47,13 +49,12 @@ The project's dependencies are managed through `package.json`. Key dependencies 
 - `vitest`: For unit testing.
 - `playwright`: For E2E testing.
 - `eslint` and `prettier`: For code quality and formatting.
+- `@supabase/supabase-js`: Supabase client for backend integration.
 
 ### Additional Dependencies Needed
 
-- Database ORM/client (Prisma, Drizzle, or similar)
 - Date/time handling library (date-fns or dayjs)
 - Form validation library
-- Authentication library
 
 ## Technical Constraints
 
