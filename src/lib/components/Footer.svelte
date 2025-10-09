@@ -1,3 +1,7 @@
+<script lang="ts">
+  import { t } from '$lib/i18n';
+</script>
+
 <footer class="bg-black text-white border-t border-gray-800">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Main Footer Content -->
@@ -6,7 +10,7 @@
       <div class="md:col-span-1">
         <h3 class="text-2xl font-bold mb-4">FUGA</h3>
         <p class="text-gray-400 mb-4">
-          Multidisciplinary sports team providing professional strength training and customized sport-specific programs.
+          {$t('footer.brandDescription')}
         </p>
         <div class="flex space-x-4">
           <!-- Social Media Icons (placeholder) -->
@@ -30,64 +34,64 @@
 
       <!-- Quick Links -->
       <div>
-        <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+        <h4 class="text-lg font-semibold mb-4">{$t('footer.quickLinks')}</h4>
         <ul class="space-y-2">
           <li>
-            <a href="#services" class="text-gray-400 hover:text-white transition-colors">Services</a>
+            <a href="#services" class="text-gray-400 hover:text-white transition-colors">{$t('footer.services')}</a>
           </li>
           <li>
-            <a href="#pricing" class="text-gray-400 hover:text-white transition-colors">Pricing</a>
+            <a href="#pricing" class="text-gray-400 hover:text-white transition-colors">{$t('footer.pricing')}</a>
           </li>
           <li>
-            <a href="#about" class="text-gray-400 hover:text-white transition-colors">About</a>
+            <a href="#about" class="text-gray-400 hover:text-white transition-colors">{$t('footer.about')}</a>
           </li>
           <li>
-            <a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a>
+            <a href="#contact" class="text-gray-400 hover:text-white transition-colors">{$t('footer.contact')}</a>
           </li>
         </ul>
       </div>
 
       <!-- Training Programs -->
       <div>
-        <h4 class="text-lg font-semibold mb-4">Training Programs</h4>
+        <h4 class="text-lg font-semibold mb-4">{$t('footer.trainingPrograms')}</h4>
         <ul class="space-y-2">
           <li>
-            <a href="#" class="text-gray-400 hover:text-white transition-colors">Strength Training</a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">{$t('footer.strengthTraining')}</a>
           </li>
           <li>
-            <a href="#" class="text-gray-400 hover:text-white transition-colors">Cycling Programs</a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">{$t('footer.cyclingPrograms')}</a>
           </li>
           <li>
-            <a href="#" class="text-gray-400 hover:text-white transition-colors">Running Programs</a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">{$t('footer.runningPrograms')}</a>
           </li>
           <li>
-            <a href="#" class="text-gray-400 hover:text-white transition-colors">Swimming Programs</a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">{$t('footer.swimmingPrograms')}</a>
           </li>
         </ul>
       </div>
 
       <!-- Contact Info -->
       <div>
-        <h4 class="text-lg font-semibold mb-4">Contact</h4>
+        <h4 class="text-lg font-semibold mb-4">{$t('footer.contactInfo')}</h4>
         <ul class="space-y-2 text-gray-400">
           <li class="flex items-start">
             <svg class="w-4 h-4 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
             </svg>
-            <span>123 Athletic Avenue<br>Sports City, SC 12345</span>
+            <span>{$t('contact.athleticAvenue')}<br>{$t('contact.sportsCity')}</span>
           </li>
           <li class="flex items-center">
             <svg class="w-4 h-4 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
             </svg>
-            <span>(555) 123-4567</span>
+            <span>{$t('contact.phoneNumber')}</span>
           </li>
           <li class="flex items-center">
             <svg class="w-4 h-4 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
             </svg>
-            <span>info@fuga-training.com</span>
+            <span>{$t('contact.infoEmail')}</span>
           </li>
         </ul>
       </div>
@@ -97,12 +101,12 @@
     <div class="border-t border-gray-800 py-6">
       <div class="flex flex-col md:flex-row justify-between items-center">
         <p class="text-gray-400 text-sm">
-          © 2025 FUGA Sports Team. All rights reserved.
+          {$t('footer.copyright')}
         </p>
         <div class="flex space-x-6 mt-4 md:mt-0">
-          <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
-          <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</a>
-          <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Cookie Policy</a>
+          <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">{$t('footer.privacyPolicy')}</a>
+          <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">{$t('footer.termsOfService')}</a>
+          <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">{$t('footer.cookiePolicy')}</a>
         </div>
       </div>
     </div>

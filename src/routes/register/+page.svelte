@@ -1,5 +1,6 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
+  import { t } from '$lib/i18n';
   
   let email = $state('');
   let password = $state('');
@@ -45,8 +46,8 @@
 <div class="min-h-screen bg-black text-white flex items-center justify-center px-4">
   <div class="max-w-md w-full space-y-8">
     <div class="text-center">
-      <h1 class="text-4xl font-bold mb-2">Create Account</h1>
-      <p class="text-gray-300 text-lg">Sign up for a new account</p>
+      <h1 class="text-4xl font-bold mb-2">{$t('auth.createAccount')}</h1>
+      <p class="text-gray-300 text-lg">{$t('auth.signUpForAccount')}</p>
     </div>
 
     <!-- Error and Success Messages -->
@@ -59,7 +60,7 @@
             </svg>
           </div>
           <div class="ml-3">
-            <h3 class="text-sm font-medium text-red-400">Error</h3>
+            <h3 class="text-sm font-medium text-red-400">{$t('auth.error')}</h3>
             <div class="mt-1 text-sm text-red-300">
               <p>{error}</p>
             </div>
@@ -77,7 +78,7 @@
             </svg>
           </div>
           <div class="ml-3">
-            <h3 class="text-sm font-medium text-green-400">Success</h3>
+            <h3 class="text-sm font-medium text-green-400">{$t('auth.success')}</h3>
             <div class="mt-1 text-sm text-green-300">
               <p>{success}</p>
             </div>
@@ -89,7 +90,7 @@
     <form class="mt-8 space-y-6" onsubmit={handleRegister}>
       <div class="space-y-4">
         <div>
-          <label for="email" class="sr-only">Email address</label>
+          <label for="email" class="sr-only">{$t('auth.emailAddress')}</label>
           <input
             id="email"
             name="email"
@@ -99,11 +100,11 @@
             bind:value={email}
             disabled={loading}
             class="relative block w-full px-4 py-3 border border-gray-700 placeholder-gray-500 text-white bg-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed text-base"
-            placeholder="Email address"
+            placeholder="{$t('auth.emailAddress')}"
           />
         </div>
         <div>
-          <label for="password" class="sr-only">Password</label>
+          <label for="password" class="sr-only">{$t('auth.password')}</label>
           <input
             id="password"
             name="password"
@@ -113,11 +114,11 @@
             bind:value={password}
             disabled={loading}
             class="relative block w-full px-4 py-3 border border-gray-700 placeholder-gray-500 text-white bg-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed text-base"
-            placeholder="Password"
+            placeholder="{$t('auth.password')}"
           />
         </div>
         <div>
-          <label for="confirmPassword" class="sr-only">Confirm Password</label>
+          <label for="confirmPassword" class="sr-only">{$t('auth.confirmPassword')}</label>
           <input
             id="confirmPassword"
             name="confirmPassword"
@@ -127,7 +128,7 @@
             bind:value={confirmPassword}
             disabled={loading}
             class="relative block w-full px-4 py-3 border border-gray-700 placeholder-gray-500 text-white bg-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed text-base"
-            placeholder="Confirm Password"
+            placeholder="{$t('auth.confirmPassword')}"
           />
         </div>
       </div>
@@ -143,21 +144,21 @@
               <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
               <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
             </svg>
-            Creating Account...
+            {$t('auth.creatingAccount')}
           {:else}
-            Create Account
+            {$t('auth.createAccount')}
           {/if}
         </button>
       </div>
 
       <div class="text-center">
         <p class="text-gray-400">
-          Already have an account?{' '}
+          {$t('auth.alreadyHaveAccount')}{' '}
           <a
             href="/login"
             class="font-medium text-white hover:text-gray-300 transition-colors duration-200 underline"
           >
-            Sign in
+            {$t('auth.signInLink')}
           </a>
         </p>
       </div>

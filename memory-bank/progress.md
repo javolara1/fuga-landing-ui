@@ -12,6 +12,10 @@ _This document tracks what works, what's left to build, the current status, know
   - About section with team mission and philosophy
   - Contact section with form and information
   - Footer with links and contact details
+- **i18n Support** for English and Spanish:
+  - Automatic language detection from browser preferences
+  - Header, Hero, and Services components fully translated
+  - Comprehensive translation files for both languages
 - **Responsive design** implemented across all components
 - **Black and white brand identity** consistently applied across all pages including authentication
 - **Updated authentication pages** with matching design scheme for login and register

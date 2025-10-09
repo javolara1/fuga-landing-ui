@@ -1,5 +1,6 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
+  import { t, locale } from '$lib/i18n';
 </script>
 
 <header class="bg-black border-b border-gray-800 sticky top-0 z-50">
@@ -15,16 +16,16 @@
       <!-- Navigation Links - Desktop -->
       <nav class="hidden md:flex space-x-8">
         <a href="#services" class="text-white hover:text-gray-300 transition-colors duration-200 font-medium">
-          Services
+          {$t('header.services')}
         </a>
         <a href="#pricing" class="text-white hover:text-gray-300 transition-colors duration-200 font-medium">
-          Pricing
+          {$t('header.pricing')}
         </a>
         <a href="#about" class="text-white hover:text-gray-300 transition-colors duration-200 font-medium">
-          About
+          {$t('header.about')}
         </a>
         <a href="#contact" class="text-white hover:text-gray-300 transition-colors duration-200 font-medium">
-          Contact
+          {$t('header.contact')}
         </a>
       </nav>
 
@@ -34,7 +35,7 @@
           onclick={() => goto('/login')}
           class="bg-white text-black px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors duration-200"
         >
-          Login
+          {$t('header.login')}
         </button>
         
         <!-- Mobile menu button -->
@@ -50,16 +51,16 @@
     <div class="md:hidden border-t border-gray-800 pt-4 pb-4">
       <nav class="flex flex-col space-y-4">
         <a href="#services" class="text-white hover:text-gray-300 transition-colors duration-200 font-medium">
-          Services
+          {$t('header.services')}
         </a>
         <a href="#pricing" class="text-white hover:text-gray-300 transition-colors duration-200 font-medium">
-          Pricing
+          {$t('header.pricing')}
         </a>
         <a href="#about" class="text-white hover:text-gray-300 transition-colors duration-200 font-medium">
-          About
+          {$t('header.about')}
         </a>
         <a href="#contact" class="text-white hover:text-gray-300 transition-colors duration-200 font-medium">
-          Contact
+          {$t('header.contact')}
         </a>
       </nav>
     </div>

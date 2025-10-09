@@ -19,15 +19,3 @@
   </main>
   <Footer />
 </div>
-
-<style>
-  html {
-    scroll-behavior: smooth;
-  }
-  
-  body {
-    margin: 0;
-    padding: 0;
-    background-color: #000000;
-  }
-</style>
