@@ -4,34 +4,36 @@ _This document is the foundation for all other Memory Bank files. It defines the
 
 ## Project Goals
 
-- Build a comprehensive scheduling/booking application for managing weekly time slots.
-- Enable administrators to configure available resources (classes, rooms, professionals) for specific time periods.
-- Provide a user-friendly interface for viewing and managing weekly schedules.
-- Ensure proper access control and time-based restrictions.
+- Build a comprehensive landing page for FUGA, a multidisciplinary sports team.
+- Showcase strength room training and customized sport-specific programs (cycling, running, swimming).
+- Provide clear information on services, pricing, and registration process.
+- Drive new client registrations and inquiries.
+- Maintain existing authentication system for registered users.
+- Establish strong brand identity with black and white color scheme.
 
 ## Core Requirements
 
-- Implement week-based navigation with past, current, and future week states.
-- Create administrator functionality to enable and configure future weeks.
-- Develop time slot management for assigning resources and capacity limits.
-- Build resource management for classes, rooms, and professionals.
-- Implement proper access control (read-only past weeks, configurable future weeks).
-- Ensure data integrity and business rule enforcement.
+- Create an engaging public-facing landing page targeting potential clients.
+- Highlight primary service (strength room training) and secondary services (customized training programs).
+- Implement clear call-to-actions for registration and information requests.
+- Design responsive layout with modern, athletic aesthetic.
+- Maintain existing authentication routes for registered users.
+- Ensure brand consistency with black backgrounds and white fonts.
 
 ## Scope
 
 **In Scope:**
 
-- Weekly schedule management interface.
-- Time slot configuration and resource assignment.
-- Administrator controls for enabling future weeks.
-- Resource management (classes, rooms, professionals).
-- Capacity management for time slots.
-- Access control based on week status.
+- Public landing page with hero section, services, pricing, about, and contact sections.
+- Header navigation with login access.
+- Registration and information request funnels.
+- Responsive design optimized for all devices.
+- Brand identity implementation (black/white color scheme).
+- Integration with existing authentication system.
 
 **Out of Scope:**
 
-- User booking/reservation functionality (focus on admin configuration).
-- Payment processing.
+- Scheduling module for public access (remains protected for registered users).
+- Payment processing integration.
+- Advanced member management features.
 - Mobile app development.
-- Third-party calendar integrations.
