@@ -2,8 +2,6 @@ import { loadTranslations, locale } from '$lib/i18n';
 import type { LayoutServerLoad } from './$types';
 
 export const load: LayoutServerLoad = async ({ request }) => {
-	console.log('Server - load');
-	// Extract Accept-Language header from the request
 	const acceptLanguage = request.headers.get('accept-language');
 	let detectedLocale = 'en';
 
