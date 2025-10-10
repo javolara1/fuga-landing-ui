@@ -116,7 +116,14 @@
 			"passwordMinLength": "La contraseña debe tener al menos 6 caracteres"
 		},
 		"errors": {
-			"unexpectedError": "Ocurrió un error inesperado. Por favor, inténtalo de nuevo."
+			"unexpectedError": "Ocurrió un error inesperado. Por favor, inténtalo de nuevo.",
+			"invalid_credentials": "Correo electrónico o contraseña inválidos",
+			"email_not_confirmed": "Por favor confirma tu dirección de correo electrónico antes de iniciar sesión",
+			"user_not_found": "No se encontró ninguna cuenta con esta dirección de correo electrónico",
+			"weak_password": "La contraseña es demasiado débil",
+			"email_exists": "Ya existe una cuenta con este correo electrónico",
+			"invalid_email": "Por favor proporciona una dirección de correo electrónico válida",
+			"auth_failed": "Error de autenticación. Por favor, inténtalo de nuevo."
 		}
 	},
 	"pricing": {

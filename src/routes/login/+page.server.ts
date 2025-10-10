@@ -29,13 +29,15 @@ export const actions: Actions = {
 				body: JSON.stringify({ email, password })
 			});
 
+			const result = await response.json();
+
 			if (response.ok) {
 				// Login successful - redirect to home page
 				throw redirect(303, '/');
 			} else {
 				// Login failed
 				return fail(response.status, {
-					error: t('auth.loginError'),
+					error: result.error || t('auth.loginError'),
 					email,
 					password
 				});

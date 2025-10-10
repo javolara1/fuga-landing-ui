@@ -2,7 +2,8 @@ import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import { supabase } from '$lib/supabaseClient';
 
-export const POST: RequestHandler = async ({ cookies }) => {
+export const POST: RequestHandler = async ({ cookies, locals }) => {
+	const { t } = locals.getTranslation();
 	try {
 		// Clear session cookies
 		cookies.delete('sb-access-token', { path: '/' });
@@ -18,7 +19,7 @@ export const POST: RequestHandler = async ({ cookies }) => {
 
 		return json({
 			success: true,
-			message: 'Logged out successfully'
+			message: t('auth.success')
 		});
 	} catch (error) {
 		console.error('Logout error:', error);
@@ -26,6 +27,6 @@ export const POST: RequestHandler = async ({ cookies }) => {
 		cookies.delete('sb-access-token', { path: '/' });
 		cookies.delete('sb-refresh-token', { path: '/' });
 
-		return json({ error: 'An unexpected error occurred during logout' }, { status: 500 });
+		return json({ error: t('auth.errors.unexpectedError') }, { status: 500 });
 	}
 };

@@ -49,13 +49,15 @@ export const actions: Actions = {
 				body: JSON.stringify({ email, password, confirmPassword })
 			});
 
+			const result = await response.json();
+
 			if (response.ok) {
 				// Registration successful - redirect to login page
 				throw redirect(303, '/login');
 			} else {
 				// Registration failed
 				return fail(response.status, {
-					error: t('auth.registrationError'),
+					error: result.error || t('auth.registrationError'),
 					email,
 					password,
 					confirmPassword

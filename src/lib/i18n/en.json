@@ -116,7 +116,14 @@
 			"passwordMinLength": "Password must be at least 6 characters long"
 		},
 		"errors": {
-			"unexpectedError": "An unexpected error occurred. Please try again."
+			"unexpectedError": "An unexpected error occurred. Please try again.",
+			"invalid_credentials": "Invalid email or password",
+			"email_not_confirmed": "Please confirm your email address before signing in",
+			"user_not_found": "No account found with this email address",
+			"weak_password": "Password is too weak",
+			"email_exists": "An account with this email already exists",
+			"invalid_email": "Please provide a valid email address",
+			"auth_failed": "Authentication failed. Please try again."
 		}
 	},
 	"pricing": {
