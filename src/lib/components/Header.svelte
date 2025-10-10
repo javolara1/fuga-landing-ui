@@ -10,7 +10,13 @@
 		<div class="flex items-center justify-between py-4">
 			<!-- Logo -->
 			<div class="flex-shrink-0">
-				<h1 class="cursor-pointer text-2xl font-bold text-white" onclick={() => goto('/')}>FUGA</h1>
+				<button
+					type="button"
+					class="text-2xl font-bold text-white transition-colors duration-200 hover:text-gray-300 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black focus:outline-none"
+					onclick={() => goto('/')}
+				>
+					<h1>FUGA</h1>
+				</button>
 			</div>
 
 			<!-- Navigation Links - Desktop -->
@@ -62,7 +68,7 @@
 				{/if}
 
 				<!-- Mobile menu button -->
-				<button class="text-white md:hidden">
+				<button class="text-white md:hidden" aria-label="Toggle mobile menu">
 					<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path
 							stroke-linecap="round"

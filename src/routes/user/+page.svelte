@@ -29,9 +29,19 @@
 			<div class="flex items-center justify-between py-4">
 				<!-- Logo -->
 				<div class="flex-shrink-0">
-					<h1 class="cursor-pointer text-2xl font-bold text-white" onclick={() => goto('/')}>
-						Fuga
-					</h1>
+					<button
+						type="button"
+						class="focus:ring-opacity-50 cursor-pointer hover:opacity-80 focus:ring-2 focus:ring-white focus:outline-none"
+						onclick={() => goto('/')}
+						onkeydown={(e) => {
+							if (e.key === 'Enter' || e.key === ' ') {
+								e.preventDefault();
+								goto('/');
+							}
+						}}
+					>
+						<h1 class="text-2xl font-bold text-white">Fuga</h1>
+					</button>
 				</div>
 
 				<!-- User Info and Logout -->
@@ -61,34 +71,34 @@
 					<h2 class="mb-4 text-xl font-semibold">{$t('user.personalInfo')}</h2>
 
 					<div>
-						<label class="mb-1 block text-sm font-medium text-gray-400">
+						<div class="mb-1 block text-sm font-medium text-gray-400">
 							{$t('user.email')}
-						</label>
+						</div>
 						<p class="text-white">{data.user?.email}</p>
 					</div>
 
 					{#if data.profile?.full_name}
 						<div>
-							<label class="mb-1 block text-sm font-medium text-gray-400">
+							<div class="mb-1 block text-sm font-medium text-gray-400">
 								{$t('user.fullName')}
-							</label>
+							</div>
 							<p class="text-white">{data.profile.full_name}</p>
 						</div>
 					{/if}
 
 					{#if data.profile?.username}
 						<div>
-							<label class="mb-1 block text-sm font-medium text-gray-400">
+							<div class="mb-1 block text-sm font-medium text-gray-400">
 								{$t('user.username')}
-							</label>
+							</div>
 							<p class="text-white">{data.profile.username}</p>
 						</div>
 					{/if}
 
 					<div>
-						<label class="mb-1 block text-sm font-medium text-gray-400">
+						<div class="mb-1 block text-sm font-medium text-gray-400">
 							{$t('user.role')}
-						</label>
+						</div>
 						<p class="text-white capitalize">{data.profile?.role || 'user'}</p>
 					</div>
 				</div>
@@ -98,9 +108,9 @@
 					<h2 class="mb-4 text-xl font-semibold">{$t('user.accountInfo')}</h2>
 
 					<div>
-						<label class="mb-1 block text-sm font-medium text-gray-400">
+						<div class="mb-1 block text-sm font-medium text-gray-400">
 							{$t('user.memberSince')}
-						</label>
+						</div>
 						<p class="text-white">
 							{#if data.profile?.created_at}
 								{new Date(data.profile.created_at).toLocaleDateString()}
@@ -111,9 +121,9 @@
 					</div>
 
 					<div>
-						<label class="mb-1 block text-sm font-medium text-gray-400">
+						<div class="mb-1 block text-sm font-medium text-gray-400">
 							{$t('user.lastUpdated')}
-						</label>
+						</div>
 						<p class="text-white">
 							{#if data.profile?.updated_at}
 								{new Date(data.profile.updated_at).toLocaleDateString()}
