@@ -7,7 +7,13 @@
 		<div class="flex items-center justify-between py-4">
 			<!-- Logo -->
 			<div class="flex-shrink-0">
-				<h1 class="cursor-pointer text-2xl font-bold text-white" onclick={() => goto('/')}>FUGA</h1>
+				<button
+					type="button"
+					class="cursor-pointer text-2xl font-bold text-white"
+					onclick={() => goto('/')}
+				>
+					<h1>FUGA</h1>
+				</button>
 			</div>
 		</div>
 	</div>
