@@ -175,9 +175,10 @@ Administrator (1) ──── (Many) Week [enabled_by]
 
 - **API Layer**: RESTful endpoints (`+server.ts` files)
 - **Authentication Layer**: Server-side authentication with Supabase
-- **Session Management**: Secure cookie-based session handling
+- **Session Management**: Centralized session handling in hooks with `setSession` approach
 - **Data Access Layer**: Supabase client for database operations
 - **Business Logic Layer**: Server-side validation and business rules
+- **User Profile System**: Integrated profile data with Supabase profiles table
 
 ### Server-Side Rendering Strategy
 
@@ -197,6 +198,14 @@ Administrator (1) ──── (Many) Week [enabled_by]
   ```
 - **Resource Assignment Pattern:** Polymorphic association for different resource types
 - **Capacity Management Pattern:** Track total and available capacity separately
+- **Session Management Pattern:** Automatic user session detection and profile data loading
+
+#### User Profile System
+
+- **Session Detection:** Automatic user session validation in server hooks
+- **Profile Data Flow:** Server-side profile fetching and client-side availability
+- **Conditional Navigation:** Dynamic header based on authentication status
+- **Route Protection:** Automatic redirects for authenticated/unauthenticated users
 
 #### Access Control Pattern
 

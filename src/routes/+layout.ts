@@ -15,5 +15,5 @@ export const load: LayoutLoad = async ({ data }) => {
 		await loadTranslations(detectedLocale);
 		locale.set(detectedLocale);
 	}
-	return {};
+	return { ...data };
 };

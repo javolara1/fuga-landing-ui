@@ -1,5 +1,12 @@
 import { fail, redirect } from '@sveltejs/kit';
-import type { Actions } from './$types';
+import type { Actions, PageServerLoad } from './$types';
+
+export const load: PageServerLoad = async ({ locals }) => {
+	// Redirect to user profile if already authenticated
+	if (locals.user) {
+		throw redirect(303, '/user');
+	}
+};
 
 export const actions: Actions = {
 	default: async ({ request, fetch, locals }) => {
@@ -32,8 +39,8 @@ export const actions: Actions = {
 			const result = await response.json();
 
 			if (response.ok) {
-				// Login successful - redirect to home page
-				throw redirect(303, '/');
+				// Login successful - redirect to user profile page
+				throw redirect(303, result.redirectTo || '/user');
 			} else {
 				// Login failed
 				return fail(response.status, {

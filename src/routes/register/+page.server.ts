@@ -1,5 +1,12 @@
 import { fail, redirect } from '@sveltejs/kit';
-import type { Actions } from './$types';
+import type { Actions, PageServerLoad } from './$types';
+
+export const load: PageServerLoad = async ({ locals }) => {
+	// Redirect to user profile if already authenticated
+	if (locals.user) {
+		throw redirect(303, '/user');
+	}
+};
 
 export const actions: Actions = {
 	default: async ({ request, fetch, locals }) => {

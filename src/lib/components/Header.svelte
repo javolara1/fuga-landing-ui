@@ -1,74 +1,114 @@
 <script lang="ts">
-  import { goto } from '$app/navigation';
-  import { t, locale } from '$lib/i18n';
+	import { goto } from '$app/navigation';
+	import { t } from '$lib/i18n';
+
+	let { user } = $props();
 </script>
 
-<header class="bg-black border-b border-gray-800 sticky top-0 z-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between items-center py-4">
-      <!-- Logo -->
-      <div class="flex-shrink-0">
-        <h1 class="text-2xl font-bold text-white cursor-pointer" onclick={() => goto('/')}>
-          FUGA
-        </h1>
-      </div>
+<header class="sticky top-0 z-50 border-b border-gray-800 bg-black">
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+		<div class="flex items-center justify-between py-4">
+			<!-- Logo -->
+			<div class="flex-shrink-0">
+				<h1 class="cursor-pointer text-2xl font-bold text-white" onclick={() => goto('/')}>FUGA</h1>
+			</div>
 
-      <!-- Navigation Links - Desktop -->
-      <nav class="hidden md:flex space-x-8">
-        <a href="#services" class="text-white hover:text-gray-300 transition-colors duration-200 font-medium">
-          {$t('header.services')}
-        </a>
-        <a href="#pricing" class="text-white hover:text-gray-300 transition-colors duration-200 font-medium">
-          {$t('header.pricing')}
-        </a>
-        <a href="#about" class="text-white hover:text-gray-300 transition-colors duration-200 font-medium">
-          {$t('header.about')}
-        </a>
-        <a href="#contact" class="text-white hover:text-gray-300 transition-colors duration-200 font-medium">
-          {$t('header.contact')}
-        </a>
-      </nav>
+			<!-- Navigation Links - Desktop -->
+			<nav class="hidden space-x-8 md:flex">
+				<a
+					href="#services"
+					class="font-medium text-white transition-colors duration-200 hover:text-gray-300"
+				>
+					{$t('header.services')}
+				</a>
+				<a
+					href="#pricing"
+					class="font-medium text-white transition-colors duration-200 hover:text-gray-300"
+				>
+					{$t('header.pricing')}
+				</a>
+				<a
+					href="#about"
+					class="font-medium text-white transition-colors duration-200 hover:text-gray-300"
+				>
+					{$t('header.about')}
+				</a>
+				<a
+					href="#contact"
+					class="font-medium text-white transition-colors duration-200 hover:text-gray-300"
+				>
+					{$t('header.contact')}
+				</a>
+			</nav>
 
-      <!-- Login Button -->
-      <div class="flex items-center space-x-4">
-        <button
-          onclick={() => goto('/login')}
-          class="bg-white text-black px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors duration-200"
-        >
-          {$t('header.login')}
-        </button>
-        
-        <!-- Mobile menu button -->
-        <button class="md:hidden text-white">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
-      </div>
-    </div>
+			<!-- Auth Buttons -->
+			<div class="flex items-center space-x-4">
+				{#if user}
+					<!-- User is logged in - show profile button -->
+					<button
+						onclick={() => goto('/user')}
+						class="rounded-lg bg-white px-4 py-2 font-medium text-black transition-colors duration-200 hover:bg-gray-100"
+					>
+						{$t('header.profile')}
+					</button>
+				{:else}
+					<!-- User is not logged in - show login button -->
+					<button
+						onclick={() => goto('/login')}
+						class="rounded-lg bg-white px-4 py-2 font-medium text-black transition-colors duration-200 hover:bg-gray-100"
+					>
+						{$t('header.login')}
+					</button>
+				{/if}
 
-    <!-- Mobile Navigation -->
-    <div class="md:hidden border-t border-gray-800 pt-4 pb-4">
-      <nav class="flex flex-col space-y-4">
-        <a href="#services" class="text-white hover:text-gray-300 transition-colors duration-200 font-medium">
-          {$t('header.services')}
-        </a>
-        <a href="#pricing" class="text-white hover:text-gray-300 transition-colors duration-200 font-medium">
-          {$t('header.pricing')}
-        </a>
-        <a href="#about" class="text-white hover:text-gray-300 transition-colors duration-200 font-medium">
-          {$t('header.about')}
-        </a>
-        <a href="#contact" class="text-white hover:text-gray-300 transition-colors duration-200 font-medium">
-          {$t('header.contact')}
-        </a>
-      </nav>
-    </div>
-  </div>
+				<!-- Mobile menu button -->
+				<button class="text-white md:hidden">
+					<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M4 6h16M4 12h16M4 18h16"
+						></path>
+					</svg>
+				</button>
+			</div>
+		</div>
+
+		<!-- Mobile Navigation -->
+		<div class="border-t border-gray-800 pt-4 pb-4 md:hidden">
+			<nav class="flex flex-col space-y-4">
+				<a
+					href="#services"
+					class="font-medium text-white transition-colors duration-200 hover:text-gray-300"
+				>
+					{$t('header.services')}
+				</a>
+				<a
+					href="#pricing"
+					class="font-medium text-white transition-colors duration-200 hover:text-gray-300"
+				>
+					{$t('header.pricing')}
+				</a>
+				<a
+					href="#about"
+					class="font-medium text-white transition-colors duration-200 hover:text-gray-300"
+				>
+					{$t('header.about')}
+				</a>
+				<a
+					href="#contact"
+					class="font-medium text-white transition-colors duration-200 hover:text-gray-300"
+				>
+					{$t('header.contact')}
+				</a>
+			</nav>
+		</div>
+	</div>
 </header>
 
 <style>
-  a {
-    scroll-behavior: smooth;
-  }
+	a {
+		scroll-behavior: smooth;
+	}
 </style>

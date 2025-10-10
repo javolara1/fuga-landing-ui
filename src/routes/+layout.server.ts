@@ -1,7 +1,7 @@
 import { loadTranslations, locale } from '$lib/i18n';
 import type { LayoutServerLoad } from './$types';
 
-export const load: LayoutServerLoad = async ({ request }) => {
+export const load: LayoutServerLoad = async ({ request, locals }) => {
 	const acceptLanguage = request.headers.get('accept-language');
 	let detectedLocale = 'en';
 
@@ -16,6 +16,8 @@ export const load: LayoutServerLoad = async ({ request }) => {
 	locale.set(detectedLocale);
 
 	return {
-		locale: detectedLocale
+		locale: detectedLocale,
+		user: locals.user,
+		profile: locals.profile
 	};
 };

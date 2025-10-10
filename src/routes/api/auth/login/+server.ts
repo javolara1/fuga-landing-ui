@@ -59,7 +59,8 @@ export const POST: RequestHandler = async ({ request, cookies, locals }) => {
 				user: {
 					id: data.user.id,
 					email: data.user.email
-				}
+				},
+				redirectTo: '/user'
 			});
 		}
 
