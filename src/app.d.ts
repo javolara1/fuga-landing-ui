@@ -2,6 +2,11 @@
 // for information about these interfaces
 declare global {
 	namespace App {
+		interface Locals {
+			locale: string;
+			t: (key: string) => string;
+			getTranslation: () => { t: (key: string) => string };
+		}
 		// interface Error {}
 		// interface Locals {}
 		// interface PageData {}

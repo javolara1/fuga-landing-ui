@@ -108,7 +108,16 @@
 		"success": "Success",
 		"loginError": "An error occurred during login",
 		"registrationError": "An error occurred during registration",
-		"registrationSuccess": "Registration successful! Please check your email for verification."
+		"registrationSuccess": "Registration successful! Please check your email for verification.",
+		"validation": {
+			"emailPasswordRequired": "Email and password are required",
+			"allFieldsRequired": "All fields are required",
+			"passwordsDoNotMatch": "Passwords do not match",
+			"passwordMinLength": "Password must be at least 6 characters long"
+		},
+		"errors": {
+			"unexpectedError": "An unexpected error occurred. Please try again."
+		}
 	},
 	"pricing": {
 		"title": "Training Programs & Pricing",

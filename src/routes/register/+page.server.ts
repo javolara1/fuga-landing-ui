@@ -2,16 +2,19 @@ import { fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
 
 export const actions: Actions = {
-	default: async ({ request, fetch }) => {
+	default: async ({ request, fetch, locals }) => {
 		const formData = await request.formData();
 		const email = formData.get('email') as string;
 		const password = formData.get('password') as string;
 		const confirmPassword = formData.get('confirmPassword') as string;
 
+		// Get translation function from locals
+		const { t } = locals.getTranslation();
+
 		// Client-side validation
 		if (!email || !password || !confirmPassword) {
 			return fail(400, {
-				error: 'All fields are required',
+				error: t('auth.validation.allFieldsRequired'),
 				email,
 				password,
 				confirmPassword
@@ -20,7 +23,7 @@ export const actions: Actions = {
 
 		if (password !== confirmPassword) {
 			return fail(400, {
-				error: 'Passwords do not match',
+				error: t('auth.validation.passwordsDoNotMatch'),
 				email,
 				password,
 				confirmPassword
@@ -29,7 +32,7 @@ export const actions: Actions = {
 
 		if (password.length < 6) {
 			return fail(400, {
-				error: 'Password must be at least 6 characters long',
+				error: t('auth.validation.passwordMinLength'),
 				email,
 				password,
 				confirmPassword
@@ -46,15 +49,13 @@ export const actions: Actions = {
 				body: JSON.stringify({ email, password, confirmPassword })
 			});
 
-			const result = await response.json();
-
 			if (response.ok) {
-				// Login successful - redirect to home page
+				// Registration successful - redirect to login page
 				throw redirect(303, '/login');
 			} else {
 				// Registration failed
 				return fail(response.status, {
-					error: result.error || 'An error occurred during registration',
+					error: t('auth.registrationError'),
 					email,
 					password,
 					confirmPassword
@@ -71,7 +72,7 @@ export const actions: Actions = {
 
 			console.error('Registration error:', error);
 			return fail(500, {
-				error: 'An unexpected error occurred. Please try again.',
+				error: t('auth.errors.unexpectedError'),
 				email,
 				password,
 				confirmPassword

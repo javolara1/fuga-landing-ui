@@ -2,15 +2,18 @@ import { fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
 
 export const actions: Actions = {
-	default: async ({ request, fetch }) => {
+	default: async ({ request, fetch, locals }) => {
 		const formData = await request.formData();
 		const email = formData.get('email') as string;
 		const password = formData.get('password') as string;
 
+		// Get translation function from locals
+		const { t } = locals.getTranslation();
+
 		// Client-side validation
 		if (!email || !password) {
 			return fail(400, {
-				error: 'Email and password are required',
+				error: t('auth.validation.emailPasswordRequired'),
 				email,
 				password
 			});
@@ -26,15 +29,13 @@ export const actions: Actions = {
 				body: JSON.stringify({ email, password })
 			});
 
-			const result = await response.json();
-
 			if (response.ok) {
 				// Login successful - redirect to home page
 				throw redirect(303, '/');
 			} else {
 				// Login failed
 				return fail(response.status, {
-					error: result.error || 'An error occurred during login',
+					error: t('auth.loginError'),
 					email,
 					password
 				});
@@ -50,7 +51,7 @@ export const actions: Actions = {
 
 			console.error('Login error:', error);
 			return fail(500, {
-				error: 'An unexpected error occurred. Please try again.',
+				error: t('auth.errors.unexpectedError'),
 				email,
 				password
 			});
