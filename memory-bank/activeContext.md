@@ -4,12 +4,19 @@ _This document tracks the current work focus, recent changes, next steps, active
 
 ## Current Work Focus
 
+- Added reduced header to login and register pages for navigation to root page
 - Fixed redirect detection issue in login page server code
 - Updated error handling to properly detect SvelteKit redirects
 - Testing the multilingual functionality with consistent server-client rendering
 - Maintaining existing authentication system for registered users
 
 ## Recent Changes
+
+- **Reduced Header for Auth Pages**: Added simplified header to login and register pages:
+  - Created `ReducedHeader.svelte` component with only the main title
+  - Updated login page to include the reduced header with navigation to root
+  - Updated register page to include the reduced header with navigation to root
+  - Added proper spacing (`pt-16`) to account for the sticky header
 
 - **Login Redirect Fix**: Fixed redirect detection issue in login page server code:
   - Updated error handling to properly detect SvelteKit redirects
