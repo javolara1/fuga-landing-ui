@@ -4,12 +4,18 @@ _This document tracks the current work focus, recent changes, next steps, active
 
 ## Current Work Focus
 
-- Fixed language blink issue by implementing server-side language detection
-- Updated i18n configuration to use server-provided locale
+- Fixed redirect detection issue in login page server code
+- Updated error handling to properly detect SvelteKit redirects
 - Testing the multilingual functionality with consistent server-client rendering
 - Maintaining existing authentication system for registered users
 
 ## Recent Changes
+
+- **Login Redirect Fix**: Fixed redirect detection issue in login page server code:
+  - Updated error handling to properly detect SvelteKit redirects
+  - Replaced `error instanceof Response` check with property-based detection
+  - Now checks for `status` and `location` properties to identify redirects
+  - Resolved issue where redirects were not being properly re-thrown
 
 - **i18n Console Warnings Fix**: Eliminated "[i18n]: No locale provided" console warnings:
   - Updated layout to use sveltekit-i18n's `loading` store for conditional rendering

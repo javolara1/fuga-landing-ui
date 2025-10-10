@@ -6,9 +6,10 @@ _This document describes the technologies used, development setup, technical con
 
 ### Frontend
 
-- **Framework:** SvelteKit
+- **Framework:** SvelteKit 2.x
 - **UI Framework:** Tailwind CSS
 - **Language:** TypeScript
+- **Runtime:** Svelte 5
 - **Bundler:** Vite
 - **Testing:**
   - Unit Testing: Vitest

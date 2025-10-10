@@ -1,0 +1,59 @@
+import { fail, redirect } from '@sveltejs/kit';
+import type { Actions } from './$types';
+
+export const actions: Actions = {
+	default: async ({ request, fetch }) => {
+		const formData = await request.formData();
+		const email = formData.get('email') as string;
+		const password = formData.get('password') as string;
+
+		// Client-side validation
+		if (!email || !password) {
+			return fail(400, {
+				error: 'Email and password are required',
+				email,
+				password
+			});
+		}
+
+		try {
+			// Call the existing API endpoint
+			const response = await fetch('/api/auth/login', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({ email, password })
+			});
+
+			const result = await response.json();
+
+			if (response.ok) {
+				// Login successful - redirect to home page
+				throw redirect(303, '/');
+			} else {
+				// Login failed
+				return fail(response.status, {
+					error: result.error || 'An error occurred during login',
+					email,
+					password
+				});
+			}
+		} catch (error) {
+			// If it's a redirect, re-throw it
+			if (error && typeof error === 'object' && 'status' in error && 'location' in error) {
+				const redirectError = error as { status: number; location: string };
+				if (redirectError.status >= 300 && redirectError.status < 400) {
+					throw error;
+				}
+			}
+
+			console.error('Login error:', error);
+			return fail(500, {
+				error: 'An unexpected error occurred. Please try again.',
+				email,
+				password
+			});
+		}
+	}
+};
