@@ -32,7 +32,7 @@ _This document tracks what works, what's left to build, the current status, know
 
 ## What's Left to Build
 
-- **Blog UI Components**: Create frontend components for blog listing and detail pages
+- **Blog Detail Pages**: Create individual article pages at `/blog/[slug]`
 - Member dashboard and scheduling features (protected routes)
 - Enhanced contact form functionality with backend integration
 - Analytics and performance tracking

@@ -3,6 +3,7 @@
 		"services": "Services",
 		"pricing": "Pricing",
 		"about": "About",
+		"blog": "Blog",
 		"contact": "Contact",
 		"login": "Login",
 		"profile": "Profile"
@@ -268,5 +269,19 @@
 		"progressDescription": "Monitor your performance and improvements",
 		"settings": "Account Settings",
 		"settingsDescription": "Manage your preferences and profile"
+	},
+	"blog": {
+		"title": "Blog - FUGA Sports Training",
+		"description": "Training articles and insights from FUGA Sports Training",
+		"pageTitle": "Training Insights",
+		"pageSubtitle": "Expert articles on strength training, nutrition, recovery, and sport-specific programs",
+		"readMore": "Read More →",
+		"noArticles": "No articles found.",
+		"pagination": {
+			"previous": "← Previous",
+			"next": "Next →",
+			"pageInfo": "Page {currentPage} of {totalPages}",
+			"articlesTotal": "{totalCount} articles total"
+		}
 	}
 }

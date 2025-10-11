@@ -40,6 +40,12 @@
 					{$t('header.about')}
 				</a>
 				<a
+					href="/blog"
+					class="font-medium text-white transition-colors duration-200 hover:text-gray-300"
+				>
+					{$t('header.blog')}
+				</a>
+				<a
 					href="#contact"
 					class="font-medium text-white transition-colors duration-200 hover:text-gray-300"
 				>
@@ -101,6 +107,12 @@
 					class="font-medium text-white transition-colors duration-200 hover:text-gray-300"
 				>
 					{$t('header.about')}
+				</a>
+				<a
+					href="/blog"
+					class="font-medium text-white transition-colors duration-200 hover:text-gray-300"
+				>
+					{$t('header.blog')}
 				</a>
 				<a
 					href="#contact"

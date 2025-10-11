@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import { formatDate } from '$lib/utils/dateUtils';
 	import { goto } from '$app/navigation';
 	import { t } from '$lib/i18n';
 
@@ -99,7 +100,7 @@
 						</div>
 						<p class="text-white">
 							{#if data.profile?.created_at}
-								{new Date(data.profile.created_at).toLocaleDateString()}
+								{formatDate(data.profile.created_at)}
 							{:else}
 								{$t('user.notAvailable')}
 							{/if}
@@ -112,7 +113,7 @@
 						</div>
 						<p class="text-white">
 							{#if data.profile?.updated_at}
-								{new Date(data.profile.updated_at).toLocaleDateString()}
+								{formatDate(data.profile.updated_at)}
 							{:else}
 								{$t('user.notAvailable')}
 							{/if}

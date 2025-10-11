@@ -3,6 +3,7 @@
 		"services": "Servicios",
 		"pricing": "Precios",
 		"about": "Nosotros",
+		"blog": "Blog",
 		"contact": "Contacto",
 		"login": "Iniciar Sesión",
 		"profile": "Perfil"
@@ -268,5 +269,19 @@
 		"progressDescription": "Monitorea tu rendimiento y mejoras",
 		"settings": "Configuración de Cuenta",
 		"settingsDescription": "Gestiona tus preferencias y perfil"
+	},
+	"blog": {
+		"title": "Blog - Entrenamiento Deportivo FUGA",
+		"description": "Artículos de entrenamiento y perspectivas de Entrenamiento Deportivo FUGA",
+		"pageTitle": "Perspectivas de Entrenamiento",
+		"pageSubtitle": "Artículos expertos sobre entrenamiento de fuerza, nutrición, recuperación y programas específicos por deporte",
+		"readMore": "Leer Más →",
+		"noArticles": "No se encontraron artículos.",
+		"pagination": {
+			"previous": "← Anterior",
+			"next": "Siguiente →",
+			"pageInfo": "Página {currentPage} de {totalPages}",
+			"articlesTotal": "{totalCount} artículos en total"
+		}
 	}
 }

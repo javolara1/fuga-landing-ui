@@ -4,7 +4,13 @@ _This document tracks the current work focus, recent changes, next steps, active
 
 ## Current Work Focus
 
-- **Blog Module Implementation**: Added blog functionality for training-related articles
+- **Blog Listing Page Implementation**: Created blog listing page with pagination and server-side rendering
+- Added `/blog` route with pagination handling via query parameters
+- Implemented server-side data loading in `+page.server.ts`
+- Created responsive blog listing UI with article cards
+- Added numbered pagination (1,2,3...) with previous/next navigation
+- Updated header navigation to include blog link
+- **Blog Module Foundation**: Previously added blog functionality for training-related articles
 - Created Supabase migration for articles table with proper indexes and RLS policies
 - Added seed data with 4 training-related articles for testing
 - Updated TypeScript types to include articles table definitions
@@ -16,6 +22,13 @@ _This document tracks the current work focus, recent changes, next steps, active
 - Added comprehensive i18n translations for user profile features
 
 ## Recent Changes
+
+- **Date Utility Centralization**: Moved date formatting function to common utility location:
+  - Created `src/lib/utils/dateUtils.ts` with `formatDate` function
+  - Updated blog page to import and use the utility function
+  - Updated user profile page to use consistent date formatting
+  - Added JSDoc documentation for better code maintainability
+  - Ensures consistent date formatting across the application
 
 - **Registration Logic Consolidation**: Consolidated registration functionality into single implementation:
   - Removed `src/routes/api/auth/register/+server.ts` API endpoint
