@@ -1,25 +1,9 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
 	import { goto } from '$app/navigation';
 	import { t } from '$lib/i18n';
 
 	let { data } = $props();
-
-	const handleLogout = async () => {
-		try {
-			const response = await fetch('/api/auth/logout', {
-				method: 'POST'
-			});
-
-			if (response.ok) {
-				// Redirect to home page after successful logout
-				await goto('/');
-			} else {
-				console.error('Logout failed');
-			}
-		} catch (error) {
-			console.error('Logout error:', error);
-		}
-	};
 </script>
 
 <div class="min-h-screen bg-black text-white">
@@ -49,12 +33,14 @@
 					<span class="text-white">
 						{data.profile?.full_name || data.profile?.username || data.user?.email}
 					</span>
-					<button
-						onclick={handleLogout}
-						class="rounded-lg bg-white px-4 py-2 font-medium text-black transition-colors duration-200 hover:bg-gray-100"
-					>
-						{$t('user.logout')}
-					</button>
+					<form method="POST" action="?/logout" use:enhance>
+						<button
+							type="submit"
+							class="rounded-lg bg-white px-4 py-2 font-medium text-black transition-colors duration-200 hover:bg-gray-100"
+						>
+							{$t('user.logout')}
+						</button>
+					</form>
 				</div>
 			</div>
 		</div>
