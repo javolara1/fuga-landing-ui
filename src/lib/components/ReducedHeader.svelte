@@ -3,7 +3,7 @@
 </script>
 
 <header class="sticky top-0 z-50 border-b border-gray-800 bg-black">
-	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+	<div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 		<div class="flex items-center justify-between py-4">
 			<!-- Logo -->
 			<div class="flex-shrink-0">

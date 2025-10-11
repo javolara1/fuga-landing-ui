@@ -21,7 +21,7 @@
 	<ReducedHeader />
 
 	<!-- Header Section -->
-	<div class="container mx-auto max-w-7xl px-4 py-16">
+	<div class="container mx-auto max-w-6xl px-4 py-16">
 		<div class="mb-12 text-center">
 			<h1 class="mb-4 text-4xl font-bold md:text-5xl">{$t('blog.pageTitle')}</h1>
 			<p class="mx-auto max-w-2xl text-xl text-gray-300">

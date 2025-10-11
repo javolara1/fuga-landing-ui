@@ -3,7 +3,7 @@
 </script>
 
 <footer class="border-t border-gray-800 bg-black text-white">
-	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+	<div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 		<!-- Main Footer Content -->
 		<div class="grid grid-cols-1 gap-8 py-12 md:grid-cols-4">
 			<!-- Brand Section -->

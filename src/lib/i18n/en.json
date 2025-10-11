@@ -282,6 +282,12 @@
 			"next": "Next →",
 			"pageInfo": "Page {currentPage} of {totalPages}",
 			"articlesTotal": "{totalCount} articles total"
+		},
+		"detail": {
+			"backToBlog": "← Back to Blog",
+			"by": "By",
+			"minRead": "min read",
+			"fugaTeam": "FUGA Team"
 		}
 	}
 }
