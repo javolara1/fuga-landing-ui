@@ -289,5 +289,16 @@
 			"minRead": "min read",
 			"fugaTeam": "FUGA Team"
 		}
+	},
+	"admin": {
+		"dashboard": "Admin Dashboard",
+		"adminFeatures": "Admin Features",
+		"adminFeaturesDescription": "Manage users, content, and system settings",
+		"userManagement": "User Management",
+		"userManagementDescription": "Manage user accounts and permissions",
+		"contentManagement": "Content Management",
+		"contentManagementDescription": "Manage blog articles and training content",
+		"systemSettings": "System Settings",
+		"systemSettingsDescription": "Configure system preferences and settings"
 	}
 }

@@ -81,8 +81,10 @@ export const actions: Actions = {
 					sameSite: 'lax'
 				});
 
-				// Login successful - redirect to user profile page
-				throw redirect(303, '/user');
+				// Login successful - redirect based on user role
+				// Profile data is already available in locals from hooks.server.ts
+				const redirectPath = locals.profile?.role === 'admin' ? '/admin' : '/user';
+				throw redirect(303, redirectPath);
 			}
 
 			return fail(401, {

@@ -46,6 +46,7 @@
 	},
 	"dependencies": {
 		"@supabase/supabase-js": "^2.74.0",
+		"dotenv": "^17.2.3",
 		"sveltekit-i18n": "^2.4.2"
 	}
 }

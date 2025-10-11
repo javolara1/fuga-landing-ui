@@ -289,5 +289,16 @@
 			"minRead": "min de lectura",
 			"fugaTeam": "Equipo FUGA"
 		}
+	},
+	"admin": {
+		"dashboard": "Panel de Administración",
+		"adminFeatures": "Funciones de Administrador",
+		"adminFeaturesDescription": "Gestiona usuarios, contenido y configuraciones del sistema",
+		"userManagement": "Gestión de Usuarios",
+		"userManagementDescription": "Administra cuentas de usuario y permisos",
+		"contentManagement": "Gestión de Contenido",
+		"contentManagementDescription": "Administra artículos del blog y contenido de entrenamiento",
+		"systemSettings": "Configuraciones del Sistema",
+		"systemSettingsDescription": "Configura preferencias y ajustes del sistema"
 	}
 }

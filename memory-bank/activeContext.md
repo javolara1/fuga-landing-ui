@@ -4,6 +4,17 @@ _This document tracks the current work focus, recent changes, next steps, active
 
 ## Current Work Focus
 
+- **Test Users Creation**: Added two test users for development and testing
+- Created admin user: `admin@fuga.com` (password: `admin123`) with admin role
+- Created regular user: `user@fuga.com` (password: `user123`) with user role
+- **Fixed Profile Creation Issue**: Added missing trigger to automatically create profiles when users are created
+- Updated migration file with trigger: `CREATE TRIGGER on_auth_user_created AFTER INSERT ON auth.users`
+- Profiles are now automatically created when users are created via Supabase admin API
+- **Admin Page Implementation**: Created admin dashboard with role-based access control
+- Added `/admin` route with role-based redirect logic
+- Implemented admin-only access protection in server-side code
+- Created admin dashboard UI with minimal content similar to user page
+- Added role-based redirect logic to login flow
 - **Blog Detail Page Implementation**: Created individual blog article pages with server-side rendering and i18n support
 - Added `/blog/[slug]` route with dynamic parameter handling
 - Implemented server-side data loading with proper error handling for 404 cases
