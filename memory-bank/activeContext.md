@@ -17,6 +17,20 @@ _This document tracks the current work focus, recent changes, next steps, active
 
 ## Recent Changes
 
+- **Registration Logic Consolidation**: Consolidated registration functionality into single implementation:
+  - Removed `src/routes/api/auth/register/+server.ts` API endpoint
+  - Enhanced `src/routes/register/+page.server.ts` with all validation and registration logic
+  - Eliminated unnecessary HTTP call between page server action and API endpoint
+  - Maintained all validation rules, i18n support, and security features
+  - Simplified architecture while preserving all functionality
+
+- **Login Logic Consolidation**: Consolidated login functionality into single implementation:
+  - Removed `src/routes/api/auth/login/+server.ts` API endpoint
+  - Enhanced `src/routes/login/+page.server.ts` with all validation and authentication logic
+  - Eliminated unnecessary HTTP call between page server action and API endpoint
+  - Maintained all validation rules, i18n support, and security features
+  - Simplified architecture while preserving all functionality
+
 - **Architecture Consolidation**: Removed duplicate session management logic:
   - Eliminated `src/routes/+page.server.ts` with redundant session validation
   - Enhanced `hooks.server.ts` with robust `setSession` approach
