@@ -32,10 +32,10 @@ _This document tracks what works, what's left to build, the current status, know
 
 ## What's Left to Build
 
+- **Blog UI Components**: Create frontend components for blog listing and detail pages
 - Member dashboard and scheduling features (protected routes)
 - Enhanced contact form functionality with backend integration
 - Analytics and performance tracking
-- Content management system for easy updates
 - Advanced member management features
 
 ## Current Status

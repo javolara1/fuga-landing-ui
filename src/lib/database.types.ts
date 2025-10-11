@@ -55,6 +55,52 @@ export type Database = {
 				};
 				Relationships: [];
 			};
+			articles: {
+				Row: {
+					id: string;
+					title: string;
+					content: string;
+					excerpt: string | null;
+					slug: string;
+					status: string;
+					author_id: string | null;
+					published_at: string | null;
+					created_at: string;
+					updated_at: string;
+				};
+				Insert: {
+					id?: string;
+					title: string;
+					content: string;
+					excerpt?: string | null;
+					slug: string;
+					status?: string;
+					author_id?: string | null;
+					published_at?: string | null;
+					created_at?: string;
+					updated_at?: string;
+				};
+				Update: {
+					id?: string;
+					title?: string;
+					content?: string;
+					excerpt?: string | null;
+					slug?: string;
+					status?: string;
+					author_id?: string | null;
+					published_at?: string | null;
+					created_at?: string;
+					updated_at?: string;
+				};
+				Relationships: [
+					{
+						foreignKeyName: 'articles_author_id_fkey';
+						columns: ['author_id'];
+						referencedRelation: 'profiles';
+						referencedColumns: ['id'];
+					}
+				];
+			};
 			week: {
 				Row: {
 					created_at: string;

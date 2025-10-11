@@ -4,7 +4,11 @@ _This document tracks the current work focus, recent changes, next steps, active
 
 ## Current Work Focus
 
-- Created user profile page with session-based navigation
+- **Blog Module Implementation**: Added blog functionality for training-related articles
+- Created Supabase migration for articles table with proper indexes and RLS policies
+- Added seed data with 4 training-related articles for testing
+- Updated TypeScript types to include articles table definitions
+- **User Profile Page**: Created user profile page with session-based navigation
 - Implemented session management in hooks.server.ts
 - Added conditional header navigation (login/profile buttons)
 - Added redirect protection for authenticated users on login/register pages
