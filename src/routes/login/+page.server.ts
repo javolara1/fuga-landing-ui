@@ -81,9 +81,21 @@ export const actions: Actions = {
 					sameSite: 'lax'
 				});
 
+				// Fetch user profile to determine role-based redirect
+				const { data: profileData, error: profileError } = await supabase
+					.from('profiles')
+					.select('role')
+					.eq('id', data.user.id)
+					.single();
+
+				if (profileError) {
+					console.error('Error fetching user profile:', profileError);
+					// Default to user page if profile fetch fails
+					throw redirect(303, '/user');
+				}
+
 				// Login successful - redirect based on user role
-				// Profile data is already available in locals from hooks.server.ts
-				const redirectPath = locals.profile?.role === 'admin' ? '/admin' : '/user';
+				const redirectPath = profileData?.role === 'admin' ? '/admin' : '/user';
 				throw redirect(303, redirectPath);
 			}
 

@@ -10,7 +10,7 @@
 </script>
 
 <div class="min-h-screen bg-black text-white">
-	<Header user={data?.user} />
+	<Header user={data?.user} profile={data?.profile} />
 	<main>
 		<Hero />
 		<Services />

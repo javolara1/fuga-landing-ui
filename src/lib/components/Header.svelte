@@ -2,7 +2,7 @@
 	import { goto } from '$app/navigation';
 	import { t } from '$lib/i18n';
 
-	let { user } = $props();
+	let { user, profile } = $props();
 </script>
 
 <header class="sticky top-0 z-50 border-b border-gray-800 bg-black">
@@ -56,9 +56,9 @@
 			<!-- Auth Buttons -->
 			<div class="flex items-center space-x-4">
 				{#if user}
-					<!-- User is logged in - show profile button -->
+					<!-- User is logged in - show profile button based on role -->
 					<button
-						onclick={() => goto('/user')}
+						onclick={() => goto(profile?.role === 'admin' ? '/admin' : '/user')}
 						class="rounded-lg bg-white px-4 py-2 font-medium text-black transition-colors duration-200 hover:bg-gray-100"
 					>
 						{$t('header.profile')}
