@@ -25,7 +25,7 @@
 							}
 						}}
 					>
-						<h1 class="text-2xl font-bold text-white">Fuga</h1>
+						<h1 class="text-2xl font-bold text-white">FUGA</h1>
 					</button>
 				</div>
 
