@@ -89,7 +89,8 @@
 	"common": {
 		"language": "Language",
 		"english": "English",
-		"spanish": "Spanish"
+		"spanish": "Spanish",
+		"cancel": "Cancel"
 	},
 	"auth": {
 		"welcomeBack": "Welcome Back",
@@ -299,6 +300,59 @@
 		"contentManagement": "Content Management",
 		"contentManagementDescription": "Manage blog articles and training content",
 		"systemSettings": "System Settings",
-		"systemSettingsDescription": "Configure system preferences and settings"
+		"systemSettingsDescription": "Configure system preferences and settings",
+		"navigation": {
+			"profile": "Profile",
+			"blog": "Blog"
+		},
+		"blogManagement": {
+			"title": "Blog Management",
+			"description": "Manage all articles including published and draft content",
+			"createArticle": "Create Article",
+			"noArticles": "No articles found.",
+			"noArticlesDescription": "Create your first article to get started.",
+			"table": {
+				"title": "Title",
+				"status": "Status",
+				"published": "Published",
+				"created": "Created"
+			},
+			"status": {
+				"published": "Published",
+				"draft": "Draft"
+			},
+			"pagination": {
+				"previous": "← Previous",
+				"next": "Next →",
+				"pageInfo": "Showing page {currentPage} of {totalPages}",
+				"articlesTotal": "{totalCount} articles total"
+			},
+			"create": {
+				"title": "Create Article",
+				"description": "Create a new blog article with markdown formatting",
+				"form": {
+					"title": "Title",
+					"titlePlaceholder": "Enter article title",
+					"slug": "Slug",
+					"slugPlaceholder": "url-friendly-slug",
+					"slugHelp": "This will be used in the article URL. Auto-generated from title.",
+					"excerpt": "Excerpt",
+					"excerptPlaceholder": "Brief description of the article (optional)",
+					"content": "Content",
+					"contentPlaceholder": "Write your article content here...",
+					"status": "Status"
+				},
+				"errors": {
+					"unauthorized": "Unauthorized",
+					"titleRequired": "Title is required",
+					"contentRequired": "Content is required",
+					"slugRequired": "Slug is required",
+					"slugExists": "An article with this slug already exists",
+					"createFailed": "Failed to create article",
+					"unexpectedError": "An unexpected error occurred"
+				},
+				"success": "Article created successfully"
+			}
+		}
 	}
 }

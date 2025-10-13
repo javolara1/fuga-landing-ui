@@ -4,6 +4,16 @@ _This document tracks the current work focus, recent changes, next steps, active
 
 ## Current Work Focus
 
+- **Carta MD Editor Styling**: Implemented custom dark theme for the markdown editor in blog creation
+- Fixed TypeScript error by adding missing `carta` prop to `MarkdownEditor` component
+- Created comprehensive custom CSS theme that replaces all default Carta MD styles
+- Applied project's dark theme colors and design system to all editor components
+- **Admin Navigation and Blog Management**: Implemented admin navigation links and blog management page
+- Added navigation links "Profile" and "Blog" to admin header
+- Created reusable `AdminHeader.svelte` component to avoid code duplication
+- Implemented `/admin/blog` route with server-side data loading
+- Added blog management page showing all articles (published and draft) with pagination
+- Enhanced i18n support with comprehensive translations for admin features
 - **Test Users Creation**: Added two test users for development and testing
 - Created admin user: `admin@fuga.com` (password: `admin123`) with admin role
 - Created regular user: `user@fuga.com` (password: `user123`) with user role
