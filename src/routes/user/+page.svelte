@@ -86,7 +86,7 @@
 						<div class="mb-1 block text-sm font-medium text-gray-400">
 							{$t('user.role')}
 						</div>
-						<p class="text-white capitalize">{data.profile?.role || 'user'}</p>
+						<p class="text-white capitalize">{data.profile?.role}</p>
 					</div>
 				</div>
 

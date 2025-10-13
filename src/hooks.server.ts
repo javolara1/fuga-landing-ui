@@ -47,12 +47,21 @@ export const handle: Handle = async ({ event, resolve }) => {
 				if (user) {
 					event.locals.user = user;
 
-					// Get user profile data
-					const { data: profile } = await supabase
+					// Get user profile data with error logging
+					const { data: profile, error: profileError } = await supabase
 						.from('profiles')
 						.select('*')
 						.eq('id', user.id)
 						.single();
+
+					if (profileError) {
+						console.error('Profile query failed with error:', {
+							code: profileError.code,
+							message: profileError.message,
+							details: profileError.details,
+							hint: profileError.hint
+						});
+					}
 
 					event.locals.profile = profile;
 				}
