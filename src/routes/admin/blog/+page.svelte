@@ -2,9 +2,13 @@
 	import { formatDate } from '$lib/utils/dateUtils';
 	import { t } from '$lib/i18n';
 	import AdminHeader from '$lib/components/AdminHeader.svelte';
+	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import Button from '$lib/components/Button.svelte';
+	import type { BreadcrumbItem } from '$lib/types';
 
 	let { data } = $props();
+
+	const breadcrumbItems: BreadcrumbItem[] = [{ label: `${$t('admin.blogManagement.title')}` }];
 
 	const getPageUrl = (page: number) => {
 		const url = new URL(window.location.href);
@@ -26,11 +30,7 @@
 			<!-- Breadcrumb and Title -->
 			<div class="mb-8 flex items-start justify-between">
 				<div>
-					<nav class="mb-4">
-						<Button href="/admin" variant="text" size="sm">
-							← {$t('admin.dashboard')}
-						</Button>
-					</nav>
+					<Breadcrumb items={breadcrumbItems} />
 					<h1 class="text-3xl font-bold">{$t('admin.blogManagement.title')}</h1>
 					<p class="mt-2 text-gray-400">{$t('admin.blogManagement.description')}</p>
 				</div>

@@ -3,6 +3,11 @@ import type { Tables } from './database.types';
 
 export type Profile = Tables<'profiles'>;
 
+export interface BreadcrumbItem {
+	label: string;
+	href?: string;
+}
+
 export interface AppLocals {
 	locale: string;
 	t: (key: string) => string;

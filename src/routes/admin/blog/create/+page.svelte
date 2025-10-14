@@ -2,8 +2,10 @@
 	import { enhance } from '$app/forms';
 	import { t } from '$lib/i18n';
 	import AdminHeader from '$lib/components/AdminHeader.svelte';
+	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import Button from '$lib/components/Button.svelte';
 	import { Carta, MarkdownEditor } from 'carta-md';
+	import type { BreadcrumbItem } from '$lib/types';
 
 	import DOMPurify from 'isomorphic-dompurify';
 
@@ -12,6 +14,11 @@
 	let titleInput: HTMLInputElement | undefined;
 	let slugInput: HTMLInputElement | undefined;
 	let content = $state(form?.content || '');
+
+	const breadcrumbItems: BreadcrumbItem[] = [
+		{ label: $t('admin.blogManagement.title'), href: '/admin/blog' },
+		{ label: $t('admin.blogManagement.create.title') }
+	];
 
 	const carta = new Carta({
 		sanitizer: DOMPurify.sanitize
@@ -46,17 +53,7 @@
 		<div class="rounded-lg">
 			<!-- Breadcrumb and Title -->
 			<div class="mb-8">
-				<nav class="mb-4 flex space-x-2 text-sm text-gray-400">
-					<a href="/admin" class="transition-colors hover:text-white">
-						{$t('admin.dashboard')}
-					</a>
-					<span>→</span>
-					<a href="/admin/blog" class="transition-colors hover:text-white">
-						{$t('admin.blogManagement.title')}
-					</a>
-					<span>→</span>
-					<span class="text-white">{$t('admin.blogManagement.create.title')}</span>
-				</nav>
+				<Breadcrumb items={breadcrumbItems} />
 				<h1 class="text-3xl font-bold">{$t('admin.blogManagement.create.title')}</h1>
 				<p class="mt-2 text-gray-400">{$t('admin.blogManagement.create.description')}</p>
 			</div>

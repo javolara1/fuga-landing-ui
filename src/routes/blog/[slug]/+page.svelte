@@ -1,9 +1,16 @@
 <script lang="ts">
 	import ReducedHeader from '$lib/components/ReducedHeader.svelte';
+	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import { formatDate } from '$lib/utils/dateUtils';
 	import { t } from '$lib/i18n';
+	import type { BreadcrumbItem } from '$lib/types';
 
 	let { data } = $props();
+
+	const breadcrumbItems: BreadcrumbItem[] = [
+		{ label: $t('admin.blogManagement.title'), href: '/blog' },
+		{ label: $t('admin.blogManagement.create.title') }
+	];
 
 	// Calculate reading time based on content length
 	const calculateReadingTime = (content: string) => {
@@ -25,11 +32,7 @@
 	<!-- Article Header -->
 	<div class="container mx-auto max-w-4xl px-4 py-16">
 		<!-- Breadcrumb -->
-		<nav class="mb-8">
-			<a href="/blog" class="text-gray-400 transition-colors hover:text-white">
-				{$t('blog.detail.backToBlog')}
-			</a>
-		</nav>
+		<Breadcrumb items={breadcrumbItems} />
 
 		<!-- Article Title -->
 		<h1 class="mb-6 text-4xl leading-tight font-bold md:text-5xl">
