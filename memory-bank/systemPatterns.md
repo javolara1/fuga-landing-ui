@@ -1,247 +1,159 @@
 # System Patterns
 
-_This document outlines the system architecture, key technical decisions, design patterns in use, component relationships, and critical implementation paths._
+_This document outlines the system architecture, key technical decisions, design patterns in use, and component relationships._
 
 ## Data Models and Entity-Relationship Diagram
 
 ### Core Entities
 
+#### Profiles
+Represents user-specific data, including their role. Linked to `auth.users` table.
+
+**Attributes:**
+- `id`: Foreign Key to `auth.users.id` (UUID)
+- `role`: User role enum (`admin`, `user`)
+- `created_at`: Creation timestamp (DateTime)
+- `updated_at`: Last update timestamp (DateTime)
+
+**Business Rules:**
+- A profile is automatically created for each new user via a database trigger.
+- The default role for a new user is `user`.
+- The `role` attribute is used for access control throughout the application.
+
+#### Articles
+Represents blog articles.
+
+**Attributes:**
+- `id`: Unique identifier (UUID)
+- `title`: Article title (Text)
+- `content`: Full content of the article in Markdown (Text)
+- `excerpt`: A short summary of the article (Text)
+- `slug`: URL-friendly version of the title (Text, Unique)
+- `status`: Article status enum (`draft`, `published`)
+- `author_id`: Foreign Key to `profiles.id` (UUID)
+- `published_at`: Timestamp when the article was published (DateTime)
+- `created_at`: Creation timestamp (DateTime)
+- `updated_at`: Last update timestamp (DateTime)
+
+**Business Rules:**
+- Only users with the `admin` role can create, update, or delete articles.
+- `published` articles are visible to the public.
+- `draft` articles are only visible to authenticated users (and primarily intended for admins).
+- The `slug` is used for the article's URL (e.g., `/blog/[slug]`).
+
+### Legacy Entities
+
 #### Week
-
-Represents a calendar week with specific status and access controls.
-
-**Attributes:**
-
-- `id`: Unique identifier (UUID/Integer)
-- `start_date`: Start date of the week (Date)
-- `end_date`: End date of the week (Date)
-- `status`: Week status enum (`PAST`, `CURRENT`, `FUTURE_DISABLED`, `FUTURE_ENABLED`)
-- `enabled_by`: Administrator who enabled the week (Foreign Key to Administrator)
-- `enabled_at`: Timestamp when week was enabled (DateTime)
-- `created_at`: Creation timestamp (DateTime)
-- `updated_at`: Last update timestamp (DateTime)
-
-**Business Rules:**
-
-- Past weeks are automatically read-only
-- Only administrators can enable future weeks
-- Current week is determined by system date
-- Week boundaries are Sunday to Saturday
-
-#### TimeSlot
-
-Represents a specific time period within a day of a week.
-
-**Attributes:**
-
-- `id`: Unique identifier (UUID/Integer)
-- `week_id`: Reference to Week (Foreign Key)
-- `day_of_week`: Day within the week (Integer 0-6, Sunday=0)
-- `start_time`: Start time of the slot (Time)
-- `end_time`: End time of the slot (Time)
-- `resource_type`: Type of resource (`CLASS`, `ROOM`, `PROFESSIONAL`)
-- `resource_id`: Reference to specific resource (Foreign Key)
-- `capacity`: Maximum number of people/bookings (Integer)
-- `available_capacity`: Current available capacity (Integer)
-- `is_active`: Whether the time slot is active (Boolean)
-- `created_at`: Creation timestamp (DateTime)
-- `updated_at`: Last update timestamp (DateTime)
-
-**Business Rules:**
-
-- Time slots can only be created for enabled weeks
-- Capacity must be positive integer
-- Available capacity cannot exceed total capacity
-- Start time must be before end time
-- No overlapping time slots for same resource
-
-#### Class
-
-Represents a class/activity or physical space that can be scheduled.
-
-**Attributes:**
-
-- `id`: Unique identifier (UUID/Integer)
-- `name`: Class/room name (String)
-- `description`: Class/room description (Text)
-- `duration_minutes`: Default duration in minutes (Integer, optional)
-- `max_capacity`: Maximum participants/occupancy (Integer)
-- `location`: Room location/building (String, optional)
-- `is_active`: Whether class/room is available for scheduling (Boolean)
-- `created_at`: Creation timestamp (DateTime)
-- `updated_at`: Last update timestamp (DateTime)
-
-#### Professional
-
-Represents a professional/instructor who can be scheduled.
-
-**Attributes:**
-
-- `id`: Unique identifier (UUID/Integer)
-- `first_name`: First name (String)
-- `last_name`: Last name (String)
-- `email`: Email address (String, unique)
-- `phone`: Phone number (String)
-- `specializations`: Areas of expertise (JSON/Text)
-- `is_active`: Whether professional is available (Boolean)
-- `created_at`: Creation timestamp (DateTime)
-- `updated_at`: Last update timestamp (DateTime)
-
-#### Administrator
-
-Represents system administrators who can manage schedules.
-
-**Attributes:**
-
-- `id`: Unique identifier (UUID/Integer)
-- `username`: Login username (String, unique)
-- `email`: Email address (String, unique)
-- `first_name`: First name (String)
-- `last_name`: Last name (String)
-- `role`: Administrator role (`SUPER_ADMIN`, `FACILITY_MANAGER`, `SCHEDULER`)
-- `permissions`: Specific permissions (JSON/Text)
-- `is_active`: Whether account is active (Boolean)
-- `last_login`: Last login timestamp (DateTime)
-- `created_at`: Creation timestamp (DateTime)
-- `updated_at`: Last update timestamp (DateTime)
+This table exists from a previous iteration of the project focused on scheduling. It is not currently in use.
 
 ### Entity Relationships
 
-```
-Week (1) ──────── (Many) TimeSlot
-  │
-  └── enabled_by ──── (1) Administrator
+```mermaid
+graph TD
+    subgraph "auth"
+        users(users)
+    end
 
-TimeSlot (Many) ──── (1) Class
-TimeSlot (Many) ──── (1) Room
-TimeSlot (Many) ──── (1) Professional
+    subgraph "public"
+        profiles(profiles)
+        articles(articles)
+    end
 
-Administrator (1) ──── (Many) Week [enabled_by]
+    users -- "1..1" --> profiles
+    profiles -- "1..N" --> articles
+
 ```
 
 ### Detailed Relationships
 
-1. **Week → TimeSlot** (One-to-Many)
-   - One week can have multiple time slots
-   - Each time slot belongs to exactly one week
-   - Cascade delete: Deleting a week removes all its time slots
+1.  **auth.users → profiles** (One-to-One)
+    - Each user in `auth.users` has one corresponding profile in `public.profiles`.
+    - The `profiles.id` is a foreign key to `auth.users.id`.
+    - Deleting a user from `auth.users` will cascade and delete their profile.
 
-2. **Administrator → Week** (One-to-Many via enabled_by)
-   - One administrator can enable multiple weeks
-   - Each enabled week tracks which administrator enabled it
-   - Soft reference: Administrator deletion doesn't affect week history
-
-3. **TimeSlot → Resource** (Many-to-One, polymorphic)
-   - Each time slot references one resource (Class, Room, or Professional)
-   - One resource can be scheduled in multiple time slots
-   - Resource type determines which table to reference
-
-### Database Schema Considerations
-
-#### Current Implementation Status
-
-- **Initial Schema Created:** Basic `week` table migration created with minimal fields
-- **Schema Incomplete:** Missing TimeSlot, Class, Professional, and Administrator tables
-- **Fields to Add:** Need to add `enabled_by`, `enabled_at`, `updated_at` fields to week table
-- **Status Enum:** Need to implement week status enum constraint
-
-#### Indexes (Planned)
-
-- `week_start_date_idx`: Index on Week.start_date for efficient date queries
-- `timeslot_week_day_idx`: Composite index on TimeSlot(week_id, day_of_week)
-- `timeslot_resource_idx`: Composite index on TimeSlot(resource_type, resource_id)
-- `administrator_email_idx`: Unique index on Administrator.email
-
-#### Constraints (Planned)
-
-- `week_date_range_check`: Ensure end_date > start_date
-- `timeslot_time_check`: Ensure end_time > start_time
-- `timeslot_capacity_check`: Ensure available_capacity <= capacity
-- `timeslot_day_check`: Ensure day_of_week between 0-6
+2.  **profiles → articles** (One-to-Many)
+    - One user (profile) can be the author of many articles.
+    - The `articles.author_id` is a foreign key to `profiles.id`.
+    - If a profile is deleted, the `author_id` on their articles is set to NULL.
 
 ## System Architecture
 
 ### Frontend Architecture
 
-- **SvelteKit** with file-based routing and server-side rendering
+- **SvelteKit** with file-based routing and server-side rendering (SSR).
 - **Component Structure:**
-  - `WeekNavigator`: Navigation between weeks
-  - `WeekView`: Display week schedule with time slots
-  - `TimeSlotEditor`: Configure individual time slots
-  - `ResourceSelector`: Choose classes, rooms, or professionals
-  - `AdminControls`: Enable weeks and manage permissions
+  - **Routes**: Each page is a Svelte component. Data is loaded in `+page.server.ts` or `+layout.server.ts`.
+  - **Components**: Reusable UI elements are in `src/lib/components/`.
+    - **Landing Page Components**: `Hero.svelte`, `Services.svelte`, `Pricing.svelte`, etc.
+    - **Common Components**: `Header.svelte`, `Footer.svelte`, `AdminHeader.svelte`.
+    - **Blog Components**: Components for listing and displaying articles.
+    - **Admin Components**: UI for managing content, like the blog.
 
-### Backend Architecture (Implemented)
+### Backend Architecture
 
-- **API Layer**: RESTful endpoints (`+server.ts` files)
-- **Authentication Layer**: Server-side authentication with Supabase
-- **Session Management**: Centralized session handling in hooks with `setSession` approach
-- **Data Access Layer**: Supabase client for database operations
-- **Business Logic Layer**: Server-side validation and business rules
-- **User Profile System**: Integrated profile data with Supabase profiles table
+- **Platform**: Supabase provides the database (PostgreSQL), authentication, and auto-generated APIs.
+- **SvelteKit Server-Side**: SvelteKit's server-side capabilities (`.server.ts` files) are used as the primary backend logic layer.
+    - **API Layer**: Form actions and API endpoints are implemented in `+page.server.ts` and `+server.ts` files respectively. This is used for login, registration, etc.
+    - **Data Access Layer**: The `@supabase/supabase-js` client is used on the server-side to interact with the Supabase database.
+    - **Authentication & Session Management**:
+        - Authentication is handled by Supabase Auth.
+        - Session state is managed centrally in `src/hooks.server.ts`, which retrieves the user session from cookies and makes it available to the application via `event.locals.session`.
 
-### Server-Side Rendering Strategy
+### Server-Side Rendering (SSR) Strategy
 
-- **Default Approach**: Server-side rendering for all pages using `+page.server.ts`
-- **API Endpoints**: Server-side API routes using `+server.ts` files
-- **Authentication**: Server-side session management with secure cookies
-- **Data Loading**: Server-side data fetching for initial page loads
-- **Progressive Enhancement**: Client-side interactivity where needed
+- **Default Approach**: SSR is used for almost all pages to ensure fast initial loads and good SEO.
+- **Data Loading**: `+page.server.ts` and `+layout.server.ts` files are used to fetch data from Supabase before a page is rendered.
+- **Authentication**: Session management is handled on the server. Pages that require authentication check for a valid session in their `load` functions and redirect if necessary.
+- **Form Handling**: SvelteKit's form actions are used for handling user input (e.g., login, registration, creating blog posts), which provides progressive enhancement out of the box.
 
-### Key Design Patterns
+## Key Design Patterns
 
-#### State Management
+#### Role-Based Access Control (RBAC)
 
-- **Week Status State Machine:**
-  ```
-  FUTURE_DISABLED → FUTURE_ENABLED → CURRENT → PAST
-  ```
-- **Resource Assignment Pattern:** Polymorphic association for different resource types
-- **Capacity Management Pattern:** Track total and available capacity separately
-- **Session Management Pattern:** Automatic user session detection and profile data loading
+- **Implementation**: Access control is implemented on both the server-side (in `load` functions and form actions) and at the database level (using PostgreSQL Row Level Security policies).
+- **Server-Side**: `+page.server.ts` files check the user's role (from `event.locals.session`) before returning data or performing actions. For example, the `/admin` route checks for an 'admin' role.
+- **Database-Side (RLS)**: Supabase policies restrict what data a user can access or modify. For example, only users with the `admin` role can insert or update rows in the `articles` table.
 
-#### User Profile System
+#### Session Management
 
-- **Session Detection:** Automatic user session validation in server hooks
-- **Profile Data Flow:** Server-side profile fetching and client-side availability
-- **Conditional Navigation:** Dynamic header based on authentication status
-- **Route Protection:** Automatic redirects for authenticated/unauthenticated users
+- **Centralized Hook**: `src/hooks.server.ts` is the single source of truth for session handling on the server.
+- **Data Flow**:
+    1. A request comes in.
+    2. The hook gets the access token from cookies.
+    3. It uses the token to fetch the user's session from Supabase.
+    4. The session and user profile are attached to `event.locals`.
+    5. Server-side `load` functions and actions can now securely access user information.
+    6. The session is passed to the client-side from the root `+layout.ts` for use in Svelte components.
 
-#### Access Control Pattern
+#### Internationalization (i18n)
 
-- **Time-based Permissions:** Past weeks are read-only regardless of user role
-- **Role-based Access:** Different admin roles have different capabilities
-- **Resource-level Security:** Admins can only modify resources they have access to
+- **Library**: `sveltekit-i18n` is used for i18n.
+- **Language Detection**: The user's language is detected on the server from the `Accept-Language` header in `src/routes/+layout.server.ts` to prevent the "language blink" effect.
+- **Translations**: JSON files for each language are stored in `src/lib/i18n/`.
+- **Usage**: A `t` store is used in components to display translated strings.
 
 ## Critical Implementation Paths
 
-### Week Management Flow
+### User Authentication Flow
 
-1. System automatically updates week status based on current date
-2. Administrators can enable future weeks for configuration
-3. Once enabled, time slots can be created and configured
-4. Past weeks become read-only automatically
+1.  User fills out login/register form.
+2.  The form submits a POST request to a SvelteKit form action (`/login/+page.server.ts` or `/register/+page.server.ts`).
+3.  The action validates the input and calls the appropriate Supabase Auth function (`signInWithPassword` or `signUp`).
+4.  Supabase handles the authentication and, on success, sets auth cookies on the response.
+5.  The user is redirected to their respective dashboard (`/user` or `/admin`).
 
-### Time Slot Configuration Flow
+### Blog Post Creation Flow (Admin)
 
-1. Select enabled week
-2. Choose day and time range
-3. Select resource type (Class/Room/Professional)
-4. Choose specific resource
-5. Set capacity limits
-6. Validate no conflicts exist
-7. Save time slot configuration
+1.  An admin navigates to the "Create Post" page (`/admin/blog/create`).
+2.  They fill out the form with title, content, etc.
+3.  The form is submitted to a form action in `+page.server.ts`.
+4.  The action validates the data.
+5.  It then uses the server-side Supabase client to insert a new row into the `articles` table. The database RLS policy ensures only an admin can do this.
+6.  The admin is redirected to the blog management page.
 
-### Data Validation Rules
+### Public Blog Viewing Flow
 
-- **Temporal Validation:** No modifications to past weeks
-- **Capacity Validation:** Available capacity ≤ total capacity
-- **Conflict Detection:** No overlapping time slots for same resource
-- **Business Rules:** Enforce minimum/maximum durations, capacity limits
-
-## Performance Considerations
-
-- **Week-based Partitioning:** Consider partitioning time slots by week for better query performance
-- **Caching Strategy:** Cache current and next week data for faster loading
-- **Lazy Loading:** Load time slot details only when needed
-- **Batch Operations:** Support bulk time slot creation for recurring schedules
+1.  A user navigates to `/blog` or `/blog/[slug]`.
+2.  The `load` function in `+page.server.ts` runs on the server.
+3.  It queries the `articles` table for published posts. The database RLS policy ensures only `status = 'published'` articles are returned to anonymous users.
+4.  The data is passed to the page component, which then renders the articles.

@@ -18,12 +18,12 @@ _This document describes the technologies used, development setup, technical con
 
 ### Backend (Supabase)
 
-- **Database:** PostgreSQL via Supabase
-- **API:** Supabase RESTful API and real-time subscriptions
-- **Authentication:** Supabase Auth with email/password
+- **Database:** PostgreSQL via Supabase. The current schema includes `profiles` and `articles` tables. A legacy `week` table exists but is not in use.
+- **API:** Supabase RESTful API and real-time subscriptions.
+- **Authentication:** Supabase Auth with email/password and user roles.
 - **Location:** Local development at http://127.0.0.1:54321
-- **Client:** @supabase/supabase-js for frontend integration
-- **Migrations:** Supabase CLI for database schema management
+- **Client:** `@supabase/supabase-js` for frontend and server-side integration.
+- **Migrations:** Supabase CLI for database schema management.
 
 ## Development Setup
 
@@ -51,22 +51,18 @@ The project's dependencies are managed through `package.json`. Key dependencies 
 - `playwright`: For E2E testing.
 - `eslint` and `prettier`: For code quality and formatting.
 - `@supabase/supabase-js`: Supabase client for backend integration.
-
-### Additional Dependencies Needed
-
-- Date/time handling library (date-fns or dayjs)
-- Form validation library
+- `sveltekit-i18n`: For internationalization.
+- `carta-md`: For the Markdown editor in the admin blog section.
 
 ## Technical Constraints
 
-- **Time Zone Handling:** Must properly handle different time zones for scheduling
-- **Data Integrity:** Past weeks must remain read-only, future weeks require admin enablement
-- **Performance:** Efficient querying for weekly data and resource availability
-- **Scalability:** Design should support multiple organizations or facilities
+- **Data Integrity:** Row Level Security policies in Supabase are critical for ensuring users can only access and modify data they are permitted to.
+- **Performance:** Efficient server-side data loading is key to a good user experience. Pagination is used for lists (e.g., blog posts).
+- **Security:** All authentication and session management logic is handled on the server-side to prevent exposing sensitive information to the client.
 
 ## Tool Usage Patterns
 
 - **Development:** The `npm run dev` script starts a Vite development server with hot module replacement.
 - **Testing:** Unit tests are run with `npm run test:unit`, and E2E tests are run with `npm run test:e2e`. The `npm test` script runs both.
 - **Linting and Formatting:** Code is linted with `npm run lint` and formatted with `npm run format`.
-- **Database:** Will need migration and seeding scripts for development and deployment.
+- **Database:** Database changes are managed via migration files in the `supabase/migrations` directory. The Supabase CLI is used to apply them. Seeding is done via `supabase/seed.sql`.
