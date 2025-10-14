@@ -7,23 +7,28 @@ _This document outlines the system architecture, key technical decisions, design
 ### Core Entities
 
 #### Profiles
+
 Represents user-specific data, including their role. Linked to `auth.users` table.
 
 **Attributes:**
+
 - `id`: Foreign Key to `auth.users.id` (UUID)
 - `role`: User role enum (`admin`, `user`)
 - `created_at`: Creation timestamp (DateTime)
 - `updated_at`: Last update timestamp (DateTime)
 
 **Business Rules:**
+
 - A profile is automatically created for each new user via a database trigger.
 - The default role for a new user is `user`.
 - The `role` attribute is used for access control throughout the application.
 
 #### Articles
+
 Represents blog articles.
 
 **Attributes:**
+
 - `id`: Unique identifier (UUID)
 - `title`: Article title (Text)
 - `content`: Full content of the article in Markdown (Text)
@@ -36,6 +41,7 @@ Represents blog articles.
 - `updated_at`: Last update timestamp (DateTime)
 
 **Business Rules:**
+
 - Only users with the `admin` role can create, update, or delete articles.
 - `published` articles are visible to the public.
 - `draft` articles are only visible to authenticated users (and primarily intended for admins).
@@ -44,6 +50,7 @@ Represents blog articles.
 ### Legacy Entities
 
 #### Week
+
 This table exists from a previous iteration of the project focused on scheduling. It is not currently in use.
 
 ### Entity Relationships
@@ -93,11 +100,11 @@ graph TD
 
 - **Platform**: Supabase provides the database (PostgreSQL), authentication, and auto-generated APIs.
 - **SvelteKit Server-Side**: SvelteKit's server-side capabilities (`.server.ts` files) are used as the primary backend logic layer.
-    - **API Layer**: Form actions and API endpoints are implemented in `+page.server.ts` and `+server.ts` files respectively. This is used for login, registration, etc.
-    - **Data Access Layer**: The `@supabase/supabase-js` client is used on the server-side to interact with the Supabase database.
-    - **Authentication & Session Management**:
-        - Authentication is handled by Supabase Auth.
-        - Session state is managed centrally in `src/hooks.server.ts`, which retrieves the user session from cookies and makes it available to the application via `event.locals.session`.
+  - **API Layer**: Form actions and API endpoints are implemented in `+page.server.ts` and `+server.ts` files respectively. This is used for login, registration, etc.
+  - **Data Access Layer**: The `@supabase/supabase-js` client is used on the server-side to interact with the Supabase database.
+  - **Authentication & Session Management**:
+    - Authentication is handled by Supabase Auth.
+    - Session state is managed centrally in `src/hooks.server.ts`, which retrieves the user session from cookies and makes it available to the application via `event.locals.session`.
 
 ### Server-Side Rendering (SSR) Strategy
 
@@ -118,12 +125,12 @@ graph TD
 
 - **Centralized Hook**: `src/hooks.server.ts` is the single source of truth for session handling on the server.
 - **Data Flow**:
-    1. A request comes in.
-    2. The hook gets the access token from cookies.
-    3. It uses the token to fetch the user's session from Supabase.
-    4. The session and user profile are attached to `event.locals`.
-    5. Server-side `load` functions and actions can now securely access user information.
-    6. The session is passed to the client-side from the root `+layout.ts` for use in Svelte components.
+  1. A request comes in.
+  2. The hook gets the access token from cookies.
+  3. It uses the token to fetch the user's session from Supabase.
+  4. The session and user profile are attached to `event.locals`.
+  5. Server-side `load` functions and actions can now securely access user information.
+  6. The session is passed to the client-side from the root `+layout.ts` for use in Svelte components.
 
 #### Internationalization (i18n)
 
