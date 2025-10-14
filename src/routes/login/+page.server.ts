@@ -4,9 +4,11 @@ import { supabase } from '$lib/supabaseClient';
 import { getTranslatedErrorMessage } from '$lib/utils/errorTranslations';
 
 export const load: PageServerLoad = async ({ locals }) => {
-	// Redirect to user profile if already authenticated
+	// Redirect based on user role if already authenticated
 	if (locals.user) {
-		throw redirect(303, '/user');
+		// Use profile from locals (already fetched in hooks)
+		const redirectPath = locals.profile?.role === 'admin' ? '/admin' : '/user';
+		throw redirect(303, redirectPath);
 	}
 };
 
@@ -82,23 +84,16 @@ export const actions: Actions = {
 				});
 
 				// Fetch user profile to determine role-based redirect
-				const { data: profileData, error: profileError } = await supabase
+				const { data: profileData } = await supabase
 					.from('profiles')
 					.select('role')
 					.eq('id', data.user.id)
 					.single();
 
-				if (profileError) {
-					console.error('Error fetching user profile:', profileError);
-					// Default to user page if profile fetch fails
-					throw redirect(303, '/user');
-				}
-
 				// Login successful - redirect based on user role
 				const redirectPath = profileData?.role === 'admin' ? '/admin' : '/user';
 				throw redirect(303, redirectPath);
 			}
-
 			return fail(401, {
 				error: t('auth.loginError'),
 				email,
