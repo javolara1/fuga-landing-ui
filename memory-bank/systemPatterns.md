@@ -164,3 +164,82 @@ graph TD
 2.  The `load` function in `+page.server.ts` runs on the server.
 3.  It queries the `articles` table for published posts. The database RLS policy ensures only `status = 'published'` articles are returned to anonymous users.
 4.  The data is passed to the page component, which then renders the articles.
+
+## Component Patterns
+
+### Button Component System
+
+A centralized, reusable button component that ensures design consistency throughout the application.
+
+**Location**: `src/lib/components/Button.svelte`
+
+**Features**:
+
+- **Type-Safe Props**: Full TypeScript support with defined interfaces
+- **Multiple Variants**: primary, secondary, text, ghost
+- **Flexible Sizing**: sm, md, lg, xl
+- **Navigation Support**: Can act as button or link (href prop)
+- **Loading States**: Built-in loading indicator
+- **Full Width Option**: Responsive full-width mode
+- **Accessibility**: Proper focus states and ARIA support
+
+**Variants**:
+
+- `primary`: White background, black text - Used for main CTAs
+- `secondary`: White border, white text - Used for secondary actions
+- `text`: Transparent background, white text - Used for navigation links
+- `ghost`: Transparent background with hover effect - Used for subtle actions
+
+**Usage Pattern**:
+
+```svelte
+<script>
+	import Button from '$lib/components/Button.svelte';
+</script>
+
+<!-- Navigation button -->
+<Button variant="text" href="/path">Navigate</Button>
+
+<!-- Primary CTA -->
+<Button variant="primary" onclick={() => handleClick()}>Click Me</Button>
+
+<!-- Submit button with loading state -->
+<Button type="submit" variant="primary" loading={isLoading} disabled={!isValid}>Submit</Button>
+```
+
+**Design System Integration**:
+
+- All interactive elements use this component
+- Consistent with black/white brand identity
+- Hover states with scale animations
+- Focus rings for accessibility
+- Disabled states with opacity
+
+### Header Component Variants
+
+The application uses different header components based on context:
+
+**Header.svelte** (Landing Page):
+
+- Full navigation menu
+- Login/Profile conditional rendering
+- Language switcher
+- Services, pricing, about, contact links
+
+**AdminHeader.svelte** (Admin Pages):
+
+- Profile and Blog navigation
+- Logout functionality
+- Simplified navigation for admin tasks
+
+**UserHeader.svelte** (User Pages):
+
+- User-specific navigation
+- Profile link
+- Logout functionality
+
+**ReducedHeader.svelte** (Auth Pages):
+
+- Minimal header with only logo
+- Used on login and register pages
+- Clean, distraction-free authentication experience
