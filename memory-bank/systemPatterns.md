@@ -215,6 +215,60 @@ A centralized, reusable button component that ensures design consistency through
 - Focus rings for accessibility
 - Disabled states with opacity
 
+### Breadcrumb Component System
+
+A centralized, reusable breadcrumb navigation component that provides consistent navigation patterns across the application.
+
+**Location**: `src/lib/components/Breadcrumb.svelte`
+
+**Features**:
+
+- **Type-Safe Props**: Full TypeScript support with BreadcrumbItem interface
+- **Flexible Item Array**: Accepts array of items with `{ label: string, href?: string }` structure
+- **Automatic Styling**: Last item automatically styled as current page (non-clickable)
+- **Consistent Separators**: Uses "→" symbol between items
+- **Hover States**: Interactive items have gray-400 to white transition
+
+**Interface**:
+
+```typescript
+interface BreadcrumbItem {
+	label: string; // Display text
+	href?: string; // Optional link URL (last item should omit this)
+}
+```
+
+**Usage Pattern**:
+
+```svelte
+<script>
+	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
+	import type { BreadcrumbItem } from '$lib/types';
+
+	const breadcrumbItems: BreadcrumbItem[] = [
+		{ label: 'Dashboard', href: '/admin' },
+		{ label: 'Blog Management', href: '/admin/blog' },
+		{ label: 'Create Article' } // Last item without href
+	];
+</script>
+
+<Breadcrumb items={breadcrumbItems} />
+```
+
+**Design System Integration**:
+
+- Consistent with black/white brand identity
+- Gray-400 for clickable links with hover:text-white
+- White text for current page (last item)
+- Proper spacing and visual hierarchy
+- Used in blog detail pages and admin pages
+
+**Implementation Examples**:
+
+- `/blog/[slug]`: Simple back navigation to blog listing
+- `/admin/blog/create`: Multi-level breadcrumb (Dashboard → Blog → Create)
+- `/admin/blog`: Back navigation to admin dashboard
+
 ### Header Component Variants
 
 The application uses different header components based on context:

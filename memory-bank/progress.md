@@ -12,12 +12,17 @@ _This document tracks what works, what's left to build, the current status, know
   - About section with team mission and philosophy
   - Contact section with form and information
   - Footer with links and contact details
-- **Reusable Button Component System**:
-  - Centralized Button.svelte component with TypeScript types
-  - Four variants: primary (white bg), secondary (outline), text (minimal), ghost (transparent)
-  - Four sizes: sm, md, lg, xl
-  - Props for href, loading, disabled, type, fullWidth
-  - Used consistently throughout entire application (Hero, Pricing, Header, Contact, Login, Register, User, Admin)
+- **Reusable Component System**:
+  - **Button Component**: Centralized Button.svelte with TypeScript types
+    - Four variants: primary (white bg), secondary (outline), text (minimal), ghost (transparent)
+    - Four sizes: sm, md, lg, xl
+    - Props for href, loading, disabled, type, fullWidth
+    - Used consistently throughout entire application
+  - **Breadcrumb Component**: Centralized Breadcrumb.svelte with TypeScript types
+    - Accepts array of BreadcrumbItem objects
+    - Automatic styling: last item non-clickable (current page), others clickable
+    - Consistent separator "→" between items
+    - Used in blog detail page, admin blog pages
 - **Blog Management System**:
   - Public blog viewing at `/blog` with pagination
   - Individual article pages at `/blog/[slug]`
@@ -91,7 +96,7 @@ The project has successfully transformed from a scheduling application to a comp
 All core features are implemented and working correctly:
 
 - ✅ Public landing page with all sections
-- ✅ Reusable component system (Button component)
+- ✅ Reusable component system (Button and Breadcrumb components)
 - ✅ Blog management system (public viewing and admin CRUD)
 - ✅ User authentication and profile management
 - ✅ Admin dashboard with role-based access
@@ -113,6 +118,7 @@ None currently. All features are working as expected with no compilation or runt
 - ✅ i18n hydration errors - Resolved with proper server-side language detection
 - ✅ Translation array handling - Resolved with object-based structure
 - ✅ Button consistency - Resolved with centralized Button component
+- ✅ Breadcrumb consistency - Resolved with centralized Breadcrumb component
 - ✅ Blog management - Fully implemented with CRUD operations
 
 ## Evolution of Project Decisions
