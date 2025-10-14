@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { t } from '$lib/i18n';
+	import Button from '$lib/components/Button.svelte';
 </script>
 
 <section id="pricing" class="bg-black py-20 text-white">
@@ -96,15 +97,9 @@
 					</li>
 				</ul>
 
-				<button
-					onclick={() => {
-						// This would typically open a registration modal or redirect
-						window.location.href = '/register?plan=strength';
-					}}
-					class="w-full rounded-lg bg-white py-3 font-bold text-black transition-colors duration-200 hover:bg-gray-100"
-				>
+				<Button href="/register?plan=strength" variant="primary" fullWidth>
 					{$t('pricing.getStarted')}
-				</button>
+				</Button>
 			</div>
 
 			<!-- Sport-Specific Training -->
@@ -202,14 +197,9 @@
 					</li>
 				</ul>
 
-				<button
-					onclick={() => {
-						window.location.href = '/register?plan=sport-specific';
-					}}
-					class="w-full rounded-lg bg-white py-3 font-bold text-black transition-colors duration-200 hover:bg-gray-100"
-				>
+				<Button href="/register?plan=sport-specific" variant="primary" fullWidth>
 					{$t('pricing.chooseProgramButton')}
-				</button>
+				</Button>
 			</div>
 
 			<!-- Premium Package -->
@@ -312,14 +302,9 @@
 					</li>
 				</ul>
 
-				<button
-					onclick={() => {
-						window.location.href = '/register?plan=premium';
-					}}
-					class="w-full rounded-lg bg-white py-3 font-bold text-black transition-colors duration-200 hover:bg-gray-100"
-				>
+				<Button href="/register?plan=premium" variant="primary" fullWidth>
 					{$t('pricing.goPremium')}
-				</button>
+				</Button>
 			</div>
 		</div>
 
@@ -382,9 +367,9 @@
 		<div class="mt-8 text-center">
 			<p class="text-gray-400">
 				{$t('pricing.needCustomPlan')}
-				<a href="#contact" class="text-white underline hover:text-gray-300"
-					>{$t('pricing.contactUs')}</a
-				>
+				<Button href="#contact" variant="text">
+					{$t('pricing.contactUs')}
+				</Button>
 				{$t('pricing.forPersonalizedPricing')}
 			</p>
 		</div>

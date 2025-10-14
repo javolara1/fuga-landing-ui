@@ -2,6 +2,7 @@
 	import ReducedHeader from '$lib/components/ReducedHeader.svelte';
 	import { formatDate } from '$lib/utils/dateUtils';
 	import { t } from '$lib/i18n';
+	import Button from '$lib/components/Button.svelte';
 
 	let { data } = $props();
 
@@ -49,12 +50,9 @@
 								{article.excerpt}
 							</p>
 						{/if}
-						<a
-							href={`/blog/${article.slug}`}
-							class="inline-block font-medium text-white transition-colors hover:text-gray-300"
-						>
+						<Button href={`/blog/${article.slug}`} variant="text" size="md">
 							{$t('blog.readMore')}
-						</a>
+						</Button>
 					</article>
 				{/each}
 			</div>
@@ -69,12 +67,9 @@
 			<div class="flex items-center justify-center space-x-2">
 				<!-- Previous Button -->
 				{#if data.currentPage > 1}
-					<a
-						href={getPageUrl(data.currentPage - 1)}
-						class="rounded bg-gray-800 px-4 py-2 text-white transition-colors hover:bg-gray-700"
-					>
+					<Button href={getPageUrl(data.currentPage - 1)} variant="secondary" size="sm">
 						{$t('blog.pagination.previous')}
-					</a>
+					</Button>
 				{/if}
 
 				<!-- Page Numbers -->
@@ -85,24 +80,18 @@
 								{pageNumber}
 							</span>
 						{:else}
-							<a
-								href={getPageUrl(pageNumber)}
-								class="rounded bg-gray-800 px-4 py-2 text-white transition-colors hover:bg-gray-700"
-							>
+							<Button href={getPageUrl(pageNumber)} variant="secondary" size="sm">
 								{pageNumber}
-							</a>
+							</Button>
 						{/if}
 					{/each}
 				</div>
 
 				<!-- Next Button -->
 				{#if data.currentPage < data.totalPages}
-					<a
-						href={getPageUrl(data.currentPage + 1)}
-						class="rounded bg-gray-800 px-4 py-2 text-white transition-colors hover:bg-gray-700"
-					>
+					<Button href={getPageUrl(data.currentPage + 1)} variant="secondary" size="sm">
 						{$t('blog.pagination.next')}
-					</a>
+					</Button>
 				{/if}
 			</div>
 

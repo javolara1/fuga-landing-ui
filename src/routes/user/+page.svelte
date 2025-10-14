@@ -1,51 +1,13 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
 	import { formatDate } from '$lib/utils/dateUtils';
-	import { goto } from '$app/navigation';
 	import { t } from '$lib/i18n';
+	import UserHeader from '$lib/components/UserHeader.svelte';
 
 	let { data } = $props();
 </script>
 
 <div class="min-h-screen bg-black text-white">
-	<!-- Header -->
-	<header class="sticky top-0 z-50 border-b border-gray-800 bg-black">
-		<div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-			<div class="flex items-center justify-between py-4">
-				<!-- Logo -->
-				<div class="flex-shrink-0">
-					<button
-						type="button"
-						class="focus:ring-opacity-50 cursor-pointer hover:opacity-80 focus:ring-2 focus:ring-white focus:outline-none"
-						onclick={() => goto('/')}
-						onkeydown={(e) => {
-							if (e.key === 'Enter' || e.key === ' ') {
-								e.preventDefault();
-								goto('/');
-							}
-						}}
-					>
-						<h1 class="text-2xl font-bold text-white">FUGA</h1>
-					</button>
-				</div>
-
-				<!-- User Info and Logout -->
-				<div class="flex items-center space-x-4">
-					<span class="text-white">
-						{data.profile?.full_name || data.profile?.username || data.user?.email}
-					</span>
-					<form method="POST" action="?/logout" use:enhance>
-						<button
-							type="submit"
-							class="rounded-lg bg-white px-4 py-2 font-medium text-black transition-colors duration-200 hover:bg-gray-100"
-						>
-							{$t('user.logout')}
-						</button>
-					</form>
-				</div>
-			</div>
-		</div>
-	</header>
+	<UserHeader {data} />
 
 	<!-- Main Content -->
 	<main class="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">

@@ -2,6 +2,7 @@
 	import { formatDate } from '$lib/utils/dateUtils';
 	import { t } from '$lib/i18n';
 	import AdminHeader from '$lib/components/AdminHeader.svelte';
+	import Button from '$lib/components/Button.svelte';
 
 	let { data } = $props();
 
@@ -26,19 +27,16 @@
 			<div class="mb-8 flex items-start justify-between">
 				<div>
 					<nav class="mb-4">
-						<a href="/admin" class="text-gray-400 transition-colors hover:text-white">
+						<Button href="/admin" variant="text" size="sm">
 							← {$t('admin.dashboard')}
-						</a>
+						</Button>
 					</nav>
 					<h1 class="text-3xl font-bold">{$t('admin.blogManagement.title')}</h1>
 					<p class="mt-2 text-gray-400">{$t('admin.blogManagement.description')}</p>
 				</div>
-				<a
-					href="/admin/blog/create"
-					class="rounded-lg bg-white px-6 py-3 font-medium text-black transition-colors hover:bg-gray-100"
-				>
+				<Button href="/admin/blog/create" variant="secondary" size="md">
 					{$t('admin.blogManagement.createArticle')}
-				</a>
+				</Button>
 			</div>
 
 			<!-- Articles List -->
@@ -77,12 +75,9 @@
 							{#each data.articles as article}
 								<tr class="transition-colors hover:bg-gray-800">
 									<td class="px-6 py-4 whitespace-nowrap">
-										<a
-											href={`/admin/blog/${article.slug}/edit`}
-											class="font-medium text-white transition-colors hover:text-gray-300"
-										>
+										<Button href={`/admin/blog/${article.slug}/edit`} variant="text" size="sm">
 											{article.title}
-										</a>
+										</Button>
 									</td>
 									<td class="px-6 py-4 whitespace-nowrap">
 										{#if article.status === 'published'}
@@ -137,12 +132,9 @@
 					<div class="flex items-center space-x-2">
 						<!-- Previous Button -->
 						{#if data.currentPage > 1}
-							<a
-								href={getPageUrl(data.currentPage - 1)}
-								class="rounded bg-gray-800 px-4 py-2 text-white transition-colors hover:bg-gray-700"
-							>
+							<Button href={getPageUrl(data.currentPage - 1)} variant="secondary" size="sm">
 								{$t('admin.blogManagement.pagination.previous')}
-							</a>
+							</Button>
 						{/if}
 
 						<!-- Page Numbers -->
@@ -153,24 +145,18 @@
 										{pageNumber}
 									</span>
 								{:else}
-									<a
-										href={getPageUrl(pageNumber)}
-										class="rounded bg-gray-800 px-4 py-2 text-white transition-colors hover:bg-gray-700"
-									>
+									<Button href={getPageUrl(pageNumber)} variant="secondary" size="sm">
 										{pageNumber}
-									</a>
+									</Button>
 								{/if}
 							{/each}
 						</div>
 
 						<!-- Next Button -->
 						{#if data.currentPage < data.totalPages}
-							<a
-								href={getPageUrl(data.currentPage + 1)}
-								class="rounded bg-gray-800 px-4 py-2 text-white transition-colors hover:bg-gray-700"
-							>
+							<Button href={getPageUrl(data.currentPage + 1)} variant="secondary" size="sm">
 								{$t('admin.blogManagement.pagination.next')}
-							</a>
+							</Button>
 						{/if}
 					</div>
 				</div>

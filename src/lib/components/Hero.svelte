@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
 	import { t } from '$lib/i18n';
+	import Button from '$lib/components/Button.svelte';
 </script>
 
 <section class="bg-black py-20 text-white lg:py-32">
@@ -40,21 +40,19 @@
 
 			<!-- Call to Action Buttons -->
 			<div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
-				<button
-					onclick={() => goto('/register')}
-					class="transform rounded-lg bg-white px-8 py-4 text-lg font-bold text-black shadow-lg transition-all duration-200 hover:scale-105 hover:bg-gray-100"
-				>
+				<Button href="/register" variant="primary" size="lg">
 					{$t('hero.cta.start')}
-				</button>
-				<button
+				</Button>
+				<Button
+					variant="secondary"
+					size="lg"
 					onclick={() => {
 						const servicesSection = document.getElementById('services');
 						servicesSection?.scrollIntoView({ behavior: 'smooth' });
 					}}
-					class="rounded-lg border-2 border-white px-8 py-4 text-lg font-bold text-white transition-all duration-200 hover:bg-white hover:text-black"
 				>
 					{$t('hero.cta.learn')}
-				</button>
+				</Button>
 			</div>
 
 			<!-- Additional Info -->

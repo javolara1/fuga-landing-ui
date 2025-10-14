@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { t } from '$lib/i18n';
+	import Button from '$lib/components/Button.svelte';
 </script>
 
 <section id="contact" class="bg-black py-20 text-white">
@@ -172,12 +173,9 @@
 						></textarea>
 					</div>
 
-					<button
-						type="submit"
-						class="w-full rounded-lg bg-white py-4 text-lg font-bold text-black transition-colors duration-200 hover:bg-gray-100"
-					>
+					<Button type="submit" variant="primary" size="lg" fullWidth>
 						{$t('contact.sendMessageButton')}
-					</button>
+					</Button>
 
 					<p class="text-center text-sm text-gray-400">
 						{$t('contact.responseTime')}

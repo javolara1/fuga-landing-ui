@@ -2,6 +2,7 @@
 	import { enhance } from '$app/forms';
 	import { t } from '$lib/i18n';
 	import AdminHeader from '$lib/components/AdminHeader.svelte';
+	import Button from '$lib/components/Button.svelte';
 	import { Carta, MarkdownEditor } from 'carta-md';
 
 	import DOMPurify from 'isomorphic-dompurify';
@@ -164,18 +165,12 @@
 
 				<!-- Submit Button -->
 				<div class="flex space-x-4">
-					<button
-						type="submit"
-						class="rounded-lg bg-white px-6 py-3 font-medium text-black transition-colors hover:bg-gray-100"
-					>
+					<Button type="submit" variant="primary" size="lg">
 						{$t('admin.blogManagement.createArticle')}
-					</button>
-					<a
-						href="/admin/blog"
-						class="rounded-lg border border-gray-700 px-6 py-3 font-medium text-gray-300 transition-colors hover:border-gray-500 hover:text-white"
-					>
+					</Button>
+					<Button href="/admin/blog" variant="secondary" size="lg">
 						{$t('common.cancel')}
-					</a>
+					</Button>
 				</div>
 			</form>
 		</div>

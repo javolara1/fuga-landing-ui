@@ -2,6 +2,7 @@
 	import { t } from '$lib/i18n';
 	import { enhance } from '$app/forms';
 	import ReducedHeader from '$lib/components/ReducedHeader.svelte';
+	import Button from '$lib/components/Button.svelte';
 	const { form } = $props();
 
 	let isSubmitting = $state(false);
@@ -83,48 +84,24 @@
 				</div>
 
 				<div>
-					<button
+					<Button
 						type="submit"
+						variant="secondary"
+						size="lg"
+						fullWidth
+						loading={isSubmitting}
 						disabled={isSubmitting}
-						class="group relative flex w-full justify-center rounded-lg border-2 border-white bg-black px-4 py-4 text-lg font-bold text-white transition-all duration-200 hover:bg-white hover:text-black disabled:cursor-not-allowed disabled:opacity-50"
 					>
-						{#if isSubmitting}
-							<svg
-								class="mr-3 -ml-1 h-5 w-5 animate-spin text-current"
-								xmlns="http://www.w3.org/2000/svg"
-								fill="none"
-								viewBox="0 0 24 24"
-							>
-								<circle
-									class="opacity-25"
-									cx="12"
-									cy="12"
-									r="10"
-									stroke="currentColor"
-									stroke-width="4"
-								></circle>
-								<path
-									class="opacity-75"
-									fill="currentColor"
-									d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-								></path>
-							</svg>
-							{$t('auth.signingIn')}
-						{:else}
-							{$t('auth.signIn')}
-						{/if}
-					</button>
+						{$t('auth.signIn')}
+					</Button>
 				</div>
 
 				<div class="text-center">
 					<p class="text-gray-400">
 						{$t('auth.dontHaveAccount')}{' '}
-						<a
-							href="/register"
-							class="font-medium text-white underline transition-colors duration-200 hover:text-gray-300"
-						>
+						<Button href="/register" variant="text" size="md">
 							{$t('auth.signUp')}
-						</a>
+						</Button>
 					</p>
 				</div>
 			</form>
