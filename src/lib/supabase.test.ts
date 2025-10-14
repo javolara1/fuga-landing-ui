@@ -1,19 +1,12 @@
+import { describe, expect, it } from 'vitest';
 import { supabase } from './supabaseClient';
 
-// Simple test to verify Supabase connection
-export async function testSupabaseConnection() {
-	try {
-		const { error } = await supabase.from('_test').select('*').limit(1);
+describe('supabase client', () => {
+	it('should expose the from helper', () => {
+		expect(typeof supabase.from).toBe('function');
+	});
 
-		if (error) {
-			console.error('Supabase connection test failed:', error.message);
-			return false;
-		}
-
-		console.log('Supabase connection successful');
-		return true;
-	} catch (error) {
-		console.error('Supabase connection test failed:', error);
-		return false;
-	}
-}
+	it('should expose the auth namespace', () => {
+		expect(typeof supabase.auth).toBe('object');
+	});
+});

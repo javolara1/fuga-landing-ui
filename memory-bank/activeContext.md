@@ -12,6 +12,13 @@ _This document tracks the current work focus, recent changes, next steps, active
 
 ## Recent Changes
 
+- **Test Suite Stabilization** (Completed - 2025-10-14):
+  - Replaced placeholder `supabase.test.ts` helper with real Vitest assertions to keep the Supabase client covered without runtime calls
+  - Scoped home page heading lookups in both Vitest and Playwright specs to the `<main>` landmark to satisfy strict querying
+  - Initialized English translations during browser-based Vitest runs to eliminate noisy i18n warnings
+  - Converted the admin blog status selector to use a semantic `<fieldset>` for accessibility compliance flagged by Playwright
+  - Playwright E2E suite now green; Vitest passes in `--run` mode (intermittent SSR transport warnings observed but exit code remains 0)
+
 - **Breadcrumb Component System** (Completed - 2025-10-14):
   - Created reusable Breadcrumb.svelte component with TypeScript types
   - Added BreadcrumbItem interface to $lib/types.ts

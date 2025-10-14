@@ -126,10 +126,10 @@
 				</div>
 
 				<!-- Status -->
-				<div>
-					<label class="mb-2 block text-sm font-medium text-gray-300">
+				<fieldset class="space-y-2">
+					<legend class="text-sm font-medium text-gray-300">
 						{$t('admin.blogManagement.create.form.status')}
-					</label>
+					</legend>
 					<div class="flex space-x-4">
 						<label class="flex items-center">
 							<input
@@ -151,7 +151,7 @@
 							<span class="text-gray-300">{$t('admin.blogManagement.status.published')}</span>
 						</label>
 					</div>
-				</div>
+				</fieldset>
 
 				<!-- Error Message -->
 				{#if form?.error}

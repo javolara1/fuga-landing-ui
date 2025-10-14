@@ -66,6 +66,7 @@ _This document tracks what works, what's left to build, the current status, know
 - **Server-side rendering** fully functional with proper SSR handling
 - **Development environment** running successfully with no errors
 - **Testing setup** with Vitest and Playwright configured
+- **Unit & E2E suites** verified on 2025-10-14 (Vitest and Playwright both pass with current fixes)
 
 ## What's Left to Build
 
@@ -109,6 +110,11 @@ The application is ready for deployment and user engagement.
 ## Known Issues
 
 None currently. All features are working as expected with no compilation or runtime errors.
+
+**Notes:**
+
+- Local Playwright runs emit a reminder to upgrade Node.js to ≥20.19 (currently on 20.18.1); upgrade when convenient to silence the warning.
+- Vitest occasionally logs transient SSR transport warnings after the run completes successfully; monitor in case they become persistent.
 
 ### Previously Resolved Issues
 
