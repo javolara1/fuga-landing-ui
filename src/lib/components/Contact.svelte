@@ -3,23 +3,23 @@
 	import Button from '$lib/components/Button.svelte';
 </script>
 
-<section id="contact" class="bg-black py-20 text-white">
+<section id="contact" class="bg-black py-16 text-white sm:py-20">
 	<div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-		<div class="mb-16 text-center">
-			<h2 class="mb-4 text-3xl font-bold md:text-4xl">{$t('contact.title')}</h2>
-			<p class="mx-auto max-w-2xl text-xl text-gray-300">
+		<div class="mb-12 text-center sm:mb-16">
+			<h2 class="mb-4 text-2xl font-bold sm:text-3xl md:text-4xl">{$t('contact.title')}</h2>
+			<p class="mx-auto max-w-2xl text-lg text-gray-300 sm:text-xl">
 				{$t('contact.description')}
 			</p>
 		</div>
 
-		<div class="grid grid-cols-1 gap-12 lg:grid-cols-2">
+		<div class="grid grid-cols-1 gap-10 sm:gap-12 lg:grid-cols-2">
 			<!-- Contact Information -->
 			<div>
-				<h3 class="mb-6 text-2xl font-bold">{$t('contact.contactInformation')}</h3>
+				<h3 class="mb-6 text-xl font-bold sm:text-2xl">{$t('contact.contactInformation')}</h3>
 
 				<div class="space-y-6">
-					<div class="flex items-start">
-						<div class="mr-4 rounded-lg bg-gray-800 p-3">
+					<div class="flex items-start gap-4">
+						<div class="rounded-lg bg-gray-800 p-3">
 							<svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 								<path
 									stroke-linecap="round"
@@ -43,8 +43,8 @@
 						</div>
 					</div>
 
-					<div class="flex items-start">
-						<div class="mr-4 rounded-lg bg-gray-800 p-3">
+					<div class="flex items-start gap-4">
+						<div class="rounded-lg bg-gray-800 p-3">
 							<svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 								<path
 									stroke-linecap="round"
@@ -62,8 +62,8 @@
 						</div>
 					</div>
 
-					<div class="flex items-start">
-						<div class="mr-4 rounded-lg bg-gray-800 p-3">
+					<div class="flex items-start gap-4">
+						<div class="rounded-lg bg-gray-800 p-3">
 							<svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 								<path
 									stroke-linecap="round"
@@ -83,7 +83,7 @@
 				</div>
 
 				<!-- Training Hours -->
-				<div class="mt-8 rounded-xl border border-gray-800 bg-gray-900 p-6">
+				<div class="mt-8 rounded-xl border border-gray-800 bg-gray-900 p-5 sm:p-6">
 					<h4 class="mb-4 text-lg font-bold">{$t('contact.trainingHours')}</h4>
 					<div class="space-y-2 text-sm">
 						<div class="flex justify-between">
@@ -103,8 +103,8 @@
 			</div>
 
 			<!-- Contact Form -->
-			<div class="rounded-2xl border border-gray-800 bg-gray-900 p-8">
-				<h3 class="mb-6 text-2xl font-bold">{$t('contact.sendMessage')}</h3>
+			<div class="rounded-2xl border border-gray-800 bg-gray-900 p-6 sm:p-8">
+				<h3 class="mb-6 text-xl font-bold sm:text-2xl">{$t('contact.sendMessage')}</h3>
 				<form class="space-y-6">
 					<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
 						<div>

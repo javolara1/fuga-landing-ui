@@ -3,19 +3,19 @@
 	import Button from '$lib/components/Button.svelte';
 </script>
 
-<section id="pricing" class="bg-black py-20 text-white">
+<section id="pricing" class="bg-black py-16 text-white sm:py-20">
 	<div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-		<div class="mb-16 text-center">
-			<h2 class="mb-4 text-3xl font-bold md:text-4xl">{$t('pricing.title')}</h2>
-			<p class="mx-auto max-w-2xl text-xl text-gray-300">
+		<div class="mb-12 text-center sm:mb-16">
+			<h2 class="mb-4 text-2xl font-bold sm:text-3xl md:text-4xl">{$t('pricing.title')}</h2>
+			<p class="mx-auto max-w-2xl text-lg text-gray-300 sm:text-xl">
 				{$t('pricing.description')}
 			</p>
 		</div>
 
-		<div class="mx-auto grid max-w-5xl grid-cols-1 gap-8 lg:grid-cols-3">
+		<div class="mx-auto grid max-w-5xl grid-cols-1 gap-4 sm:gap-8 lg:grid-cols-3">
 			<!-- Strength Training Package -->
 			<div
-				class="rounded-2xl border-2 border-gray-700 bg-gray-900 p-8 transition-all duration-300 hover:border-white"
+				class="rounded-2xl border-2 border-gray-700 bg-gray-900 p-4 transition-all duration-300 hover:border-white sm:p-8"
 			>
 				<div class="mb-6 text-center">
 					<div
@@ -23,7 +23,7 @@
 					>
 						{$t('pricing.mostPopular')}
 					</div>
-					<h3 class="mb-2 text-2xl font-bold">{$t('pricing.strengthTraining')}</h3>
+					<h3 class="mb-2 text-xl font-bold sm:text-2xl">{$t('pricing.strengthTraining')}</h3>
 					<div class="mb-2 text-3xl font-bold">
 						$120<span class="text-lg text-gray-400">/month</span>
 					</div>
@@ -104,10 +104,10 @@
 
 			<!-- Sport-Specific Training -->
 			<div
-				class="rounded-2xl border-2 border-gray-700 bg-gray-900 p-8 transition-all duration-300 hover:border-white"
+				class="rounded-2xl border-2 border-gray-700 bg-gray-900 p-4 transition-all duration-300 hover:border-white sm:p-8"
 			>
 				<div class="mb-6 text-center">
-					<h3 class="mb-2 text-2xl font-bold">{$t('pricing.sportSpecific')}</h3>
+					<h3 class="mb-2 text-xl font-bold sm:text-2xl">{$t('pricing.sportSpecific')}</h3>
 					<div class="mb-2 text-3xl font-bold">
 						$180<span class="text-lg text-gray-400">/month</span>
 					</div>
@@ -204,7 +204,7 @@
 
 			<!-- Premium Package -->
 			<div
-				class="rounded-2xl border-2 border-gray-700 bg-gray-900 p-8 transition-all duration-300 hover:border-white"
+				class="rounded-2xl border-2 border-gray-700 bg-gray-900 p-4 transition-all duration-300 hover:border-white sm:p-8"
 			>
 				<div class="mb-6 text-center">
 					<div
@@ -212,7 +212,7 @@
 					>
 						{$t('pricing.premium')}
 					</div>
-					<h3 class="mb-2 text-2xl font-bold">{$t('pricing.completeAthlete')}</h3>
+					<h3 class="mb-2 text-xl font-bold sm:text-2xl">{$t('pricing.completeAthlete')}</h3>
 					<div class="mb-2 text-3xl font-bold">
 						$250<span class="text-lg text-gray-400">/month</span>
 					</div>
@@ -309,9 +309,11 @@
 		</div>
 
 		<!-- Additional Information -->
-		<div class="mt-12 text-center">
+		<div class="mt-10 text-center sm:mt-12">
 			<p class="mb-4 text-gray-400">{$t('pricing.allPlansInclude')}</p>
-			<div class="flex flex-wrap justify-center gap-6 text-sm text-gray-300">
+			<div
+				class="flex flex-col items-center gap-4 text-sm text-gray-300 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4"
+			>
 				<div class="flex items-center">
 					<svg
 						class="mr-2 h-4 w-4 text-white"
@@ -364,7 +366,7 @@
 		</div>
 
 		<!-- Contact for Custom Plans -->
-		<div class="mt-8 text-center">
+		<div class="mt-6 text-center sm:mt-8">
 			<p class="text-gray-400">
 				{$t('pricing.needCustomPlan')}
 				<Button href="#contact" variant="text">
