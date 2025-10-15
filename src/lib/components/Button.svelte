@@ -1,9 +1,12 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { createEventDispatcher } from 'svelte';
 
 	type ButtonVariant = 'primary' | 'secondary' | 'text' | 'ghost';
 	type ButtonSize = 'sm' | 'md' | 'lg' | 'xl';
 	type ButtonType = 'button' | 'submit' | 'reset';
+
+	const dispatch = createEventDispatcher<{ click: MouseEvent }>();
 
 	let {
 		variant = 'primary' as ButtonVariant,
@@ -39,6 +42,7 @@
 	const combinedClasses = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${widthClass}`;
 
 	function handleClick(event: MouseEvent) {
+		dispatch('click', event);
 		if (href && !disabled && !loading) {
 			event.preventDefault();
 			goto(href);
@@ -73,7 +77,13 @@
 		{@render children()}
 	</a>
 {:else}
-	<button {type} class={combinedClasses} disabled={disabled || loading} {...rest}>
+	<button
+		{type}
+		class={combinedClasses}
+		disabled={disabled || loading}
+		onclick={(event) => dispatch('click', event)}
+		{...rest}
+	>
 		{#if loading}
 			<svg
 				class="mr-2 h-4 w-4 animate-spin text-current"

@@ -12,6 +12,11 @@ _This document tracks the current work focus, recent changes, next steps, active
 
 ## Recent Changes
 
+- **Header Mobile Navigation Refactor** (Completed - 2025-10-14):
+  - Rebuilt `Header.svelte` with rune-based mobile state and accessible toggle button
+  - Hid desktop login button on small screens while surfacing login/profile actions inside the mobile drawer
+  - Collapse mobile navigation by default and animate open/close with `slide` transition
+
 - **Test Suite Stabilization** (Completed - 2025-10-14):
   - Replaced placeholder `supabase.test.ts` helper with real Vitest assertions to keep the Supabase client covered without runtime calls
   - Scoped home page heading lookups in both Vitest and Playwright specs to the `<main>` landmark to satisfy strict querying

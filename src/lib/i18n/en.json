@@ -6,7 +6,9 @@
 		"blog": "Blog",
 		"contact": "Contact",
 		"login": "Login",
-		"profile": "Profile"
+		"profile": "Profile",
+		"openMenu": "Open menu",
+		"closeMenu": "Close menu"
 	},
 	"hero": {
 		"title": "FUGA",

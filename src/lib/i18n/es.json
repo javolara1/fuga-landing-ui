@@ -6,7 +6,9 @@
 		"blog": "Blog",
 		"contact": "Contacto",
 		"login": "Iniciar Sesión",
-		"profile": "Perfil"
+		"profile": "Perfil",
+		"openMenu": "Abrir menú",
+		"closeMenu": "Cerrar menú"
 	},
 	"hero": {
 		"title": "FUGA",

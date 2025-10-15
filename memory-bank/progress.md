@@ -62,6 +62,7 @@ _This document tracks what works, what's left to build, the current status, know
   - Error translation helper (`errorTranslations.ts`)
   - Auth utilities for session management
 - **Responsive design** implemented across all components
+- **Header mobile navigation** now collapses by default with an animated toggle; login/profile actions appear inside the drawer on small screens
 - **Black and white brand identity** consistently applied across all pages
 - **Server-side rendering** fully functional with proper SSR handling
 - **Development environment** running successfully with no errors
