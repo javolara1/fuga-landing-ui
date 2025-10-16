@@ -16,17 +16,17 @@
 		disabled = false,
 		type = 'button' as ButtonType,
 		fullWidth = false,
+		isSelected = false,
 		children,
 		...rest
 	} = $props();
 
-	const baseClasses =
-		'inline-flex items-center justify-center font-bold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black disabled:cursor-not-allowed disabled:opacity-50';
+	const baseClasses = `inline-flex items-center justify-center ${isSelected ? 'font-bold' : 'font-normal'} transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black disabled:cursor-not-allowed disabled:opacity-50`;
 
 	const variantClasses: Record<ButtonVariant, string> = {
 		primary: 'bg-white text-black hover:bg-gray-100 hover:scale-105 shadow-lg',
 		secondary: 'border-2 border-white text-white hover:bg-white hover:text-black',
-		text: 'text-white hover:text-gray-300 bg-transparent',
+		text: `text-white hover:text-gray-300 bg-transparent`,
 		ghost: 'bg-transparent text-white hover:bg-white/10'
 	};
 

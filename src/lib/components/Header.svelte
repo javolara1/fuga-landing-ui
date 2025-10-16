@@ -64,13 +64,14 @@
 				</div>
 
 				<!-- Mobile menu button -->
-				<button
-					type="button"
-					class="inline-flex items-center justify-center rounded-lg p-2 text-white transition-colors duration-200 hover:bg-white/10 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black focus:outline-none md:hidden"
+				<Button
+					variant="ghost"
+					size="md"
 					onclick={toggleMobileNav}
 					aria-controls="mobile-navigation"
 					aria-expanded={isMobileNavOpen}
 					aria-label={isMobileNavOpen ? $t('header.closeMenu') : $t('header.openMenu')}
+					class="md:hidden"
 				>
 					{#if isMobileNavOpen}
 						<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -91,7 +92,7 @@
 							></path>
 						</svg>
 					{/if}
-				</button>
+				</Button>
 			</div>
 		</div>
 
