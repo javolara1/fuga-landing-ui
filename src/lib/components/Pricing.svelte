@@ -3,34 +3,34 @@
 	import Button from '$lib/components/Button.svelte';
 </script>
 
-<section id="pricing" class="bg-black py-16 text-white sm:py-20">
+<section id="pricing" class="bg-black py-12 text-white sm:py-16 lg:py-20">
 	<div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-		<div class="mb-12 text-center sm:mb-16">
-			<h2 class="mb-4 text-2xl font-bold sm:text-3xl md:text-4xl">{$t('pricing.title')}</h2>
-			<p class="mx-auto max-w-2xl text-lg text-gray-300 sm:text-xl">
+		<div class="mb-12 text-center">
+			<h2 class="mb-8 text-3xl font-bold sm:text-4xl md:text-5xl">{$t('pricing.title')}</h2>
+			<p class="mx-auto max-w-2xl text-base text-gray-300 sm:text-lg">
 				{$t('pricing.description')}
 			</p>
 		</div>
 
-		<div class="mx-auto grid max-w-5xl grid-cols-1 gap-4 sm:gap-8 lg:grid-cols-3">
+		<div class="mx-auto grid max-w-6xl grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-3">
 			<!-- Strength Training Package -->
 			<div
-				class="rounded-2xl border-2 border-gray-700 bg-gray-900 p-4 transition-all duration-300 hover:border-white sm:p-8"
+				class="rounded-2xl border border-gray-800 bg-gray-900 p-6 transition-all duration-300 hover:border-gray-600"
 			>
 				<div class="mb-6 text-center">
 					<div
-						class="mb-4 inline-flex items-center rounded-full bg-gray-800 px-3 py-1 text-xs font-medium text-white"
+						class="mb-4 inline-flex items-center rounded-full bg-gray-800 px-4 py-2 text-sm font-medium text-white"
 					>
 						{$t('pricing.mostPopular')}
 					</div>
-					<h3 class="mb-2 text-xl font-bold sm:text-2xl">{$t('pricing.strengthTraining')}</h3>
-					<div class="mb-2 text-3xl font-bold">
+					<h3 class="mb-4 text-xl font-bold">{$t('pricing.strengthTraining')}</h3>
+					<div class="mb-4 text-3xl font-bold">
 						$120<span class="text-lg text-gray-400">/month</span>
 					</div>
 					<p class="text-sm text-gray-400">{$t('pricing.perfectForStrength')}</p>
 				</div>
 
-				<ul class="mb-8 space-y-3">
+				<ul class="mb-8 space-y-4">
 					<li class="flex items-center text-gray-300">
 						<svg
 							class="mr-3 h-5 w-5 text-white"

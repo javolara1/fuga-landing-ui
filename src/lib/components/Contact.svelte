@@ -3,19 +3,19 @@
 	import Button from '$lib/components/Button.svelte';
 </script>
 
-<section id="contact" class="bg-black py-16 text-white sm:py-20">
+<section id="contact" class="bg-black py-12 text-white sm:py-16 lg:py-20">
 	<div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-		<div class="mb-12 text-center sm:mb-16">
-			<h2 class="mb-4 text-2xl font-bold sm:text-3xl md:text-4xl">{$t('contact.title')}</h2>
-			<p class="mx-auto max-w-2xl text-lg text-gray-300 sm:text-xl">
+		<div class="mb-12 text-center">
+			<h2 class="mb-8 text-3xl font-bold sm:text-4xl md:text-5xl">{$t('contact.title')}</h2>
+			<p class="mx-auto max-w-2xl text-base text-gray-300 sm:text-lg">
 				{$t('contact.description')}
 			</p>
 		</div>
 
-		<div class="grid grid-cols-1 gap-10 sm:gap-12 lg:grid-cols-2">
+		<div class="grid grid-cols-1 gap-8 sm:gap-12 lg:grid-cols-2">
 			<!-- Contact Information -->
 			<div>
-				<h3 class="mb-6 text-xl font-bold sm:text-2xl">{$t('contact.contactInformation')}</h3>
+				<h3 class="mb-6 text-xl font-bold">{$t('contact.contactInformation')}</h3>
 
 				<div class="space-y-6">
 					<div class="flex items-start gap-4">
@@ -83,9 +83,9 @@
 				</div>
 
 				<!-- Training Hours -->
-				<div class="mt-8 rounded-xl border border-gray-800 bg-gray-900 p-5 sm:p-6">
+				<div class="mt-8 rounded-xl border border-gray-800 bg-gray-900 p-6">
 					<h4 class="mb-4 text-lg font-bold">{$t('contact.trainingHours')}</h4>
-					<div class="space-y-2 text-sm">
+					<div class="space-y-3 text-sm">
 						<div class="flex justify-between">
 							<span class="text-gray-300">{$t('contact.mondayFriday')}</span>
 							<span class="text-white">6:00 AM - 9:00 PM</span>
@@ -103,8 +103,8 @@
 			</div>
 
 			<!-- Contact Form -->
-			<div class="rounded-2xl border border-gray-800 bg-gray-900 p-6 sm:p-8">
-				<h3 class="mb-6 text-xl font-bold sm:text-2xl">{$t('contact.sendMessage')}</h3>
+			<div class="rounded-2xl border border-gray-800 bg-gray-900 p-6">
+				<h3 class="mb-6 text-xl font-bold">{$t('contact.sendMessage')}</h3>
 				<form class="space-y-6">
 					<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
 						<div>
