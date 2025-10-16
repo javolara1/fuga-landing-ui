@@ -181,14 +181,22 @@ A centralized, reusable button component that ensures design consistency through
 - **Navigation Support**: Can act as button or link (href prop)
 - **Loading States**: Built-in loading indicator
 - **Full Width Option**: Responsive full-width mode
+- **Selected State**: `isSelected` prop for navigation state indication
 - **Accessibility**: Proper focus states and ARIA support
 
 **Variants**:
 
 - `primary`: White background, black text - Used for main CTAs
 - `secondary`: White border, white text - Used for secondary actions
-- `text`: Transparent background, white text - Used for navigation links
+- `text`: Transparent background, white text - Used for navigation links (supports `isSelected`)
 - `ghost`: Transparent background with hover effect - Used for subtle actions
+
+**Selected State**:
+
+- **Prop**: `isSelected` (boolean, defaults to false)
+- **Styling**: Applied to `text` variant only
+- **Visual**: `font-medium text-white` when selected
+- **Use Case**: Navigation buttons to indicate current page/section
 
 **Usage Pattern**:
 
@@ -197,8 +205,8 @@ A centralized, reusable button component that ensures design consistency through
 	import Button from '$lib/components/Button.svelte';
 </script>
 
-<!-- Navigation button -->
-<Button variant="text" href="/path">Navigate</Button>
+<!-- Navigation button with selected state -->
+<Button variant="text" href="/path" isSelected={currentPage === 'path'}>Navigate</Button>
 
 <!-- Primary CTA -->
 <Button variant="primary" onclick={() => handleClick()}>Click Me</Button>

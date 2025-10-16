@@ -16,8 +16,10 @@ _This document tracks what works, what's left to build, the current status, know
   - **Button Component**: Centralized Button.svelte with TypeScript types
     - Four variants: primary (white bg), secondary (outline), text (minimal), ghost (transparent)
     - Four sizes: sm, md, lg, xl
-    - Props for href, loading, disabled, type, fullWidth
+    - Props for href, loading, disabled, type, fullWidth, isSelected
+    - **isSelected prop**: Added for navigation state indication (text variant only)
     - Used consistently throughout entire application
+    - **Recent Enhancement**: Unified styling across all header components and added isSelected prop
   - **Breadcrumb Component**: Centralized Breadcrumb.svelte with TypeScript types
     - Accepts array of BreadcrumbItem objects
     - Automatic styling: last item non-clickable (current page), others clickable

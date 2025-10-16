@@ -37,17 +37,19 @@ _This document tracks the current work focus, recent changes, next steps, active
     - `/admin/blog` - Back navigation with arrow to admin dashboard
   - Maintains consistent styling and user experience across application
 
-- **Button Component System** (Completed):
+- **Button Component System** (Enhanced - 2025-10-15):
   - Created reusable Button.svelte component with TypeScript types for all props
   - Implemented four variants: primary, secondary, text, and ghost
   - Added four sizes: sm, md, lg, and xl
   - Added props: href, loading, disabled, type, fullWidth
+  - **New prop**: `isSelected` for navigation state indication (text variant only)
   - Replaced ALL existing button and anchor elements throughout the entire codebase
   - Applied consistent design system across all UI interactions
   - Primary variant: White background, black text (for main CTAs)
   - Secondary variant: Outline style (for secondary actions)
-  - Text variant: Minimal styling (for navigation, links)
+  - Text variant: Minimal styling (for navigation, links) with `isSelected` support
   - Ghost variant: Transparent background (for subtle actions)
+  - **Recent Enhancement**: Added `isSelected` prop for active navigation state
 
 - **Blog Management System** (Completed):
   - Implemented `/admin/blog` route with server-side data loading
