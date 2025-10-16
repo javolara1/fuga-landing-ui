@@ -3,7 +3,7 @@
 	import Button from '$lib/components/Button.svelte';
 </script>
 
-<section class="bg-black py-12 text-white sm:py-16 lg:py-20">
+<section class="bg-black pt-12 text-white sm:pt-16 lg:pt-20">
 	<div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 		<div class="text-center">
 			<!-- Main Heading -->

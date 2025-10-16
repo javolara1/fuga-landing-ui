@@ -6,8 +6,6 @@
 
 	let { currentPage = 'profile' } = $props();
 
-	console.log(currentPage);
-
 	let isMobileNavOpen = $state(false);
 
 	function toggleMobileNav() {

@@ -2,10 +2,10 @@
 	import { t } from '$lib/i18n';
 </script>
 
-<section id="about" class="bg-black py-12 text-white sm:py-16 lg:py-20">
+<section id="about" class="bg-black pt-12 text-white sm:pt-16 lg:pt-20">
 	<div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 		<div class="mb-12 text-center">
-			<h2 class="mb-8 text-3xl font-bold sm:text-4xl md:text-5xl">{$t('about.title')}</h2>
+			<h2 class="mt-8 mb-8 text-3xl font-bold sm:text-4xl md:text-5xl">{$t('about.title')}</h2>
 			<p class="mx-auto max-w-2xl text-base text-gray-300 sm:text-lg">
 				{$t('about.description')}
 			</p>
