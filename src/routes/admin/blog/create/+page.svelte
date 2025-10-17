@@ -6,6 +6,7 @@
 	import Button from '$lib/components/Button.svelte';
 	import { Carta, MarkdownEditor } from 'carta-md';
 	import type { BreadcrumbItem } from '$lib/types';
+	import '$lib/styles/md-styles.css';
 
 	import DOMPurify from 'isomorphic-dompurify';
 
@@ -46,7 +47,7 @@
 </svelte:head>
 
 <div class="min-h-screen bg-black text-white">
-	<AdminHeader {data} currentPage="blog" />
+	<AdminHeader currentPage="blog" />
 
 	<!-- Main Content -->
 	<main class="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
@@ -121,7 +122,7 @@
 					<textarea id="content" name="content" required class="hidden" bind:value={content}
 					></textarea>
 					<div class="carta-container">
-						<MarkdownEditor mode={'tabs'} bind:value={content} {carta} />
+						<MarkdownEditor mode={'tabs'} theme="default" bind:value={content} {carta} />
 					</div>
 				</div>
 
@@ -173,241 +174,3 @@
 		</div>
 	</main>
 </div>
-
-<style>
-	/* Set monospace font for Carta editor */
-	:global(.carta-font-code) {
-		font-size: 1.1rem;
-		line-height: 1.1rem;
-		letter-spacing: normal;
-		color: white;
-	}
-
-	/* Custom dark theme for Carta MD */
-	:global(.carta-theme__default) {
-		--border-color: #374151;
-		--selection-color: #60a5fa3d;
-		--focus-outline: #60a5fa;
-		--hover-color: #374151;
-		--caret-color: #ffffff;
-		--text-color: #ffffff;
-
-		--border-color-dark: #4b5563;
-		--selection-color-dark: #60a5fa3d;
-		--focus-outline-dark: #60a5fa;
-		--hover-color-dark: #4b5563;
-		--caret-color-dark: #ffffff;
-		--text-color-dark: #f1f1f1;
-	}
-
-	:global(.carta-theme__default.carta-editor) {
-		border: 1px solid var(--border-color);
-		border-radius: 0.5rem;
-		background-color: #1f2937;
-		color: white;
-	}
-
-	:global(.carta-theme__default .carta-editor ::selection) {
-		background: var(--selection-color);
-	}
-
-	/* Box sizings */
-	:global(.carta-theme__default .carta-toolbar) {
-		border-bottom: 1px solid var(--border-color);
-		background-color: #111827;
-		padding: 0.5rem 0.75rem;
-	}
-
-	:global(.carta-theme__default .carta-wrapper) {
-		padding: 0 1rem 0 1rem;
-		background-color: #1f2937;
-	}
-
-	:global(.carta-theme__default .carta-container > *) {
-		margin: 1rem 0 1rem 0;
-	}
-
-	/* Text settings */
-	:global(.carta-theme__default .carta-input) {
-		caret-color: var(--caret-color);
-		font-size: 0.95rem;
-		background-color: #111827;
-		color: white;
-	}
-
-	:global(.carta-theme__default .carta-input ::placeholder) {
-		color: #9ca3af;
-	}
-
-	/* Splitter */
-	:global(.carta-theme__default .mode-split.carta-container::after) {
-		content: '';
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		left: 50%;
-		width: 1px;
-		background: var(--border-color);
-	}
-
-	:global(.carta-theme__default .mode-split .carta-input) {
-		padding-right: 1rem;
-	}
-
-	:global(.carta-theme__default .mode-split .carta-renderer) {
-		padding-left: 1rem;
-	}
-
-	/* Toolbar */
-	:global(.carta-theme__default .carta-toolbar-left) {
-		display: flex;
-		align-items: flex-end;
-	}
-
-	:global(.carta-theme__default button) {
-		color: var(--text-color);
-	}
-
-	/* Markdown input and renderer */
-	:global(.carta-theme__default .carta-input),
-	:global(.carta-theme__default .carta-renderer) {
-		height: 600px;
-		overflow-y: scroll;
-		background-color: #1f2937;
-		color: white;
-	}
-
-	:global(.carta-theme__default .carta-renderer) {
-		background-color: #1f2937;
-		color: white;
-	}
-
-	:global(.carta-theme__default .carta-renderer h1),
-	:global(.carta-theme__default .carta-renderer h2),
-	:global(.carta-theme__default .carta-renderer h3),
-	:global(.carta-theme__default .carta-renderer h4),
-	:global(.carta-theme__default .carta-renderer h5),
-	:global(.carta-theme__default .carta-renderer h6) {
-		color: white;
-	}
-
-	:global(.carta-theme__default .carta-renderer p) {
-		color: #d1d5db;
-	}
-
-	:global(.carta-theme__default .carta-renderer code) {
-		background-color: #374151;
-		color: #f3f4f6;
-		padding: 0.125rem 0.25rem;
-		border-radius: 0.25rem;
-	}
-
-	:global(.carta-theme__default .carta-renderer pre) {
-		background-color: #111827;
-		color: #f3f4f6;
-		border: 1px solid #374151;
-		border-radius: 0.375rem;
-		padding: 1rem;
-	}
-
-	:global(.carta-theme__default .carta-renderer blockquote) {
-		border-left: 4px solid #4b5563;
-		color: #9ca3af;
-		padding-left: 1rem;
-		margin-left: 0;
-	}
-
-	:global(.carta-theme__default .carta-renderer a) {
-		color: #60a5fa;
-	}
-
-	:global(.carta-theme__default .carta-renderer a:hover) {
-		color: #93c5fd;
-	}
-
-	:global(.carta-theme__default .carta-renderer table) {
-		border: 1px solid #374151;
-		border-collapse: collapse;
-	}
-
-	:global(.carta-theme__default .carta-renderer th),
-	:global(.carta-theme__default .carta-renderer td) {
-		border: 1px solid #374151;
-		padding: 0.5rem;
-		background-color: #1f2937;
-		color: white;
-	}
-
-	:global(.carta-theme__default .carta-renderer th) {
-		background-color: #111827;
-		font-weight: 600;
-	}
-
-	/* Icons */
-	:global(.carta-theme__default .carta-icon),
-	:global(.carta-theme__default .carta-icon-full) {
-		border: 0;
-		background: transparent;
-		color: #d1d5db;
-	}
-
-	:global(.carta-theme__default .carta-icon-full) {
-		padding: 6px 4px;
-	}
-
-	:global(.carta-theme__default .carta-icon-full span) {
-		margin-left: 6px;
-	}
-
-	:global(.carta-theme__default .carta-icon:hover),
-	:global(.carta-theme__default .carta-icon-full:hover) {
-		background: var(--hover-color);
-		color: white;
-	}
-
-	:global(.carta-input > pre) {
-		background: inherit;
-	}
-
-	:global(.carta-theme__default .carta-icons-menu) {
-		padding: 6px;
-		border: 1px solid var(--border-color);
-		border-radius: 6px;
-		min-width: 180px;
-		background-color: #111827;
-	}
-
-	:global(.carta-theme__default .carta-icons-menu .carta-icon-full) {
-		margin-top: 2px;
-	}
-
-	:global(.carta-theme__default .carta-icons-menu .carta-icon-full:first-child) {
-		margin-top: 0;
-	}
-
-	/* Buttons */
-	:global(.carta-theme__default .carta-toolbar-left button) {
-		background: none;
-		border: none;
-		font-size: 0.9rem;
-		padding-bottom: 4px;
-		border-bottom: 2px solid transparent;
-		margin-right: 12px;
-		cursor: pointer;
-		color: #d1d5db;
-	}
-
-	:global(.carta-theme__default .carta-toolbar-left button:last-child) {
-		margin-right: 0;
-	}
-
-	:global(.carta-theme__default .carta-toolbar-left button.carta-active) {
-		font-weight: 600;
-		border-bottom: 2px solid #60a5fa;
-		color: white;
-	}
-
-	:global(.carta-theme__default .carta-toolbar-left button:hover) {
-		color: white;
-	}
-</style>

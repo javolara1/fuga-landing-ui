@@ -22,21 +22,23 @@
 </svelte:head>
 
 <div class="min-h-screen bg-black text-white">
-	<AdminHeader {data} currentPage="blog" />
+	<AdminHeader currentPage="blog" />
 
 	<!-- Main Content -->
 	<main class="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
 		<div class="rounded-lg">
 			<!-- Breadcrumb and Title -->
 			<div class="mb-8 flex items-start justify-between">
-				<div>
+				<div class="flex min-w-full flex-col">
 					<Breadcrumb items={breadcrumbItems} />
-					<h1 class="text-3xl font-bold">{$t('admin.blogManagement.title')}</h1>
+					<div class="flex justify-between">
+						<h1 class="text-3xl font-bold">{$t('admin.blogManagement.title')}</h1>
+						<Button href="/admin/blog/create" variant="secondary" size="md">
+							{$t('admin.blogManagement.createArticle')}
+						</Button>
+					</div>
 					<p class="mt-2 text-gray-400">{$t('admin.blogManagement.description')}</p>
 				</div>
-				<Button href="/admin/blog/create" variant="secondary" size="md">
-					{$t('admin.blogManagement.createArticle')}
-				</Button>
 			</div>
 
 			<!-- Articles List -->
