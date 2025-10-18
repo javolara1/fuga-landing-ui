@@ -91,7 +91,14 @@
 	"common": {
 		"language": "Idioma",
 		"english": "Inglés",
-		"spanish": "Español"
+		"spanish": "Español",
+		"cancel": "Cancelar",
+		"confirmation": {
+			"title": "Confirmar Acción",
+			"message": "¿Estás seguro de que quieres proceder?",
+			"confirm": "Confirmar",
+			"cancel": "Cancelar"
+		}
 	},
 	"auth": {
 		"welcomeBack": "Bienvenido",
@@ -301,6 +308,78 @@
 		"contentManagement": "Gestión de Contenido",
 		"contentManagementDescription": "Administra artículos del blog y contenido de entrenamiento",
 		"systemSettings": "Configuraciones del Sistema",
-		"systemSettingsDescription": "Configura preferencias y ajustes del sistema"
+		"systemSettingsDescription": "Configura preferencias y ajustes del sistema",
+		"blogManagement": {
+			"title": "Gestión del Blog",
+			"description": "Administra todos los artículos incluyendo contenido publicado y borradores",
+			"createArticle": "Crear Artículo",
+			"noArticles": "No se encontraron artículos.",
+			"noArticlesDescription": "Crea tu primer artículo para comenzar.",
+			"table": {
+				"title": "Título",
+				"status": "Estado",
+				"published": "Publicado",
+				"created": "Creado"
+			},
+			"status": {
+				"published": "Publicado",
+				"draft": "Borrador"
+			},
+			"pagination": {
+				"previous": "← Anterior",
+				"next": "Siguiente →",
+				"pageInfo": "Mostrando página {currentPage} de {totalPages}",
+				"articlesTotal": "{totalCount} artículos en total"
+			},
+			"create": {
+				"title": "Crear Artículo",
+				"description": "Crea un nuevo artículo de blog con formato markdown",
+				"form": {
+					"title": "Título",
+					"titlePlaceholder": "Ingresa el título del artículo",
+					"slug": "Slug",
+					"slugPlaceholder": "url-amigable",
+					"slugHelp": "Esto se usará en la URL del artículo. Se genera automáticamente desde el título.",
+					"excerpt": "Extracto",
+					"excerptPlaceholder": "Breve descripción del artículo (opcional)",
+					"content": "Contenido",
+					"contentPlaceholder": "Escribe el contenido de tu artículo aquí...",
+					"status": "Estado"
+				},
+				"errors": {
+					"unauthorized": "No autorizado",
+					"titleRequired": "El título es requerido",
+					"contentRequired": "El contenido es requerido",
+					"slugRequired": "El slug es requerido",
+					"slugExists": "Ya existe un artículo con este slug",
+					"createFailed": "Error al crear el artículo",
+					"unexpectedError": "Ocurrió un error inesperado"
+				},
+				"success": "Artículo creado exitosamente"
+			},
+			"edit": {
+				"title": "Editar Artículo",
+				"description": "Actualiza el artículo del blog con formato markdown",
+				"updateArticle": "Actualizar Artículo",
+				"deleteArticle": "Eliminar Artículo",
+				"deleteConfirmation": {
+					"title": "Eliminar Artículo",
+					"message": "¿Estás seguro de que quieres eliminar este artículo? Esta acción no se puede deshacer.",
+					"confirm": "Eliminar Artículo",
+					"cancel": "Cancelar"
+				},
+				"errors": {
+					"unauthorized": "No autorizado",
+					"titleRequired": "El título es requerido",
+					"contentRequired": "El contenido es requerido",
+					"slugRequired": "El slug es requerido",
+					"slugExists": "Ya existe un artículo con este slug",
+					"updateFailed": "Error al actualizar el artículo",
+					"deleteFailed": "Error al eliminar el artículo",
+					"unexpectedError": "Ocurrió un error inesperado"
+				},
+				"success": "Artículo actualizado exitosamente"
+			}
+		}
 	}
 }

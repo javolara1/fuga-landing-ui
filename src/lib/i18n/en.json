@@ -92,7 +92,13 @@
 		"language": "Language",
 		"english": "English",
 		"spanish": "Spanish",
-		"cancel": "Cancel"
+		"cancel": "Cancel",
+		"confirmation": {
+			"title": "Confirm Action",
+			"message": "Are you sure you want to proceed?",
+			"confirm": "Confirm",
+			"cancel": "Cancel"
+		}
 	},
 	"auth": {
 		"welcomeBack": "Welcome Back",
@@ -354,6 +360,29 @@
 					"unexpectedError": "An unexpected error occurred"
 				},
 				"success": "Article created successfully"
+			},
+			"edit": {
+				"title": "Edit Article",
+				"description": "Update the blog article with markdown formatting",
+				"updateArticle": "Update Article",
+				"deleteArticle": "Delete Article",
+				"deleteConfirmation": {
+					"title": "Delete Article",
+					"message": "Are you sure you want to delete this article? This action cannot be undone.",
+					"confirm": "Delete Article",
+					"cancel": "Cancel"
+				},
+				"errors": {
+					"unauthorized": "Unauthorized",
+					"titleRequired": "Title is required",
+					"contentRequired": "Content is required",
+					"slugRequired": "Slug is required",
+					"slugExists": "An article with this slug already exists",
+					"updateFailed": "Failed to update article",
+					"deleteFailed": "Failed to delete article",
+					"unexpectedError": "An unexpected error occurred"
+				},
+				"success": "Article updated successfully"
 			}
 		}
 	}

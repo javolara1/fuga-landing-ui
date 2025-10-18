@@ -2,7 +2,7 @@
 	import { goto } from '$app/navigation';
 	import { createEventDispatcher } from 'svelte';
 
-	type ButtonVariant = 'primary' | 'secondary' | 'text' | 'ghost';
+	type ButtonVariant = 'primary' | 'secondary' | 'text' | 'ghost' | 'danger';
 	type ButtonSize = 'sm' | 'md' | 'lg' | 'xl';
 	type ButtonType = 'button' | 'submit' | 'reset';
 
@@ -27,7 +27,8 @@
 		primary: 'bg-white text-black hover:bg-gray-100 hover:scale-105 shadow-lg',
 		secondary: 'border-2 border-white text-white hover:bg-white hover:text-black',
 		text: `text-white hover:text-gray-300 bg-transparent`,
-		ghost: 'bg-transparent text-white hover:bg-white/10'
+		ghost: 'bg-transparent text-white hover:bg-white/10',
+		danger: 'bg-red-600 text-white hover:bg-red-700 hover:scale-105 shadow-lg'
 	};
 
 	const sizeClasses: Record<ButtonSize, string> = {

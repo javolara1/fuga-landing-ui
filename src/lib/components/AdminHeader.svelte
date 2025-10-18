@@ -23,7 +23,7 @@
 			<!-- Logo -->
 			<div class="flex-shrink-0">
 				<Button href="/" variant="text" size="xl">
-					<h1 class="font-bold text-white">FUGA</h1>
+					<h1>FUGA</h1>
 				</Button>
 			</div>
 
