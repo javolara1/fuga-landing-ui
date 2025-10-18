@@ -16,48 +16,49 @@
 	}
 </script>
 
-<header class="sticky top-0 z-50 border-b border-gray-800 bg-black">
+<header class="sticky top-0 z-50 border-b border-gray-800 bg-black" data-testid="header">
 	<div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 		<div class="flex items-center justify-between py-4">
 			<!-- Logo -->
 			<div class="flex-shrink-0">
-				<Button href="/" variant="text" size="xl">
+				<Button href="/" variant="text" size="xl" data-testid="logo">
 					<h1>FUGA</h1>
 				</Button>
 			</div>
 
 			<!-- Navigation Links - Desktop -->
-			<nav class="hidden space-x-4 md:flex">
-				<Button href="#services" variant="text" size="md">
+			<nav class="hidden space-x-4 md:flex" data-testid="desktop-navigation">
+				<Button href="#services" variant="text" size="md" data-testid="nav-services">
 					{$t('header.services')}
 				</Button>
-				<Button href="#pricing" variant="text" size="md">
+				<Button href="#pricing" variant="text" size="md" data-testid="nav-pricing">
 					{$t('header.pricing')}
 				</Button>
-				<Button href="#about" variant="text" size="md">
+				<Button href="#about" variant="text" size="md" data-testid="nav-about">
 					{$t('header.about')}
 				</Button>
-				<Button href="/blog" variant="text" size="md">
+				<Button href="/blog" variant="text" size="md" data-testid="nav-blog">
 					{$t('header.blog')}
 				</Button>
-				<Button href="#contact" variant="text" size="md">
+				<Button href="#contact" variant="text" size="md" data-testid="nav-contact">
 					{$t('header.contact')}
 				</Button>
 			</nav>
 
 			<div class="flex items-center gap-3">
 				<!-- Auth Buttons - Desktop Only -->
-				<div class="hidden md:block">
+				<div class="hidden md:block" data-testid="desktop-auth">
 					{#if user}
 						<Button
 							href={profile?.role === 'admin' ? '/admin' : '/user'}
 							variant="secondary"
 							size="md"
+							data-testid="nav-profile"
 						>
 							{$t('header.profile')}
 						</Button>
 					{:else}
-						<Button href="/login" variant="secondary" size="md">
+						<Button href="/login" variant="secondary" size="md" data-testid="nav-login">
 							{$t('header.login')}
 						</Button>
 					{/if}
@@ -72,6 +73,7 @@
 					aria-expanded={isMobileNavOpen}
 					aria-label={isMobileNavOpen ? $t('header.closeMenu') : $t('header.openMenu')}
 					class="md:hidden"
+					data-testid="mobile-menu-button"
 				>
 					{#if isMobileNavOpen}
 						<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -101,21 +103,57 @@
 				id="mobile-navigation"
 				class="border-t border-gray-800 pb-4 md:hidden"
 				transition:slide={{ duration: 200 }}
+				data-testid="mobile-navigation"
 			>
-				<nav class="flex flex-col space-y-4 pt-4">
-					<Button href="#services" variant="text" size="md" fullWidth onclick={closeMobileNav}>
+				<nav class="flex flex-col space-y-4 pt-4" data-testid="mobile-nav-links">
+					<Button
+						href="#services"
+						variant="text"
+						size="md"
+						fullWidth
+						onclick={closeMobileNav}
+						data-testid="mobile-nav-services"
+					>
 						{$t('header.services')}
 					</Button>
-					<Button href="#pricing" variant="text" size="md" fullWidth onclick={closeMobileNav}>
+					<Button
+						href="#pricing"
+						variant="text"
+						size="md"
+						fullWidth
+						onclick={closeMobileNav}
+						data-testid="mobile-nav-pricing"
+					>
 						{$t('header.pricing')}
 					</Button>
-					<Button href="#about" variant="text" size="md" fullWidth onclick={closeMobileNav}>
+					<Button
+						href="#about"
+						variant="text"
+						size="md"
+						fullWidth
+						onclick={closeMobileNav}
+						data-testid="mobile-nav-about"
+					>
 						{$t('header.about')}
 					</Button>
-					<Button href="/blog" variant="text" size="md" fullWidth onclick={closeMobileNav}>
+					<Button
+						href="/blog"
+						variant="text"
+						size="md"
+						fullWidth
+						onclick={closeMobileNav}
+						data-testid="mobile-nav-blog"
+					>
 						{$t('header.blog')}
 					</Button>
-					<Button href="#contact" variant="text" size="md" fullWidth onclick={closeMobileNav}>
+					<Button
+						href="#contact"
+						variant="text"
+						size="md"
+						fullWidth
+						onclick={closeMobileNav}
+						data-testid="mobile-nav-contact"
+					>
 						{$t('header.contact')}
 					</Button>
 					{#if user}
@@ -125,11 +163,19 @@
 							size="md"
 							fullWidth
 							onclick={closeMobileNav}
+							data-testid="mobile-nav-profile"
 						>
 							{$t('header.profile')}
 						</Button>
 					{:else}
-						<Button href="/login" variant="secondary" size="md" fullWidth onclick={closeMobileNav}>
+						<Button
+							href="/login"
+							variant="secondary"
+							size="md"
+							fullWidth
+							onclick={closeMobileNav}
+							data-testid="mobile-nav-login"
+						>
 							{$t('header.login')}
 						</Button>
 					{/if}

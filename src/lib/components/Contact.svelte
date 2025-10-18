@@ -3,7 +3,11 @@
 	import Button from '$lib/components/Button.svelte';
 </script>
 
-<section id="contact" class="bg-black py-12 text-white sm:py-16 lg:py-20">
+<section
+	id="contact"
+	class="bg-black py-12 text-white sm:py-16 lg:py-20"
+	data-testid="contact-section"
+>
 	<div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 		<div class="mb-12 text-center">
 			<h2 class="mt-8 mb-8 text-3xl font-bold sm:text-4xl md:text-5xl">{$t('contact.title')}</h2>
