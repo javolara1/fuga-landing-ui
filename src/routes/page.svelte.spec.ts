@@ -1,14 +1,12 @@
-import { page } from '@vitest/browser/context';
-import { describe, expect, it } from 'vitest';
-import { render } from 'vitest-browser-svelte';
+import { render, screen } from '@testing-library/svelte';
+import { describe, expect, test } from 'vitest';
+import '@testing-library/jest-dom/vitest';
+
 import Page from './+page.svelte';
 
 describe('/+page.svelte', () => {
-	it('should render h1', async () => {
+	test('should render h1', () => {
 		render(Page);
-
-		const main = page.getByRole('main');
-		const heading = main.getByRole('heading', { level: 1 });
-		await expect.element(heading).toBeInTheDocument();
+		expect(screen.getByRole('heading', { level: 1 })).toContain('FUGA');
 	});
 });
