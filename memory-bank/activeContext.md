@@ -26,6 +26,37 @@ _This document tracks the current work focus, recent changes, next steps, active
   - Used robust data-testid selectors for reliable testing
   - All 7 unit tests now passing successfully
 
+- **ConfirmationDialog Component Implementation** (Completed):
+  - Created reusable ConfirmationDialog.svelte component
+  - Features: TypeScript props, accessibility support, keyboard navigation
+  - Customizable title, message, and button text with i18n defaults
+  - Backdrop with blur effect and proper focus management
+  - Uses centralized Button component for consistency
+
+- **Auth Utilities System** (Completed):
+  - Created centralized logout functionality in `src/lib/utils/authUtils.ts`
+  - Complete session cleanup including cookies, Supabase sign out, and locals object
+  - Error handling with fallback cleanup and automatic redirect
+  - Used in user profile and admin logout functionality
+
+- **Error Translation System** (Completed):
+  - Created error translation helper in `src/lib/utils/errorTranslations.ts`
+  - Maps Supabase auth error codes to translated messages
+  - Supports common errors: invalid_credentials, email_exists, weak_password, etc.
+  - Integration with i18n system for consistent user feedback
+
+- **Markdown Editor Styling** (Completed):
+  - Created custom dark theme for Carta MD editor in `src/lib/styles/md-styles.css`
+  - Complete styling matching project design system
+  - Custom toolbar, input area, and renderer styling
+  - Proper contrast ratios and accessibility compliance
+
+- **Test User Management Script** (Completed):
+  - Created `scripts/manage-test-users.js` for development environment
+  - Creates admin and regular test users with proper roles
+  - Can check existing profiles and user details
+  - Uses Supabase admin API for user creation
+
 - **Header Mobile Navigation Refactor** (Completed - 2025-10-14):
   - Rebuilt `Header.svelte` with rune-based mobile state and accessible toggle button
   - Hid desktop login button on small screens while surfacing login/profile actions inside the mobile drawer

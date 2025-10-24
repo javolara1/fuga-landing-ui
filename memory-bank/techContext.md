@@ -53,6 +53,57 @@ The project's dependencies are managed through `package.json`. Key dependencies 
 - `@supabase/supabase-js`: Supabase client for backend integration.
 - `sveltekit-i18n`: For internationalization.
 - `carta-md`: For the Markdown editor in the admin blog section.
+- `isomorphic-dompurify`: For HTML sanitization and security.
+- `dotenv`: For environment variable management.
+- `@sveltejs/adapter-vercel`: Vercel deployment adapter.
+
+## Development Utilities
+
+### Test User Management Script
+
+**Location**: `scripts/manage-test-users.js`
+
+**Purpose**: Create and manage test users for development and testing environments.
+
+**Features**:
+
+- Creates admin and regular test users with proper roles
+- Sets up user profiles with role-based access
+- Can check existing profiles and user details
+- Uses Supabase admin API for user creation
+- Provides command-line interface for different operations
+
+**Usage**:
+
+```bash
+# Create test users (default)
+node scripts/manage-test-users.js
+
+# Check existing profiles
+node scripts/manage-test-users.js check
+
+# Show help
+node scripts/manage-test-users.js help
+```
+
+**Test Users Created**:
+
+- **Admin**: `admin@fuga.com` / `admin123` (role: admin)
+- **Regular User**: `user@fuga.com` / `user123` (role: user)
+
+### Testing Infrastructure
+
+**Unit Testing**:
+
+- **Framework**: Vitest with @testing-library/svelte
+- **Location**: `src/routes/page.svelte.spec.ts` and other component tests
+- **Features**: Comprehensive test suite for root page with 7 tests covering all major sections
+
+**E2E Testing**:
+
+- **Framework**: Playwright
+- **Location**: `e2e/landing-page.test.ts`
+- **Features**: Cross-browser responsive testing for desktop, mobile, and tablet viewports
 
 ## Technical Constraints
 

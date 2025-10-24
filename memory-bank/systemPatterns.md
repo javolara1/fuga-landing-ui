@@ -223,6 +223,183 @@ A centralized, reusable button component that ensures design consistency through
 - Focus rings for accessibility
 - Disabled states with opacity
 
+### ConfirmationDialog Component System
+
+A centralized, reusable confirmation dialog component for user confirmation actions throughout the application.
+
+**Location**: `src/lib/components/ConfirmationDialog.svelte`
+
+**Features**:
+
+- **Type-Safe Props**: Full TypeScript support with customizable props
+- **Accessibility**: Proper ARIA attributes, focus management, and keyboard navigation
+- **Keyboard Support**: Escape key to cancel, Enter key to confirm
+- **Customizable Content**: Title, message, and button text can be customized
+- **Backdrop Effects**: Semi-transparent backdrop with blur effect
+- **Button Integration**: Uses centralized Button component for consistency
+
+**Props**:
+
+```typescript
+interface ConfirmationDialogProps {
+	open?: boolean; // Controls dialog visibility
+	title?: string; // Dialog title (defaults to i18n)
+	message?: string; // Dialog message (defaults to i18n)
+	confirmText?: string; // Confirm button text (defaults to i18n)
+	cancelText?: string; // Cancel button text (defaults to i18n)
+	variant?: 'primary' | 'danger'; // Button variant (future enhancement)
+	confirm?: () => void; // Confirm callback function
+	cancel?: () => void; // Cancel callback function
+}
+```
+
+**Usage Pattern**:
+
+```svelte
+<script>
+	import ConfirmationDialog from '$lib/components/ConfirmationDialog.svelte';
+
+	let showDialog = false;
+
+	function handleConfirm() {
+		// Perform action
+		showDialog = false;
+	}
+
+	function handleCancel() {
+		showDialog = false;
+	}
+</script>
+
+<ConfirmationDialog
+	open={showDialog}
+	title="Delete Article"
+	message="Are you sure you want to delete this article? This action cannot be undone."
+	confirmText="Delete"
+	cancelText="Cancel"
+	confirm={handleConfirm}
+	cancel={handleCancel}
+/>
+```
+
+**Design System Integration**:
+
+- Consistent with black/white brand identity
+- Gray-900 background for dialog container
+- White text for content with gray-300 for secondary text
+- Proper z-index stacking for modal overlay
+- Backdrop blur effect for modern appearance
+- Focus management for accessibility compliance
+
+### Auth Utilities System
+
+Centralized authentication utilities for consistent session management and user operations.
+
+**Location**: `src/lib/utils/authUtils.ts`
+
+**Features**:
+
+- **Logout Function**: Complete session cleanup including cookies, Supabase sign out, and locals object
+- **Error Handling**: Robust error handling with fallback cleanup
+- **Security**: Proper cookie deletion and session invalidation
+- **Automatic Redirect**: Redirects to home page after logout completion
+
+**Functions**:
+
+- `logoutUser(event: RequestEvent)`: Handles complete logout process including:
+  - Supabase Auth sign out
+  - Cookie cleanup (access and refresh tokens)
+  - Locals object cleanup (user and profile data)
+  - Automatic redirect to home page
+  - Error handling with fallback cleanup
+
+**Usage Pattern**:
+
+```typescript
+import { logoutUser } from '$lib/utils/authUtils';
+
+// In a form action or server endpoint
+export const actions = {
+	logout: async (event) => {
+		await logoutUser(event);
+	}
+};
+```
+
+### Error Translation System
+
+Centralized error message translation for consistent user feedback across authentication flows.
+
+**Location**: `src/lib/utils/errorTranslations.ts`
+
+**Features**:
+
+- **Supabase Error Mapping**: Maps common Supabase auth error codes to translation keys
+- **i18n Integration**: Works with sveltekit-i18n translation system
+- **Fallback Support**: Provides fallback error messages for unknown codes
+- **Type Safety**: Full TypeScript support
+
+**Functions**:
+
+- `getTranslatedErrorMessage(errorCode: string | null | undefined, t: (key: string) => string): string`
+  - Maps error codes like 'invalid_credentials', 'email_exists', 'weak_password' to translation keys
+  - Returns appropriate translated error message
+  - Falls back to generic auth error for unknown codes
+
+**Error Mappings**:
+
+- `invalid_credentials` → 'auth.errors.invalid_credentials'
+- `email_not_confirmed` → 'auth.errors.email_not_confirmed'
+- `user_not_found` → 'auth.errors.user_not_found'
+- `weak_password` → 'auth.errors.weak_password'
+- `email_exists` → 'auth.errors.email_exists'
+- `invalid_email` → 'auth.errors.invalid_email'
+
+**Usage Pattern**:
+
+```typescript
+import { getTranslatedErrorMessage } from '$lib/utils/errorTranslations';
+
+// In login/register form actions
+const errorMessage = getTranslatedErrorMessage(error.code, t);
+```
+
+### Markdown Editor Styling System
+
+Custom dark theme styling for the Carta MD editor used in the blog management system.
+
+**Location**: `src/lib/styles/md-styles.css`
+
+**Features**:
+
+- **Complete Dark Theme**: Full dark theme matching project design system
+- **Custom Components**: Styled toolbar, input area, and renderer
+- **Accessibility**: Proper contrast ratios and focus states
+- **Consistent Design**: Matches black/white brand identity with gray accents
+- **Syntax Highlighting**: Styled code blocks and syntax highlighting
+
+**Theme Variables**:
+
+- Primary background: `#1f2937` (gray-800)
+- Secondary background: `#111827` (gray-900)
+- Border colors: `#374151` (gray-700)
+- Text colors: White with `#d1d5db` (gray-300) for secondary text
+- Accent colors: `#60a5fa` (blue-400) for links and active states
+
+**Styled Components**:
+
+- **Toolbar**: Dark background with proper button styling
+- **Input Area**: Syntax-highlighted editor with caret styling
+- **Renderer**: Properly styled Markdown output with code blocks, tables, and lists
+- **Split View**: Clean separator for split editing mode
+- **Icons**: Styled toolbar icons with hover states
+
+**Integration**:
+
+- Used in admin blog creation and editing pages
+- Provides consistent editing experience across the application
+- Maintains design system consistency in admin areas
+
 ### Breadcrumb Component System
 
 A centralized, reusable breadcrumb navigation component that provides consistent navigation patterns across the application.

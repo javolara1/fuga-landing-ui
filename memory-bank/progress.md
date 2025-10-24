@@ -62,7 +62,19 @@ _This document tracks what works, what's left to build, the current status, know
 - **Utilities and Helpers**:
   - Date formatting utility (`dateUtils.ts`)
   - Error translation helper (`errorTranslations.ts`)
-  - Auth utilities for session management
+  - Auth utilities for session management (`authUtils.ts`)
+  - Test user management script (`scripts/manage-test-users.js`)
+- **ConfirmationDialog Component**:
+  - Reusable modal dialog for confirmation actions
+  - TypeScript props with accessibility support
+  - Keyboard navigation (Escape to cancel, Enter to confirm)
+  - Customizable content with i18n defaults
+  - Backdrop with blur effect and focus management
+- **Markdown Editor Styling**:
+  - Custom dark theme for Carta MD editor (`md-styles.css`)
+  - Complete styling matching project design system
+  - Proper contrast ratios and accessibility compliance
+  - Styled toolbar, input area, and renderer
 - **Responsive design** implemented across all components
 - **Header mobile navigation** now collapses by default with an animated toggle; login/profile actions appear inside the drawer on small screens
 - **Black and white brand identity** consistently applied across all pages
