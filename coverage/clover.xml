@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1761279053903" clover="3.2.0">
-  <project timestamp="1761279053903" name="All files">
+<coverage generated="1761279516450" clover="3.2.0">
+  <project timestamp="1761279516450" name="All files">
     <metrics statements="1906" coveredstatements="274" conditionals="231" coveredconditionals="190" methods="45" coveredmethods="9" elements="2182" coveredelements="473" complexity="0" loc="1906" ncloc="1906" packages="17" files="48" classes="48"/>
     <package name="fuga-ui">
       <metrics statements="18" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
