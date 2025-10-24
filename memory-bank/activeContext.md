@@ -12,6 +12,20 @@ _This document tracks the current work focus, recent changes, next steps, active
 
 ## Recent Changes
 
+- **Root Page Test Suite Enhancement** (Completed - 2025-10-23):
+  - Added comprehensive test suite for root page (`src/routes/page.svelte.spec.ts`)
+  - Fixed failing test that was looking for "FUGA" in generic heading
+  - Implemented 7 comprehensive tests covering all major page sections:
+    - Hero section with main heading
+    - All main sections (Hero, Services, Pricing, About, Contact)
+    - Header navigation with specific data-testid selectors
+    - Call-to-action buttons
+    - Footer with copyright information
+    - Page structure and styling (black background, white text)
+    - Benefit cards in hero section
+  - Used robust data-testid selectors for reliable testing
+  - All 7 unit tests now passing successfully
+
 - **Header Mobile Navigation Refactor** (Completed - 2025-10-14):
   - Rebuilt `Header.svelte` with rune-based mobile state and accessible toggle button
   - Hid desktop login button on small screens while surfacing login/profile actions inside the mobile drawer
