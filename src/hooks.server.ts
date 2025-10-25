@@ -1,6 +1,6 @@
 import type { Handle } from '@sveltejs/kit';
 import { getServerTranslation } from '$lib/i18n/server-i18n';
-import { supabase } from '$lib/supabaseClient';
+import { validateSession } from '$lib/database';
 
 export const handle: Handle = async ({ event, resolve }) => {
 	// Detect preferred locale
@@ -24,51 +24,13 @@ export const handle: Handle = async ({ event, resolve }) => {
 	const refreshToken = event.cookies.get('sb-refresh-token');
 
 	if (accessToken && refreshToken) {
-		try {
-			// Set the session for server-side operations
-			const {
-				data: { session },
-				error
-			} = await supabase.auth.setSession({
-				access_token: accessToken,
-				refresh_token: refreshToken
-			});
+		const result = await validateSession(accessToken, refreshToken);
 
-			if (error || !session) {
-				// Clear invalid session cookies
-				event.cookies.delete('sb-access-token', { path: '/' });
-				event.cookies.delete('sb-refresh-token', { path: '/' });
-			} else {
-				// Get user data
-				const {
-					data: { user }
-				} = await supabase.auth.getUser();
-
-				if (user) {
-					event.locals.user = user;
-
-					// Get user profile data with error logging
-					const { data: profile, error: profileError } = await supabase
-						.from('profiles')
-						.select('*')
-						.eq('id', user.id)
-						.single();
-
-					if (profileError) {
-						console.error('Profile query failed with error:', {
-							code: profileError.code,
-							message: profileError.message,
-							details: profileError.details,
-							hint: profileError.hint
-						});
-					}
-
-					event.locals.profile = profile;
-				}
-			}
-		} catch (error) {
-			console.error('Session validation error:', error);
-			// Clear potentially corrupted session cookies
+		if (result.success && result.user) {
+			event.locals.user = result.user;
+			event.locals.profile = result.profile;
+		} else {
+			// Clear invalid session cookies
 			event.cookies.delete('sb-access-token', { path: '/' });
 			event.cookies.delete('sb-refresh-token', { path: '/' });
 		}
