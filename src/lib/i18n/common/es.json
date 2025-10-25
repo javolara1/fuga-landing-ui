@@ -1,0 +1,12 @@
+{
+	"language": "Idioma",
+	"english": "Inglés",
+	"spanish": "Español",
+	"cancel": "Cancelar",
+	"confirmation": {
+		"title": "Confirmar Acción",
+		"message": "¿Estás seguro de que quieres proceder?",
+		"confirm": "Confirmar",
+		"cancel": "Cancelar"
+	}
+}

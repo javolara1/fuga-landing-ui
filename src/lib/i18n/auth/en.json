@@ -1,0 +1,37 @@
+{
+	"welcomeBack": "Welcome Back",
+	"signInToAccount": "Sign in to your account",
+	"emailAddress": "Email address",
+	"password": "Password",
+	"confirmPassword": "Confirm Password",
+	"signingIn": "Signing in...",
+	"signIn": "Sign in",
+	"dontHaveAccount": "Don't have an account?",
+	"signUp": "Sign up",
+	"createAccount": "Create Account",
+	"signUpForAccount": "Sign up for a new account",
+	"creatingAccount": "Creating Account...",
+	"alreadyHaveAccount": "Already have an account?",
+	"signInLink": "Sign in",
+	"error": "Error",
+	"success": "Success",
+	"loginError": "An error occurred during login",
+	"registrationError": "An error occurred during registration",
+	"registrationSuccess": "Registration successful! Please check your email for verification.",
+	"validation": {
+		"emailPasswordRequired": "Email and password are required",
+		"allFieldsRequired": "All fields are required",
+		"passwordsDoNotMatch": "Passwords do not match",
+		"passwordMinLength": "Password must be at least 6 characters long"
+	},
+	"errors": {
+		"unexpectedError": "An unexpected error occurred. Please try again.",
+		"invalid_credentials": "Invalid email or password",
+		"email_not_confirmed": "Please confirm your email address before signing in",
+		"user_not_found": "No account found with this email address",
+		"weak_password": "Password is too weak",
+		"email_exists": "An account with this email already exists",
+		"invalid_email": "Please provide a valid email address",
+		"auth_failed": "Authentication failed. Please try again."
+	}
+}

@@ -199,10 +199,10 @@
 
 				<!-- Submit Buttons -->
 				<div class="flex space-x-4">
-					<Button type="submit" variant="primary" size="lg">
+					<Button type="submit" variant="primary" size="md">
 						{$t('admin.blogManagement.edit.updateArticle')}
 					</Button>
-					<Button href="/admin/blog" variant="secondary" size="lg">
+					<Button href="/admin/blog" variant="secondary" size="md">
 						{$t('common.cancel')}
 					</Button>
 				</div>

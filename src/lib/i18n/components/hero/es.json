@@ -1,0 +1,24 @@
+{
+	"title": "FUGA",
+	"subtitle": "Equipo Deportivo Multidisciplinario",
+	"description": "Entrenamiento de fuerza profesional y programas personalizados específicos para deportes de ciclismo, running y natación.",
+	"benefits": {
+		"strength": {
+			"title": "Entrenamiento de Fuerza",
+			"description": "Equipo profesional y coaching personalizado"
+		},
+		"custom": {
+			"title": "Programas Personalizados",
+			"description": "Entrenamiento adaptado a tu deporte y objetivos"
+		},
+		"expert": {
+			"title": "Coaching Experto",
+			"description": "Guía profesional para un rendimiento óptimo"
+		}
+	},
+	"cta": {
+		"start": "Comienza a Entrenar Hoy",
+		"learn": "Más Información"
+	},
+	"footer": "Únete a los atletas que han transformado su rendimiento con los programas profesionales de FUGA"
+}

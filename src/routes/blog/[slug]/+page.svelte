@@ -8,8 +8,8 @@
 	let { data } = $props();
 
 	const breadcrumbItems: BreadcrumbItem[] = [
-		{ label: $t('admin.blogManagement.title'), href: '/blog' },
-		{ label: $t('admin.blogManagement.create.title') }
+		{ label: $t('blog.pageTitle'), href: '/blog' },
+		{ label: data.article.title }
 	];
 
 	// Calculate reading time based on content length

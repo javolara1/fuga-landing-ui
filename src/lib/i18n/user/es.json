@@ -1,0 +1,21 @@
+{
+	"profile": "Perfil de Usuario",
+	"logout": "Cerrar Sesión",
+	"personalInfo": "Información Personal",
+	"accountInfo": "Información de la Cuenta",
+	"email": "Correo Electrónico",
+	"fullName": "Nombre Completo",
+	"username": "Nombre de Usuario",
+	"role": "Rol",
+	"memberSince": "Miembro Desde",
+	"lastUpdated": "Última Actualización",
+	"notAvailable": "No disponible",
+	"comingSoon": "Próximamente",
+	"comingSoonDescription": "Estamos trabajando en nuevas funciones para mejorar tu experiencia de entrenamiento",
+	"schedule": "Horario de Entrenamiento",
+	"scheduleDescription": "Ver y gestionar tus sesiones de entrenamiento",
+	"progress": "Seguimiento de Progreso",
+	"progressDescription": "Monitorea tu rendimiento y mejoras",
+	"settings": "Configuración de Cuenta",
+	"settingsDescription": "Gestiona tus preferencias y perfil"
+}

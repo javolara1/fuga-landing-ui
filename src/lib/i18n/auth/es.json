@@ -1,0 +1,37 @@
+{
+	"welcomeBack": "Bienvenido",
+	"signInToAccount": "Inicia sesión en tu cuenta",
+	"emailAddress": "Correo electrónico",
+	"password": "Contraseña",
+	"confirmPassword": "Confirmar contraseña",
+	"signingIn": "Iniciando sesión...",
+	"signIn": "Iniciar Sesión",
+	"dontHaveAccount": "¿No tienes una cuenta?",
+	"signUp": "Regístrate",
+	"createAccount": "Crear cuenta",
+	"signUpForAccount": "Regístrate para una nueva cuenta",
+	"creatingAccount": "Creando cuenta...",
+	"alreadyHaveAccount": "¿Ya tienes una cuenta?",
+	"signInLink": "Iniciar Sesión",
+	"error": "Error",
+	"success": "Éxito",
+	"loginError": "Ocurrió un error durante el inicio de sesión",
+	"registrationError": "Ocurrió un error durante el registro",
+	"registrationSuccess": "¡Registro exitoso! Por favor revisa tu correo electrónico para la verificación.",
+	"validation": {
+		"emailPasswordRequired": "El correo electrónico y la contraseña son requeridos",
+		"allFieldsRequired": "Todos los campos son requeridos",
+		"passwordsDoNotMatch": "Las contraseñas no coinciden",
+		"passwordMinLength": "La contraseña debe tener al menos 6 caracteres"
+	},
+	"errors": {
+		"unexpectedError": "Ocurrió un error inesperado. Por favor, inténtalo de nuevo.",
+		"invalid_credentials": "Correo electrónico o contraseña inválidos",
+		"email_not_confirmed": "Por favor confirma tu dirección de correo electrónico antes de iniciar sesión",
+		"user_not_found": "No se encontró ninguna cuenta con esta dirección de correo electrónico",
+		"weak_password": "La contraseña es demasiado débil",
+		"email_exists": "Ya existe una cuenta con este correo electrónico",
+		"invalid_email": "Por favor proporciona una dirección de correo electrónico válida",
+		"auth_failed": "Error de autenticación. Por favor, inténtalo de nuevo."
+	}
+}

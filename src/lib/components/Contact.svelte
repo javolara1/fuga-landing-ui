@@ -177,7 +177,7 @@
 						></textarea>
 					</div>
 
-					<Button type="submit" variant="primary" size="lg" fullWidth>
+					<Button type="submit" variant="primary" size="md" fullWidth>
 						{$t('contact.sendMessageButton')}
 					</Button>
 
