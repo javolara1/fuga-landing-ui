@@ -1,54 +1,43 @@
 {
-	"title": "Our Training Services",
-	"description": "Professional training programs designed to maximize your athletic performance",
-	"primary": {
-		"badge": "Primary Service",
-		"title": "Strength Room Training",
-		"description": "Build foundational strength and power with our state-of-the-art equipment and personalized coaching. Our strength training programs are designed to enhance performance across all sports disciplines.",
-		"features": {
-			"feat1": "Professional strength equipment",
-			"feat2": "One-on-one coaching sessions",
-			"feat3": "Progressive overload programming",
-			"feat4": "Injury prevention techniques"
-		},
-		"focus": {
-			"title": "Strength Training Focus",
-			"description": "Build the foundation for peak athletic performance with targeted strength development"
-		}
+	"title": "Training",
+	"description": "Train wherever you are, with the support of a team that combines knowledge, passion, and purpose. At FUGA we adapt your training to your goals, lifestyle, and experience level.",
+	"modalidad": "Modality",
+	"presencial": {
+		"title": "In-Person Training",
+		"description": "Guided sessions at our center."
 	},
-	"secondary": {
-		"badge": "Customized Programs",
-		"title": "Sport-Specific Training",
-		"description": "Tailored programs designed for your specific sport and performance goals",
-		"cycling": {
-			"title": "Cycling Programs",
-			"description": "Endurance training, power development, and technique refinement for road and mountain biking",
-			"features": {
-				"feat1": "Power-based training zones",
-				"feat2": "Climbing and sprint techniques",
-				"feat3": "Bike fitting and position optimization",
-				"feat4": "Race strategy development"
-			}
+	"virtual": {
+		"title": "Virtual Training",
+		"description": "Live classes with technical correction."
+	},
+	"distancia": {
+		"title": "Remote Training",
+		"description": "Personalized planning and metrics analysis."
+	},
+	"nutricion": {
+		"title": "In-Person Nutrition + Online Follow-up",
+		"description": "Consultation every 21 days and weekly monitoring."
+	},
+	"disciplinas": {
+		"title": "Disciplines",
+		"ciclismo": "Cycling",
+		"carrera": "Running",
+		"triatlon": "Triathlon",
+		"natacion": "Swimming & Open Water",
+		"wellness": "Wellness",
+		"fitness": "Fitness",
+		"fuerza": "Strength"
+	},
+	"programas": {
+		"title": "Program Level",
+		"base": {
+			"title": "Base"
 		},
-		"running": {
-			"title": "Running Programs",
-			"description": "Speed, endurance, and form development for track, road, and trail running",
-			"features": {
-				"feat1": "Pace and interval training",
-				"feat2": "Running form analysis",
-				"feat3": "Injury prevention strategies",
-				"feat4": "Race distance specialization"
-			}
+		"avanzado": {
+			"title": "Advanced"
 		},
-		"swimming": {
-			"title": "Swimming Programs",
-			"description": "Stroke technique, endurance, and efficiency training for competitive swimming",
-			"features": {
-				"feat1": "Stroke technique refinement",
-				"feat2": "Endurance and speed work",
-				"feat3": "Starts and turns optimization",
-				"feat4": "Open water swimming skills"
-			}
+		"elite": {
+			"title": "Elite/Pro"
 		}
 	}
 }

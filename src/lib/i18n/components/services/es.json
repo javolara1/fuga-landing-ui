@@ -1,54 +1,43 @@
 {
-	"title": "Nuestros Servicios de Entrenamiento",
-	"description": "Programas de entrenamiento profesional diseñados para maximizar tu rendimiento atlético",
-	"primary": {
-		"badge": "Servicio Principal",
-		"title": "Entrenamiento en Sala de Fuerza",
-		"description": "Desarrolla fuerza y potencia fundamentales con nuestro equipo de última generación y coaching personalizado. Nuestros programas de entrenamiento de fuerza están diseñados para mejorar el rendimiento en todas las disciplinas deportivas.",
-		"features": {
-			"feat1": "Equipo de fuerza profesional",
-			"feat2": "Sesiones de coaching individuales",
-			"feat3": "Programación de sobrecarga progresiva",
-			"feat4": "Técnicas de prevención de lesiones"
-		},
-		"focus": {
-			"title": "Enfoque en Entrenamiento de Fuerza",
-			"description": "Construye la base para el máximo rendimiento atlético con desarrollo de fuerza específico"
-		}
+	"title": "Entrenamiento",
+	"description": "Entrena donde estés, con el respaldo de un equipo que une conocimiento, pasión y propósito. En FUGA adaptamos tu entrenamiento a tus metas, estilo de vida y nivel de experiencia.",
+	"modalidad": "Modalidad",
+	"presencial": {
+		"title": "Entrenamiento Presencial",
+		"description": "Sesiones guiadas en nuestro centro."
 	},
-	"secondary": {
-		"badge": "Programas Personalizados",
-		"title": "Entrenamiento Específico por Deporte",
-		"description": "Programas adaptados diseñados para tu deporte específico y objetivos de rendimiento",
-		"cycling": {
-			"title": "Programas de Ciclismo",
-			"description": "Entrenamiento de resistencia, desarrollo de potencia y refinamiento de técnica para ciclismo de ruta y montaña",
-			"features": {
-				"feat1": "Zonas de entrenamiento basadas en potencia",
-				"feat2": "Técnicas de escalada y sprint",
-				"feat3": "Ajuste de bicicleta y optimización de posición",
-				"feat4": "Desarrollo de estrategias de carrera"
-			}
+	"virtual": {
+		"title": "Entrenamiento Virtual",
+		"description": "Clases en vivo con corrección técnica."
+	},
+	"distancia": {
+		"title": "Entrenamiento a Distancia",
+		"description": "Planificación personalizada y análisis de métricas."
+	},
+	"nutricion": {
+		"title": "Nutrición Presencial + Seguimiento Online",
+		"description": "Consulta cada 21 días y monitoreo semanal."
+	},
+	"disciplinas": {
+		"title": "Disciplina",
+		"ciclismo": "Ciclismo",
+		"carrera": "Carrera",
+		"triatlon": "Triatlón",
+		"natacion": "Natación y Aguas Abiertas",
+		"wellness": "Wellness",
+		"fitness": "Fitness",
+		"fuerza": "Fuerza"
+	},
+	"programas": {
+		"title": "Programas",
+		"base": {
+			"title": "Base"
 		},
-		"running": {
-			"title": "Programas de Running",
-			"description": "Desarrollo de velocidad, resistencia y forma para running en pista, ruta y trail",
-			"features": {
-				"feat1": "Entrenamiento de ritmo e intervalos",
-				"feat2": "Análisis de forma de carrera",
-				"feat3": "Estrategias de prevención de lesiones",
-				"feat4": "Especialización en distancias de carrera"
-			}
+		"avanzado": {
+			"title": "Avanzado"
 		},
-		"swimming": {
-			"title": "Programas de Natación",
-			"description": "Técnica de brazada, resistencia y entrenamiento de eficiencia para natación competitiva",
-			"features": {
-				"feat1": "Refinamiento de técnica de brazada",
-				"feat2": "Trabajo de resistencia y velocidad",
-				"feat3": "Optimización de salidas y vueltas",
-				"feat4": "Habilidades de natación en aguas abiertas"
-			}
+		"elite": {
+			"title": "Élite/Pro"
 		}
 	}
 }
