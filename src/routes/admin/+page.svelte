@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { formatDate } from '$lib/utils/dateUtils';
 	import { t } from '$lib/i18n';
-	import AdminHeader from '$lib/components/AdminHeader.svelte';
+	import AdminHeader from '$lib/components/admin/AdminHeader.svelte';
 
 	let { data } = $props();
 </script>

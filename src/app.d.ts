@@ -11,6 +11,7 @@ declare global {
 			getTranslation: () => { t: (key: string) => string };
 			user?: User;
 			profile?: Profile | null;
+			landingOnly: boolean;
 		}
 		// interface Error {}
 		// interface Locals {}

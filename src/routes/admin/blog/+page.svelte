@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { formatDate } from '$lib/utils/dateUtils';
 	import { t } from '$lib/i18n';
-	import AdminHeader from '$lib/components/AdminHeader.svelte';
-	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
-	import Button from '$lib/components/Button.svelte';
+	import AdminHeader from '$lib/components/admin/AdminHeader.svelte';
+	import Breadcrumb from '$lib/components/common/Breadcrumb.svelte';
+	import Button from '$lib/components/common/Button.svelte';
 	import type { BreadcrumbItem } from '$lib/types';
 
 	let { data } = $props();

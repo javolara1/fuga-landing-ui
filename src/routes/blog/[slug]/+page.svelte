@@ -1,6 +1,6 @@
 <script lang="ts">
-	import ReducedHeader from '$lib/components/ReducedHeader.svelte';
-	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
+	import ReducedHeader from '$lib/components/admin/ReducedHeader.svelte';
+	import Breadcrumb from '$lib/components/common/Breadcrumb.svelte';
 	import { formatDate } from '$lib/utils/dateUtils';
 	import { t } from '$lib/i18n';
 	import type { BreadcrumbItem } from '$lib/types';

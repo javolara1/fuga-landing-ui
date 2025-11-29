@@ -1,28 +1,15 @@
 {
 	"title": "About FUGA",
-	"description": "A multidisciplinary sports team dedicated to athletic excellence and performance optimization",
-	"ourMission": "Our Mission",
-	"missionText1": "At FUGA, we believe that every athlete deserves access to professional training and coaching. Our mission is to provide comprehensive, science-backed training programs that help athletes across all disciplines reach their full potential.",
-	"missionText2": "Whether you're a competitive athlete or someone looking to improve your fitness, our team of experienced coaches is here to guide you every step of the way.",
-	"whyChooseFuga": "Why Choose FUGA?",
-	"professionalCoaching": "Professional coaching staff with years of experience",
-	"stateOfTheArt": "State-of-the-art training facilities",
-	"personalizedTraining": "Personalized training programs",
-	"scienceBased": "Science-based training methodologies",
-	"trainingPhilosophy": "Our Training Philosophy",
-	"scienceBasedApproach": "Science-Based Approach",
-	"scienceBasedText": "We use evidence-based training methods and the latest sports science research to optimize your performance.",
-	"individualizedProgramming": "Individualized Programming",
-	"individualizedText": "Every athlete is unique. We create customized training plans based on your goals, abilities, and sport.",
-	"progressiveDevelopment": "Progressive Development",
-	"progressiveText": "We focus on continuous improvement through structured progression and regular performance assessments.",
-	"multidisciplinaryExcellence": "Multidisciplinary Excellence",
-	"strengthTraining": "Strength Training",
-	"foundationForSports": "Foundation for all sports",
-	"cycling": "Cycling",
-	"roadMountainBiking": "Road & mountain biking",
-	"running": "Running",
-	"trackRoadTrail": "Track, road & trail",
-	"swimming": "Swimming",
-	"poolOpenWater": "Pool & open water"
+	"mision": {
+		"title": "Mission",
+		"description": "To drive human development through a multidisciplinary team that combines passion, knowledge, and experience."
+	},
+	"vision": {
+		"title": "Vision",
+		"description": "To be a leading community where science and collaboration inspire each person to reach their best version."
+	},
+	"filosofia": {
+		"title": "Philosophy",
+		"description": "Sport is our path to growth: balance, discipline, and purpose, guided by science and human support."
+	}
 }

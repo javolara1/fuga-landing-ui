@@ -1,8 +1,8 @@
 <script lang="ts">
-	import ReducedHeader from '$lib/components/ReducedHeader.svelte';
+	import ReducedHeader from '$lib/components/admin/ReducedHeader.svelte';
 	import { formatDate } from '$lib/utils/dateUtils';
 	import { t } from '$lib/i18n';
-	import Button from '$lib/components/Button.svelte';
+	import Button from '$lib/components/common/Button.svelte';
 
 	let { data } = $props();
 

@@ -18,6 +18,7 @@ export const load: LayoutServerLoad = async ({ request, locals }) => {
 	return {
 		locale: detectedLocale,
 		user: locals.user,
-		profile: locals.profile
+		profile: locals.profile,
+		landingOnly: locals.landingOnly
 	};
 };

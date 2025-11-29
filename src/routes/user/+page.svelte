@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { formatDate } from '$lib/utils/dateUtils';
 	import { t } from '$lib/i18n';
-	import UserHeader from '$lib/components/UserHeader.svelte';
+	import UserHeader from '$lib/components/admin/UserHeader.svelte';
 
 	let { data } = $props();
 </script>

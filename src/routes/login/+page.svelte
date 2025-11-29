@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { t } from '$lib/i18n';
 	import { enhance } from '$app/forms';
-	import ReducedHeader from '$lib/components/ReducedHeader.svelte';
-	import Button from '$lib/components/Button.svelte';
+	import ReducedHeader from '$lib/components/admin/ReducedHeader.svelte';
+	import Button from '$lib/components/common/Button.svelte';
 	const { form } = $props();
 
 	let isSubmitting = $state(false);

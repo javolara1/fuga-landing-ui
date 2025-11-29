@@ -1,7 +1,7 @@
 {
 	"title": "FUGA",
-	"subtitle": "Equipo Deportivo Multidisciplinario",
-	"description": "Entrenamiento de fuerza profesional y programas personalizados específicos para deportes de ciclismo, running y natación.",
+	"subtitle": "Comunidad Deportiva Multidisciplinaria",
+	"description": "FUGA es una comunidad para los amantes y apasionados del deporte, combinamos ciencia, experiencia y herramientas de desarrollo humano para crear tu mejor versión.",
 	"benefits": {
 		"strength": {
 			"title": "Entrenamiento de Fuerza",
@@ -20,5 +20,5 @@
 		"start": "Comienza a Entrenar Hoy",
 		"learn": "Más Información"
 	},
-	"footer": "Únete a los atletas que han transformado su rendimiento con los programas profesionales de FUGA"
+	"footer": "Equipo multidisciplinario que combina ciencia, experiencia y herramientas de desarrollo humano para crear tu mejor versión"
 }
