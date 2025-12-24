@@ -1,5 +1,6 @@
 // Server-side Strapi API (used at build time for SSG)
 import { env } from '$env/dynamic/private';
+import qs from 'qs';
 import type { LandingPageResponse, LandingPageData, StrapiMedia } from './types';
 
 function getStrapiUrl(): string {
@@ -32,28 +33,28 @@ function transformMedia(media: StrapiMedia | null, baseUrl: string): StrapiMedia
  * Build the populate query for landing page sections
  */
 function buildLandingPagePopulate(): string {
-	const params = new URLSearchParams();
-
-	// Populate hero image
-	params.append('populate[heroImage]', 'true');
-
-	// Populate service section with nested serviceitems and cards
-	params.append('populate[serviceSection][populate][serviceitems][populate]', 'cards');
-
-	// Populate about section
-	params.append('populate[aboutSection]', 'true');
-
-	// Populate contact section
-	params.append('populate[contactSection]', 'true');
-
-	// Populate footer section with social networks (including icons) and links
-	params.append(
-		'populate[FooterSection][populate][footerSectionSocialNetworks][populate]',
-		'Linkicon'
-	);
-	params.append('populate[FooterSection][populate][footerSectionLinks]', 'true');
-
-	return params.toString();
+	return qs.stringify({
+		populate: {
+			heroImage: true,
+			serviceSection: {
+				populate: {
+					serviceitems: {
+						populate: 'cards'
+					}
+				}
+			},
+			aboutSection: true,
+			contactSection: true,
+			footerSection: {
+				populate: {
+					footerSectionSocialNetworks: {
+						populate: 'Linkicon'
+					},
+					footerSectionLinks: true
+				}
+			}
+		}
+	});
 }
 
 /**

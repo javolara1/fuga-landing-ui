@@ -61,7 +61,7 @@ const mockLandingPage: LandingPageData = {
 		contactSectionActionButton: 'Obtén clase muestra',
 		visible: true
 	},
-	FooterSection: {
+	footerSection: {
 		id: 1,
 		footerSectionRights: '© 2025 Equipo Deportivo FUGA. Todos los derechos reservados.',
 		footerSectionSocialNetworks: [

@@ -109,7 +109,7 @@ export interface LandingPageData {
 	serviceSection: ServiceSection | null;
 	aboutSection: AboutSection | null;
 	contactSection: ContactSection | null;
-	FooterSection: FooterSection | null;
+	footerSection: FooterSection | null;
 }
 
 export type LandingPageResponse = StrapiResponse<LandingPageData>;

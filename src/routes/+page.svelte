@@ -46,7 +46,7 @@
 		<About data={data.landingPage?.aboutSection} />
 		<Contact data={data.landingPage?.contactSection} onCtaClick={openModal} />
 	</main>
-	<Footer data={data.landingPage?.FooterSection} />
+	<Footer data={data.landingPage?.footerSection} />
 </div>
 
 <ContactFormModal open={modalOpen} onClose={closeModal} onSuccess={handleSuccess} />
