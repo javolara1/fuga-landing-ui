@@ -1,132 +1,58 @@
 <script lang="ts">
-	import { t } from '$lib/i18n';
+	import type { FooterSection } from '$lib/types';
+
+	let { data }: { data?: FooterSection | null } = $props();
 </script>
 
-<footer class="border-t border-gray-800 bg-black text-white">
-	<div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-		<!-- Main Footer Content -->
-		<div class="grid grid-cols-1 gap-8 py-12 sm:grid-cols-3">
-			<!-- Brand Section -->
-			<div>
-				<h3 class="mb-4 text-2xl font-bold">FUGA</h3>
-				<p class="mb-4 text-gray-400">
-					{$t('hero.description')}
-				</p>
-				<a
-					href="https://instagram.com/somosfugamx"
-					target="_blank"
-					rel="noopener noreferrer"
-					class="flex items-center gap-2 text-gray-400 transition-colors hover:text-white"
-					aria-label="Follow us on Instagram"
-				>
-					<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-						<path
-							d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
-						/>
-					</svg>
-					<span>@somosfugamx</span>
-				</a>
-			</div>
-
-			<!-- Modalidad -->
-			<div>
-				<h4 class="mb-4 text-lg font-semibold">{$t('services.modalidad')}</h4>
-				<ul class="space-y-2 text-gray-400">
-					<li>{$t('services.presencial.title')}</li>
-					<li>{$t('services.virtual.title')}</li>
-					<li>{$t('services.distancia.title')}</li>
-					<li>{$t('services.nutricion.title')}</li>
-				</ul>
-			</div>
-
-			<!-- Contact Info -->
-			<div>
-				<h4 class="mb-4 text-lg font-semibold">{$t('footer.contactInfo')}</h4>
-				<ul class="space-y-2 text-gray-400">
-					<li class="flex items-start">
-						<svg
-							class="mr-2 mt-1 h-4 w-4 flex-shrink-0"
-							fill="none"
-							stroke="currentColor"
-							viewBox="0 0 24 24"
+{#if data}
+	<footer class="border-t border-gray-800 bg-black text-white">
+		<div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+			<!-- Social Networks -->
+			{#if data.footerSectionSocialNetworks?.length}
+				<div class="flex justify-center gap-6 py-8">
+					{#each data.footerSectionSocialNetworks as social (social.id)}
+						<a
+							href={social.LinkUrl}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="flex items-center gap-2 text-gray-400 transition-colors hover:text-white"
+							aria-label={social.LinkLabel}
 						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-							></path>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-							></path>
-						</svg>
-						<span>{$t('contact.athleticAvenue')}<br />{$t('contact.sportsCity')}</span>
-					</li>
-					<li class="flex items-center">
-						<svg
-							class="mr-2 h-4 w-4 flex-shrink-0"
-							fill="none"
-							stroke="currentColor"
-							viewBox="0 0 24 24"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-							></path>
-						</svg>
-						<span>{$t('contact.phoneNumber')}</span>
-					</li>
-					<li class="flex items-center">
-						<svg
-							class="mr-2 h-4 w-4 flex-shrink-0"
-							fill="none"
-							stroke="currentColor"
-							viewBox="0 0 24 24"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-							></path>
-						</svg>
-						<span>{$t('contact.infoEmail')}</span>
-					</li>
-				</ul>
-			</div>
-		</div>
+							{#if social.Linkicon}
+								<img
+									src={social.Linkicon.url}
+									alt={social.Linkicon.alternativeText ?? social.LinkLabel}
+									class="h-6 w-6"
+								/>
+							{/if}
+							<span>{social.LinkLabel}</span>
+						</a>
+					{/each}
+				</div>
+			{/if}
 
-		<!-- Bottom Footer -->
-		<div class="border-t border-gray-800 py-6">
-			<div class="flex flex-col items-center justify-between md:flex-row">
-				<p class="text-sm text-gray-400">
-					{$t('footer.copyright')}
-				</p>
-				<div class="mt-4 flex space-x-6 md:mt-0">
-					<a href="/privacy-policy" class="text-sm text-gray-400 transition-colors hover:text-white"
-						>{$t('footer.privacyPolicy')}</a
-					>
-					<a
-						href="/terms-of-service"
-						class="text-sm text-gray-400 transition-colors hover:text-white"
-						>{$t('footer.termsOfService')}</a
-					>
-					<a href="/cookie-policy" class="text-sm text-gray-400 transition-colors hover:text-white"
-						>{$t('footer.cookiePolicy')}</a
-					>
+			<!-- Bottom Footer -->
+			<div class="border-t border-gray-800 py-6">
+				<div class="flex flex-col items-center justify-between md:flex-row">
+					{#if data.footerSectionRights}
+						<p class="text-sm text-gray-400">
+							{data.footerSectionRights}
+						</p>
+					{/if}
+					{#if data.footerSectionLinks?.length}
+						<div class="mt-4 flex space-x-6 md:mt-0">
+							{#each data.footerSectionLinks as link (link.id)}
+								<a
+									href={link.LinkUrl}
+									class="text-sm text-gray-400 transition-colors hover:text-white"
+								>
+									{link.LinkLabel}
+								</a>
+							{/each}
+						</div>
+					{/if}
 				</div>
 			</div>
 		</div>
-	</div>
-</footer>
-
-<style>
-	a {
-		scroll-behavior: smooth;
-	}
-</style>
+	</footer>
+{/if}

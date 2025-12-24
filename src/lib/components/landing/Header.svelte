@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
 	import Button from '$lib/components/common/Button.svelte';
-	import { t } from '$lib/i18n';
 
 	let { showCta = false, onCtaClick = () => {} } = $props<{
 		showCta?: boolean;
@@ -20,7 +19,7 @@
 			{#if showCta}
 				<div transition:fade>
 					<Button variant="primary" size="md" onclick={onCtaClick} data-testid="header-cta">
-						{$t('hero.cta.start')}
+						Comienza a Entrenar Hoy
 					</Button>
 				</div>
 			{/if}

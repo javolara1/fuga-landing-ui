@@ -1,24 +1,10 @@
-import { loadTranslations, locale } from '$lib/i18n';
 import type { LayoutServerLoad } from './$types';
+import { fetchLandingPage } from '$lib/strapi.server';
 
-export const load: LayoutServerLoad = async ({ request, locals }) => {
-	const acceptLanguage = request.headers.get('accept-language');
-	let detectedLocale = 'en';
-
-	if (acceptLanguage) {
-		// Parse the first language preference from the header
-		const browserLang = acceptLanguage.split(',')[0].split('-')[0];
-		const supportedLocales = ['en', 'es'];
-		detectedLocale = supportedLocales.includes(browserLang) ? browserLang : 'en';
-	}
-
-	await loadTranslations(detectedLocale);
-	locale.set(detectedLocale);
+export const load: LayoutServerLoad = async () => {
+	const landingPage = await fetchLandingPage();
 
 	return {
-		locale: detectedLocale,
-		user: locals.user,
-		profile: locals.profile,
-		landingOnly: locals.landingOnly
+		landingPage
 	};
 };

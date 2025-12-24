@@ -17,68 +17,48 @@ test.describe('Landing Page - Desktop', () => {
 		await expect(page.locator('[data-testid="hero-section"]')).toBeVisible();
 		await expect(page.locator('[data-testid="hero-heading"]')).toBeVisible();
 		await expect(page.locator('[data-testid="hero-description"]')).toBeVisible();
-
-		// Check navigation is visible on desktop using role-based selector
-		await expect(page.getByRole('navigation')).toBeVisible();
 	});
 
-	test('should have functional desktop navigation', async ({ page }) => {
-		// Test navigation links - use more robust selectors to avoid footer conflicts
-		const navLinks = [
-			{ text: 'Services', href: '#services' },
-			{ text: 'Pricing', href: '#pricing' },
-			{ text: 'About', href: '#about' },
-			{ text: 'Blog', href: '/blog' },
-			{ text: 'Contact', href: '#contact' }
-		];
+	test('should have hero content in Spanish', async ({ page }) => {
+		// Verify Spanish content
+		const heading = page.locator('[data-testid="hero-heading"]');
+		await expect(heading).toContainText('Comunidad Deportiva Multidisciplinaria');
 
-		for (const link of navLinks) {
-			// Use header-specific selector to avoid footer links - more robust than CSS classes
-			const navLink = page.locator('header').getByRole('link', { name: link.text });
-			await expect(navLink).toBeVisible();
-			await expect(navLink).toHaveAttribute('href', link.href);
-		}
+		const description = page.locator('[data-testid="hero-description"]');
+		await expect(description).toContainText('FUGA es una comunidad');
 
-		// Test login button (when not logged in)
-		const loginButton = page.locator('header').getByRole('link', { name: 'Login' });
-		await expect(loginButton).toBeVisible();
-		await expect(loginButton).toHaveAttribute('href', '/login');
+		// CTA button text
+		const ctaButton = page.locator('[data-testid="cta-start-training"]');
+		await expect(ctaButton).toContainText('Comienza a Entrenar Hoy');
 	});
 
-	test('should have working call-to-action buttons', async ({ page }) => {
+	test('should have working call-to-action button', async ({ page }) => {
 		// Test primary CTA button using data-testid
 		const startButton = page.locator('[data-testid="cta-start-training"]');
 		await expect(startButton).toBeVisible();
-		await expect(startButton).toHaveAttribute('href', '/register');
 
-		// Test secondary CTA button using data-testid
-		const learnButton = page.locator('[data-testid="cta-learn-more"]');
-		await expect(learnButton).toBeVisible();
+		// Button should be clickable (opens contact modal)
+		await startButton.click();
 
-		// Click learn more button and verify it scrolls to services
-		await learnButton.click();
-		await page.waitForTimeout(1000); // Wait for scroll animation
+		// Modal should appear
+		const modal = page.locator('[data-testid="contact-modal"]');
+		await expect(modal).toBeVisible();
 	});
 
 	test('should display all content sections', async ({ page }) => {
 		// Scroll through page and verify sections using data-testid
 		const sections = [
-			{ id: 'services', testid: 'services-section' },
-			{ id: 'pricing', testid: 'pricing-section' },
-			{ id: 'about', testid: 'about-section' },
-			{ id: 'contact', testid: 'contact-section' }
+			{ testid: 'services-section', heading: 'Entrenamiento' },
+			{ testid: 'about-section', heading: 'Acerca de FUGA' },
+			{ testid: 'contact-section', heading: 'Ponte en Contacto' }
 		];
 
 		for (const section of sections) {
-			// Use both ID and data-testid for redundancy
 			const sectionElement = page.locator(`[data-testid="${section.testid}"]`);
 			await sectionElement.scrollIntoViewIfNeeded();
 			await expect(sectionElement).toBeVisible();
+			await expect(sectionElement).toContainText(section.heading);
 		}
-
-		// Verify hero benefits cards using data-testid
-		const benefitCards = page.locator('[data-testid="benefit-card"]');
-		await expect(benefitCards).toHaveCount(3);
 	});
 
 	test('should have functional footer', async ({ page }) => {
@@ -87,9 +67,27 @@ test.describe('Landing Page - Desktop', () => {
 		// Check footer content
 		await expect(page.locator('footer')).toBeVisible();
 
-		// Verify footer links (adjust selectors based on actual footer structure)
-		const footerLinks = page.locator('footer a');
-		await expect(footerLinks.first()).toBeVisible();
+		// Footer should have FUGA branding
+		await expect(page.locator('footer')).toContainText('FUGA');
+
+		// Footer should have contact info
+		await expect(page.locator('footer')).toContainText('Luz Saviñon 603bis');
+		await expect(page.locator('footer')).toContainText('hola@fuga.mx');
+
+		// Footer should have Instagram link
+		const instagramLink = page.locator('footer a[href*="instagram"]');
+		await expect(instagramLink).toBeVisible();
+	});
+
+	test('should show header CTA when scrolling past hero', async ({ page }) => {
+		// Initially, header CTA should not be visible
+		const headerCta = page.locator('[data-testid="header-cta"]');
+
+		// Scroll past the hero section
+		await page.locator('[data-testid="services-section"]').scrollIntoViewIfNeeded();
+
+		// Wait for the header CTA to appear
+		await expect(headerCta).toBeVisible({ timeout: 2000 });
 	});
 });
 
@@ -100,69 +98,21 @@ test.describe('Landing Page - Mobile', () => {
 		await page.goto('/');
 	});
 
-	test('should have mobile navigation menu', async ({ page }) => {
-		// Mobile menu button should be visible
-		const mobileMenuButton = page.locator('button[aria-label*="menu"]');
-		await expect(mobileMenuButton).toBeVisible();
-
-		// Desktop navigation should be hidden on mobile
-		const desktopNav = page.locator('header').getByRole('navigation');
-		await expect(desktopNav).not.toBeVisible();
-
-		// Open mobile menu
-		await mobileMenuButton.click();
-
-		// Mobile navigation should be visible
-		const mobileNav = page.locator('#mobile-navigation');
-		await expect(mobileNav).toBeVisible();
-
-		// Check mobile navigation links - use mobile nav specific selector
-		const mobileNavLinks = ['Services', 'Pricing', 'About', 'Blog', 'Contact', 'Login'];
-
-		for (const linkText of mobileNavLinks) {
-			const link = mobileNav.getByRole('link', { name: linkText });
-			await expect(link).toBeVisible();
-		}
-
-		// Close mobile menu
-		await mobileMenuButton.click();
-		await expect(mobileNav).not.toBeVisible();
-	});
-
 	test('should have responsive layout on mobile', async ({ page }) => {
 		// Check hero section layout using data-testid
 		await expect(page.locator('[data-testid="hero-section"]')).toBeVisible();
 
-		// Check that benefits cards stack vertically on mobile using data-testid
-		const benefitCards = page.locator('[data-testid="benefit-card"]');
-		await expect(benefitCards).toHaveCount(3);
+		// Hero heading and description should be visible
+		await expect(page.locator('[data-testid="hero-heading"]')).toBeVisible();
+		await expect(page.locator('[data-testid="hero-description"]')).toBeVisible();
 
-		// Verify CTA buttons stack vertically on mobile using data-testid
-		const ctaButtons = page.locator(
-			'[data-testid="hero-cta-buttons"] button, [data-testid="hero-cta-buttons"] a'
-		);
-		await expect(ctaButtons).toHaveCount(2);
-	});
-
-	test('should handle touch interactions correctly', async ({ page }) => {
-		// Test mobile navigation opening/closing
-		const mobileMenuButton = page.locator('button[aria-label*="menu"]');
-
-		// Open menu
-		await mobileMenuButton.click();
-		await expect(page.locator('#mobile-navigation')).toBeVisible();
-
-		// Test navigation link click closes menu - use mobile nav specific selector
-		const mobileNav = page.locator('#mobile-navigation');
-		const servicesLink = mobileNav.getByRole('link', { name: 'Services' });
-		await servicesLink.click();
-
-		// Menu should close after navigation
-		await expect(page.locator('#mobile-navigation')).not.toBeVisible();
+		// CTA button should be visible
+		const ctaButton = page.locator('[data-testid="cta-start-training"]');
+		await expect(ctaButton).toBeVisible();
 	});
 
 	test('should maintain content readability on mobile', async ({ page }) => {
-		// Check text sizes are readable using data-testid
+		// Check text is visible
 		await expect(page.locator('[data-testid="hero-heading"]')).toBeVisible();
 		await expect(page.locator('[data-testid="hero-description"]')).toBeVisible();
 
@@ -170,6 +120,29 @@ test.describe('Landing Page - Mobile', () => {
 		const bodyWidth = await page.evaluate(() => document.body.scrollWidth);
 		const viewportWidth = await page.evaluate(() => window.innerWidth);
 		expect(bodyWidth).toBeLessThanOrEqual(viewportWidth);
+	});
+
+	test('should display services section correctly on mobile', async ({ page }) => {
+		const servicesSection = page.locator('[data-testid="services-section"]');
+		await servicesSection.scrollIntoViewIfNeeded();
+		await expect(servicesSection).toBeVisible();
+
+		// Should have service cards
+		await expect(servicesSection).toContainText('Entrenamiento Presencial');
+		await expect(servicesSection).toContainText('Entrenamiento Virtual');
+	});
+
+	test('should open contact modal on CTA click', async ({ page }) => {
+		const ctaButton = page.locator('[data-testid="cta-start-training"]');
+		await ctaButton.click();
+
+		// Modal should appear
+		const modal = page.locator('[data-testid="contact-modal"]');
+		await expect(modal).toBeVisible();
+
+		// Modal should have form elements
+		await expect(modal.locator('input[name="firstName"]')).toBeVisible();
+		await expect(modal.locator('input[name="email"]')).toBeVisible();
 	});
 });
 
@@ -192,15 +165,79 @@ test.describe('Landing Page - Cross-browser Responsive', () => {
 			await expect(page.locator('footer')).toBeVisible();
 
 			// Hero section should always be accessible
-			const heroSection = page.locator('section').first();
-			await expect(heroSection).toBeVisible();
+			await expect(page.locator('[data-testid="hero-section"]')).toBeVisible();
 
-			// Logo should always be visible
-			const logo = page.getByRole('link', { name: 'FUGA' });
-			await expect(logo).toBeVisible();
+			// Logo/brand should always be visible in header
+			await expect(page.locator('header h1')).toContainText('FUGA');
 
-			// No layout issues
-			await expect(page.locator('body')).not.toHaveCSS('overflow-x', 'scroll');
+			// No horizontal overflow
+			const bodyWidth = await page.evaluate(() => document.body.scrollWidth);
+			const viewportWidth = await page.evaluate(() => window.innerWidth);
+			expect(bodyWidth).toBeLessThanOrEqual(viewportWidth);
 		});
 	}
+});
+
+test.describe('Contact Form Modal', () => {
+	test.beforeEach(async ({ page }) => {
+		await page.setViewportSize({ width: 1280, height: 720 });
+		await page.goto('/');
+	});
+
+	test('should open and close contact modal', async ({ page }) => {
+		// Open modal
+		const ctaButton = page.locator('[data-testid="cta-start-training"]');
+		await ctaButton.click();
+
+		const modal = page.locator('[data-testid="contact-modal"]');
+		await expect(modal).toBeVisible();
+
+		// Close modal with close button
+		const closeButton = modal.locator('button[aria-label="Cerrar"]');
+		await closeButton.click();
+
+		await expect(modal).not.toBeVisible();
+	});
+
+	test('should have form validation', async ({ page }) => {
+		// Open modal
+		const ctaButton = page.locator('[data-testid="cta-start-training"]');
+		await ctaButton.click();
+
+		const modal = page.locator('[data-testid="contact-modal"]');
+		await expect(modal).toBeVisible();
+
+		// Try to submit empty form
+		const submitButton = modal.locator('button[type="submit"]');
+		await submitButton.click();
+
+		// Form should show validation (required fields)
+		const nameInput = modal.locator('input[name="firstName"]');
+		const isInvalid = await nameInput.evaluate(
+			(el: HTMLInputElement) => !el.validity.valid && el.validity.valueMissing
+		);
+		expect(isInvalid).toBe(true);
+	});
+
+	test('should submit contact form successfully', async ({ page }) => {
+		// Open modal
+		const ctaButton = page.locator('[data-testid="cta-start-training"]');
+		await ctaButton.click();
+
+		const modal = page.locator('[data-testid="contact-modal"]');
+		await expect(modal).toBeVisible();
+
+		// Fill form
+		await modal.locator('input[name="firstName"]').fill('Test');
+		await modal.locator('input[name="lastName"]').fill('User');
+		await modal.locator('input[name="email"]').fill('test@example.com');
+		await modal.locator('input[name="phone"]').fill('5512345678');
+
+		// Submit form
+		const submitButton = modal.locator('button[type="submit"]');
+		await submitButton.click();
+
+		// Modal should close after successful submission
+		await expect(modal).not.toBeVisible();
+	});
 });

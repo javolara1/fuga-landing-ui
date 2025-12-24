@@ -21,8 +21,6 @@
 		...rest
 	} = $props();
 
-	console.log('size: ', size);
-
 	const variantClasses: Record<ButtonVariant, string> = {
 		primary: 'bg-white text-black hover:bg-gray-100 hover:scale-105 shadow-lg',
 		secondary: 'border-2 border-white text-white hover:bg-white hover:text-black',
