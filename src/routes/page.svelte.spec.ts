@@ -80,7 +80,8 @@ const mockLandingPage: LandingPageData = {
 
 const defaultProps = {
 	data: {
-		landingPage: mockLandingPage
+		landingPage: mockLandingPage,
+		blogUrl: 'http://localhost:5173/'
 	}
 };
 

@@ -40,9 +40,17 @@
 		`inline-flex items-center justify-center ${isSelected ? 'font-bold' : 'font-normal'} transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black disabled:cursor-not-allowed disabled:opacity-50 ${variantClasses[variant]} ${sizeClasses[size]} ${fullWidth ? 'w-full' : ''}`
 	);
 
+	function isExternalUrl(url: string): boolean {
+		return url.startsWith('http://') || url.startsWith('https://');
+	}
+
 	function handleClick(event: MouseEvent) {
 		dispatch('click', event);
 		if (href && !disabled && !loading) {
+			if (isExternalUrl(href)) {
+				// Let the browser handle external links naturally
+				return;
+			}
 			event.preventDefault();
 			goto(href);
 		}
