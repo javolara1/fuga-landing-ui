@@ -32,7 +32,7 @@
 </script>
 
 <div class="min-h-screen bg-black text-white">
-	<Header showCta={!heroCtaVisible} onCtaClick={openModal} blogUrl={data.blogUrl} />
+	<Header showCta={!heroCtaVisible} onCtaClick={openModal} blogUrl={data.blogUrl} ctaLabel={data.landingPage?.callToActionLabel} />
 	<main>
 		<Hero
 			bind:ctaVisible={heroCtaVisible}

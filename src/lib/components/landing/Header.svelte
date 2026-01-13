@@ -5,11 +5,13 @@
 	let {
 		showCta = false,
 		onCtaClick = () => {},
-		blogUrl = undefined
+		blogUrl = undefined,
+		ctaLabel = ''
 	} = $props<{
 		showCta?: boolean;
 		onCtaClick?: () => void;
 		blogUrl?: string;
+		ctaLabel?: string;
 	}>();
 </script>
 
@@ -36,7 +38,7 @@
 				{#if showCta}
 					<div transition:fade>
 						<Button variant="primary" size="md" onclick={onCtaClick} data-testid="header-cta">
-							Comienza a Entrenar Hoy
+							{ctaLabel}
 						</Button>
 					</div>
 				{/if}
