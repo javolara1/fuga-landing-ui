@@ -113,3 +113,33 @@ export interface LandingPageData {
 }
 
 export type LandingPageResponse = StrapiResponse<LandingPageData>;
+
+// SEO metadata for pages
+export interface SEOData {
+	title: string;
+	description: string;
+	canonical?: string;
+	ogImage?: string;
+	ogImageAlt?: string;
+	ogType?: 'website' | 'article' | 'product';
+	noindex?: boolean;
+	nofollow?: boolean;
+}
+
+// LocalBusiness JSON-LD structure
+export interface LocalBusinessJsonLd {
+	'@context': 'https://schema.org';
+	'@type': 'LocalBusiness';
+	name: string;
+	description: string;
+	url: string;
+	address: {
+		'@type': 'PostalAddress';
+		streetAddress: string;
+		addressLocality: string;
+		addressRegion: string;
+		addressCountry: string;
+	};
+	image?: string;
+	sameAs?: string[];
+}

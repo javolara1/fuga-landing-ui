@@ -3,7 +3,7 @@ import { describe, expect, test } from 'vitest';
 import '@testing-library/jest-dom/vitest';
 
 import Page from './+page.svelte';
-import type { LandingPageData } from '$lib/types';
+import type { LandingPageData, SEOData, LocalBusinessJsonLd } from '$lib/types';
 
 const mockLandingPage: LandingPageData = {
 	id: 1,
@@ -78,10 +78,36 @@ const mockLandingPage: LandingPageData = {
 	}
 };
 
+const mockSeo: SEOData = {
+	title: 'Comunidad Deportiva Multidisciplinaria',
+	description:
+		'FUGA es una comunidad para los amantes y apasionados del deporte, combinamos ciencia, experiencia y herramientas de desarrollo humano para crear tu mejor versión.',
+	ogType: 'website'
+};
+
+const mockJsonLd: LocalBusinessJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'LocalBusiness',
+	name: 'FUGA',
+	description:
+		'FUGA es una comunidad para los amantes y apasionados del deporte, combinamos ciencia, experiencia y herramientas de desarrollo humano para crear tu mejor versión.',
+	url: 'https://fuga.mx',
+	address: {
+		'@type': 'PostalAddress',
+		streetAddress: 'Luz Saviñon 603bis',
+		addressLocality: 'Del Valle, Benito Juarez',
+		addressRegion: 'CDMX',
+		addressCountry: 'MX'
+	}
+};
+
 const defaultProps = {
 	data: {
 		landingPage: mockLandingPage,
-		blogUrl: 'http://localhost:5173/'
+		blogUrl: 'http://localhost:5173/',
+		siteUrl: 'https://fuga.mx',
+		defaultSeo: mockSeo,
+		jsonLd: mockJsonLd
 	}
 };
 

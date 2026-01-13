@@ -1,3 +1,6 @@
-# allow crawling everything by default
+# FUGA Landing Page
 User-agent: *
-Disallow:
+Allow: /
+
+# Sitemap
+Sitemap: https://fuga.mx/sitemap.xml
